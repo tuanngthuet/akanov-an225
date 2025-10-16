@@ -1,4 +1,4 @@
-package Model;
+package controller.brick_control;
 
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.components.CollidableComponent;
@@ -45,7 +45,7 @@ public class BrickManager extends Entity {
         double totalWidth = bricksPerRow * InitVari.BRICK_WIDTH + (bricksPerRow - 1) * InitVari.BRICK_GAP;
         double startX = (InitVari.width - totalWidth) / 2;
 
-        double startY = InitVari.BRICK_GAP;
+        double startY = InitVari.BRICK_GAP * 2;
 
         for (int row = 0; row < numRows; row++) {
             for (int col = 0; col < bricksPerRow; col++) {

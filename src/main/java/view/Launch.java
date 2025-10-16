@@ -1,6 +1,6 @@
 package view;
 
-import Model.BrickManager;
+import controller.brick_control.BrickManager;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.entity.Entity;
