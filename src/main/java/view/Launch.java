@@ -28,17 +28,30 @@ public class Launch extends GameApplication {
 
     private void initPaddleInput() {
         onKey(KeyCode.A, () -> {
-            paddle.moveLeft();
-            inc("pixelsMoved", -paddle.getSpeed());
+            if (paddle.getX() > 0) {
+                paddle.moveLeft();
+                inc("pixelsMoved", -paddle.getSpeed());
+            }
         });
 
         onKey(KeyCode.D, () -> {
-            paddle.moveRight();
-            inc("pixelsMoved", paddle.getSpeed());
+            if (paddle.getX() + paddle.getPADDLE_WIDTH() < InitVari.width) {
+                paddle.moveRight();
+                inc("pixelsMoved", paddle.getSpeed());
+            }
         });
 
-        onKey(KeyCode.LEFT, paddle::moveLeft);
-        onKey(KeyCode.RIGHT, paddle::moveRight);
+        onKey(KeyCode.LEFT, () -> {
+            if (paddle.getX() > 0) {
+                paddle.moveLeft();
+            }
+        });
+
+        onKey(KeyCode.RIGHT, () -> {
+            if (paddle.getX() + paddle.getPADDLE_WIDTH() < InitVari.width) {
+                paddle.moveRight();
+            }
+        });
     }
 
     @Override

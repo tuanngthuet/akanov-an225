@@ -30,6 +30,7 @@ public abstract class Paddle extends Entity {
         getViewComponent().addChild(new Rectangle(width, height, color));
 
         getBoundingBoxComponent().addHitBox(new HitBox(BoundingShape.box(width, height)));
+
         addComponent(new CollidableComponent(true));
 
         setPosition(x, y);
@@ -51,4 +52,7 @@ public abstract class Paddle extends Entity {
         return this.type;
     }
 
+    public int getPADDLE_WIDTH() {
+        return this.PADDLE_WIDTH;
+    }
 }
