@@ -58,7 +58,7 @@ public class Launch extends GameApplication {
     @Override
     protected void initGame() {
         player = entityBuilder()
-                .at(300, 300)
+                .at(300, 600 - 25)
                 .view(new Rectangle(25, 25, Color.BLUE))
                 .buildAndAttach();
         BrickManager bricks = new BrickManager(3);
