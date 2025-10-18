@@ -1,9 +1,10 @@
 module view {
     requires javafx.controls;
     requires javafx.fxml;
-
     requires com.almasb.fxgl.all;
 
     opens view to javafx.fxml;
+    opens model to javafx.fxml;
     exports view;
+    exports model;
 }
