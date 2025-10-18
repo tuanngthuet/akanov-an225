@@ -2,15 +2,14 @@ package controller.paddle_control;
 
 import javafx.scene.paint.Color;
 
-public class BasicPaddle extends Paddle {
+public class FrozenPaddle extends Paddle {
 
-    public BasicPaddle(int x, int y) {
+    public FrozenPaddle(int x, int y) {
         super(x, y,
                 PaddleVari.BASIC_PAD_WIDTH,
                 PaddleVari.PAD_HEIGHT,
-                PaddleVari.BASIC_PAD_SPEED,
-                PaddleType.BASIC, Color.YELLOW
+                PaddleVari.FROZEN_PAD_SPEED,
+                PaddleType.FROZEN, Color.BLUE
         );
     }
-
 }

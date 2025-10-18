@@ -10,7 +10,7 @@ import javafx.scene.shape.Rectangle;
 public abstract class Paddle extends Entity {
 
     public enum PaddleType {
-        BASIC;
+        BASIC, BUFF, NERF, FROZEN;
     }
 
     private int PADDLE_X, PADDLE_Y;
