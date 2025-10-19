@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="745b6b40-0ebd-404d-8e11-c116d38a6322" name="Changes" comment="brick" />
+    <list default="true" id="745b6b40-0ebd-404d-8e11-c116d38a6322" name="Changes" comment="brick">
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Ball.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,18 +22,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "tuanngthuet"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;tuanngthuet&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/tuanngthuet/akanov-an225.git",
-    "accountId": "23eab361-f272-42d2-be5f-3ba08ba2150f"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/tuanngthuet/akanov-an225.git&quot;,
+    &quot;accountId&quot;: &quot;23eab361-f272-42d2-be5f-3ba08ba2150f&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -48,10 +50,15 @@
     "Application.GameRun.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "tuan",
+    "git-widget-placeholder": "qanh",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Tuanngth/OneDrive - vnu.edu.vn/Desktop/akanov-an225-huy",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.42528737"
@@ -64,6 +71,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1760590595692</updated>
+      <workItem from="1760877828441" duration="341000" />
     </task>
     <task id="LOCAL-00001" summary="brick">
       <option name="closed" value="true" />

@@ -15,4 +15,8 @@ public class InitVari {
      */
     public static int INIT_PADDLE_X = 300;
     public static int INIT_PADDLE_Y = 550;
+
+    public static int BRICK_WIDTH = 90;
+    public static int BRICK_HEIGHT = 30;
+    public static int BRICK_GAP = 30;
 }
