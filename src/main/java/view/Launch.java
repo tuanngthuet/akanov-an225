@@ -4,8 +4,12 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.entity.Entity;
 import controller.InitVari;
+import controller.paddle_control.Paddle;
+import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
 import controller.Ball;
+import controller.paddle_control.BasicPaddle;
+import javafx.scene.paint.Color;
 
 import java.util.Map;
 
@@ -17,6 +21,7 @@ public class Launch extends GameApplication {
         PADDLE
     }
     private Ball ball;
+    private BasicPaddle paddle;
     @Override
     public void initSettings(GameSettings settings) {
         settings.setWidth(InitVari.width);
@@ -30,7 +35,6 @@ public class Launch extends GameApplication {
     }
 
     private Entity player;
-
     @Override
     protected void initGame() {
 
@@ -38,16 +42,26 @@ public class Launch extends GameApplication {
         ball.setType(EntityType.BALL);
         getGameWorld().addEntity(ball);
 
+        paddle = new BasicPaddle(550,550);
+        paddle.setType(EntityType.PADDLE);
+        getGameWorld().addEntity(paddle);
         ball.startFalling();
     }
-    @Override
-    protected void initUI() {
-        Text textPixels = new Text();
-        textPixels.setTranslateX(50); // x = 50
-        textPixels.setTranslateY(100); // y = 100
-
-        textPixels.textProperty().bind(getWorldProperties().intProperty("pixelsMoved").asString());
-
-        getGameScene().addUINode(textPixels); // add to the scene graph
+    protected void onUpdate(double tpf) {
+        ball.update(tpf, paddle);
     }
+    protected void initInput() {
+        onKey(KeyCode.LEFT, () -> paddle.moveLeft());
+        onKey(KeyCode.RIGHT, () -> paddle.moveRight());
+    }
+//    @Override
+//    protected void initUI() {
+//        Text textPixels = new Text();
+//        textPixels.setTranslateX(50); // x = 50
+//        textPixels.setTranslateY(100); // y = 100
+//
+//        textPixels.textProperty().bind(getWorldProperties().intProperty("pixelsMoved").asString());
+//
+//        getGameScene().addUINode(textPixels); // add to the scene graph
+//    }
 }

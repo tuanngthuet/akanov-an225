@@ -43,19 +43,17 @@ public class Ball extends Entity {
         getBoundingBoxComponent().addHitBox(new HitBox(BoundingShape.box(24, 24)));
         this.addComponent(new CollidableComponent(true));
     }
-
     public void startFalling() {
         directionX = 0;
         directionY = 1;
     }
-
     public void adjustDirectionAfterPaddleHit(Entity paddle) {
         double ballCenterX = this.getX() + this.getWidth() / 2;
         double paddleCenterX = paddle.getX() + paddle.getWidth() / 2;
         double paddleWidth = paddle.getWidth();
 
         double gap = (ballCenterX - paddleCenterX) / (paddleWidth / 2);
-        gap = Math.max(-1, Math.min(1, gap));
+//       gap = Math.max(-1, Math.min(1, gap));
 
         double maxBounceAngle = Math.toRadians(80);
         double bounceAngle = gap * maxBounceAngle;
@@ -63,7 +61,8 @@ public class Ball extends Entity {
         directionX = Math.sin(bounceAngle);
         directionY = -Math.cos(bounceAngle);
     }
-    public void onUpdate(double tpf, Entity paddle) {
+
+    public void update(double tpf, Entity paddle) {
         double dx = directionX * speed * tpf * 60;
         double dy = directionY * speed * tpf * 60;
         this.translate(dx, dy);
@@ -84,8 +83,8 @@ public class Ball extends Entity {
                 getRightX() >= paddle.getX() &&
                 getX() <= paddle.getRightX() &&
                 getY() < paddle.getY()) {
-            setY(paddle.getY() - getHeight());
-            adjustDirectionAfterPaddleHit(paddle);
+                setY(paddle.getY() - getHeight());
+                adjustDirectionAfterPaddleHit(paddle);
         }
 
         if (getY() > InitVari.height) {

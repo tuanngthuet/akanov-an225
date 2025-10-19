@@ -5,7 +5,7 @@ public class PaddleVari {
 
     // Values for the BASIC paddle
     public static int BASIC_PAD_WIDTH = 180;
-    public static int BASIC_PAD_SPEED = 20;
+    public static int BASIC_PAD_SPEED = 10;
 
     // Value for the BUFF paddle
     public static int BUFF_PAD_WIDTH = 200;
