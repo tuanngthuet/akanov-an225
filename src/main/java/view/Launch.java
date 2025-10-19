@@ -4,13 +4,10 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.entity.Entity;
 import controller.InitVari;
-import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
-import com.almasb.fxgl.physics.CollisionHandler;
-import model.Ball;
-import model.Paddle;
+import controller.Ball;
+
 import java.util.Map;
-import com.almasb.fxgl.physics.PhysicsComponent;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 
@@ -19,7 +16,6 @@ public class Launch extends GameApplication {
         BALL,
         PADDLE
     }
-    private Paddle paddle;
     private Ball ball;
     @Override
     public void initSettings(GameSettings settings) {
@@ -27,14 +23,6 @@ public class Launch extends GameApplication {
         settings.setHeight(InitVari.height);
         settings.setTitle(InitVari.GameName);
         settings.setVersion(InitVari.Version);
-    }
-    @Override
-    protected void initInput() {
-        onKey(KeyCode.LEFT, () -> paddle.translateX(-5));
-        onKey(KeyCode.RIGHT, () -> paddle.translateX(5));
-    }
-    protected void onUpdate(double tpf) {
-        ball.onUpdate(tpf, paddle);
     }
     @Override
     protected void initGameVars(Map<String, Object> vars) {
@@ -45,9 +33,6 @@ public class Launch extends GameApplication {
 
     @Override
     protected void initGame() {
-        paddle = new Paddle(300, 550, 500,80,30);  // speed=5, tọa độ (300, 550)
-        paddle.setType(Launch.EntityType.PADDLE);
-        getGameWorld().addEntity(paddle);
 
         ball = new Ball(600, 50, 4, 1, -1, Ball.BallType.NORMAL);
         ball.setType(EntityType.BALL);

@@ -1,4 +1,4 @@
-package model;
+package controller;
 
 import com.almasb.fxgl.entity.Entity;
 import javafx.scene.paint.Color;
@@ -60,37 +60,37 @@ public class Ball extends Entity {
         directionX = Math.sin(bounceAngle);
         directionY = -Math.cos(bounceAngle);
     }
-    public void onUpdate(double tpf, Entity paddle) {
-        double dx = directionX * speed * tpf * 60;
-        double dy = directionY * speed * tpf * 60;
-        this.translate(dx, dy);
-
-        double screenWidth = 800;
-        double screenHeight = 600;
-
-        if (getX() <= 0) {
-            setX(0);
-            directionX *= -1;
-        } else if (getRightX() >= screenWidth) {
-            setX(screenWidth - getWidth());
-            directionX *= -1;
-        }
-        if (getY() <= 0) {
-            setY(0);
-            directionY *= -1;
-        }
-
-        if (directionY > 0 && getBottomY() >= paddle.getY() &&
-                getRightX() >= paddle.getX() &&
-                getX() <= paddle.getRightX() &&
-                getY() < paddle.getY()) {
-            setY(paddle.getY() - getHeight());
-            adjustDirectionAfterPaddleHit(paddle);
-        }
-
-        if (getY() > screenHeight) {
-            setPosition(400, 50);
-            startFalling();
-        }
-    }
+//    public void onUpdate(double tpf, Entity paddle) {
+//        double dx = directionX * speed * tpf * 60;
+//        double dy = directionY * speed * tpf * 60;
+//        this.translate(dx, dy);
+//
+//        double screenWidth = 800;
+//        double screenHeight = 600;
+//
+//        if (getX() <= 0) {
+//            setX(0);
+//            directionX *= -1;
+//        } else if (getRightX() >= screenWidth) {
+//            setX(screenWidth - getWidth());
+//            directionX *= -1;
+//        }
+//        if (getY() <= 0) {
+//            setY(0);
+//            directionY *= -1;
+//        }
+//
+//        if (directionY > 0 && getBottomY() >= paddle.getY() &&
+//                getRightX() >= paddle.getX() &&
+//                getX() <= paddle.getRightX() &&
+//                getY() < paddle.getY()) {
+//            setY(paddle.getY() - getHeight());
+//            adjustDirectionAfterPaddleHit(paddle);
+//        }
+//
+//        if (getY() > screenHeight) {
+//            setPosition(400, 50);
+//            startFalling();
+//        }
+//    }
 }
