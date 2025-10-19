@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="745b6b40-0ebd-404d-8e11-c116d38a6322" name="Changes" comment="brick">
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-18-Oct-2025-11.25.22.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +73,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1760590595692</updated>
-      <workItem from="1760877828441" duration="341000" />
+      <workItem from="1760877828441" duration="668000" />
     </task>
     <task id="LOCAL-00001" summary="brick">
       <option name="closed" value="true" />

@@ -1,6 +1,8 @@
 package controller;
 
 import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.physics.BoundingShape;
+import com.almasb.fxgl.physics.HitBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import com.almasb.fxgl.entity.components.BoundingBoxComponent;
@@ -38,6 +40,7 @@ public class Ball extends Entity {
 
         this.getViewComponent().addChild(new Circle(12, color));
         this.addComponent(new BoundingBoxComponent());
+        getBoundingBoxComponent().addHitBox(new HitBox(BoundingShape.box(24, 24)));
         this.addComponent(new CollidableComponent(true));
     }
 
