@@ -47,6 +47,7 @@ public class Launch extends GameApplication {
         getGameWorld().addEntity(paddle);
         ball.startFalling();
     }
+    @Override
     protected void onUpdate(double tpf) {
         ball.update(tpf, paddle);
     }

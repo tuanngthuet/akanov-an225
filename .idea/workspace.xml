@@ -6,18 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="745b6b40-0ebd-404d-8e11-c116d38a6322" name="Changes" comment="brick">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-17-Oct-2025-03.14.10.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-17-Oct-2025-16.20.50.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-17-Oct-2025-16.22.47.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-17-Oct-2025-16.28.19.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-18-Oct-2025-11.25.32.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-18-Oct-2025-11.26.28.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-18-Oct-2025-11.28.50.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-19-Oct-2025-19.35.35.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-19-Oct-2025-19.50.02.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-19-Oct-2025-19.53.20.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-00.38.06.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-00.38.33.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-00.40.47.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-00.41.17.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-01.05.12.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-01.06.41.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-01.07.24.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-01.08.03.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-01.08.23.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-01.11.14.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Ball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/paddle_control/PaddleVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/paddle_control/PaddleVari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/Launch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Launch.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,26 +58,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.GameRun.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "qanh",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Tuanngth/OneDrive - vnu.edu.vn/Desktop/akanov-an225-huy",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.42528737",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GameRun.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;qanh&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Tuanngth/OneDrive - vnu.edu.vn/Desktop/akanov-an225-huy&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.42528737&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -94,7 +94,8 @@
       <option name="presentableId" value="Default" />
       <updated>1760590595692</updated>
       <workItem from="1760877828441" duration="668000" />
-      <workItem from="1760894711897" duration="2963000" />
+      <workItem from="1760894711897" duration="3259000" />
+      <workItem from="1760898121310" duration="4138000" />
     </task>
     <task id="LOCAL-00001" summary="brick">
       <option name="closed" value="true" />

@@ -19,4 +19,6 @@ public class InitVari {
     public static int BRICK_WIDTH = 90;
     public static int BRICK_HEIGHT = 30;
     public static int BRICK_GAP = 30;
+
+    public static double GRAVITY = 1;
 }

@@ -45,7 +45,7 @@ public class Ball extends Entity {
     }
     public void startFalling() {
         directionX = 0;
-        directionY = 1;
+        directionY = InitVari.GRAVITY;
     }
     public void adjustDirectionAfterPaddleHit(Entity paddle) {
         double ballCenterX = this.getX() + this.getWidth() / 2;
