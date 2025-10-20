@@ -45,11 +45,13 @@ public class Launch extends GameApplication {
         paddle = new BasicPaddle(550,550);
         paddle.setType(EntityType.PADDLE);
         getGameWorld().addEntity(paddle);
-        ball.startFalling();
+//        ball.startFalling();
     }
     @Override
     protected void onUpdate(double tpf) {
         ball.update(tpf, paddle);
+        ball.startFalling();
+        paddle.update();
     }
     protected void initInput() {
         onKey(KeyCode.LEFT, () -> paddle.moveLeft());

@@ -44,8 +44,12 @@ public class Ball extends Entity {
         this.addComponent(new CollidableComponent(true));
     }
     public void startFalling() {
-        directionX = 0;
-        directionY = InitVari.GRAVITY;
+//        directionX = 0;
+//        directionY = InitVari.GRAVITY;
+        double Ball_y = getY();
+        double Ball_Velocity = 0;
+        Ball_y += Ball_Velocity;
+        Ball_Velocity += InitVari.GRAVITY;
     }
     public void adjustDirectionAfterPaddleHit(Entity paddle) {
         double ballCenterX = this.getX() + this.getWidth() / 2;

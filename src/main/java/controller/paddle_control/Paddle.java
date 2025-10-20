@@ -4,6 +4,7 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
+import controller.InitVari;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -54,5 +55,10 @@ public abstract class Paddle extends Entity {
 
     public int getPADDLE_WIDTH() {
         return this.PADDLE_WIDTH;
+    }
+
+    public void update() {
+        if(getX() < 0) setX(0);
+        if(getX() + PADDLE_WIDTH > InitVari.width)  setX(InitVari.width - PADDLE_WIDTH);
     }
 }
