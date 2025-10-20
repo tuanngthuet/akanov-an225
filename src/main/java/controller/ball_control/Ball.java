@@ -1,8 +1,9 @@
-package controller;
+package controller.ball_control;
 
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
+import controller.InitVari;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import com.almasb.fxgl.entity.components.BoundingBoxComponent;

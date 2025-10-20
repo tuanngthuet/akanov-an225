@@ -1,7 +1,8 @@
 package controller.paddle_control;
 
 public class PaddleVari {
-    public static int PAD_HEIGHT = 20;
+    // Values for the default paddle
+    public static int PADDLE_HEIGHT = 20;
 
     // Values for the BASIC paddle
     public static int BASIC_PAD_WIDTH = 180;

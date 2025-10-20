@@ -7,7 +7,7 @@ public class NerfPaddle extends Paddle {
     public NerfPaddle(int x, int y) {
         super(x, y,
                 PaddleVari.NERF_PAD_WIDTH,
-                PaddleVari.PAD_HEIGHT,
+                PaddleVari.PADDLE_HEIGHT,
                 PaddleVari.NERF_PAD_SPEED,
                 PaddleType.NERF, Color.RED
         );

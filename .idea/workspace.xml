@@ -4,14 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="745b6b40-0ebd-404d-8e11-c116d38a6322" name="Changes" comment="1st commit">
+    <list default="true" id="745b6b40-0ebd-404d-8e11-c116d38a6322" name="Changes" comment="brick">
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/GeneralInit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo1/HelloApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo1/HelloController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo1/Launcher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-07.53.43.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-08.02.19.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-08.05.41.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-08.08.33.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-08.10.23.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-08.10.56.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-08.13.18.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-08.20.28.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-08.20.35.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-08.21.59.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/paddle_control/BasicPaddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/paddle_control/BasicPaddle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/paddle_control/BuffPaddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/paddle_control/BuffPaddle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/paddle_control/FrozenPaddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/paddle_control/FrozenPaddle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/paddle_control/NerfPaddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/paddle_control/NerfPaddle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/paddle_control/Paddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/paddle_control/Paddle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/paddle_control/PaddleVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/paddle_control/PaddleVari.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/Launch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Launch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo1/hello-view.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +41,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="qanh" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -54,7 +74,6 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.GameRun.executor": "Run",
-    "Application.Launcher.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
@@ -65,9 +84,11 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.42528737"
+    "project.structure.side.proportion": "0.42528737",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager" selected="Application.GameRun">
@@ -101,8 +122,17 @@
       <list>
         <item itemvalue="Application.GameRun" />
         <item itemvalue="Application.Launcher" />
+        <item itemvalue="Application.GameRun" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26830.84" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.26830.84" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -111,6 +141,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1760590595692</updated>
+      <workItem from="1760877828441" duration="668000" />
+      <workItem from="1760894711897" duration="3259000" />
+      <workItem from="1760898121310" duration="5350000" />
     </task>
     <task id="LOCAL-00001" summary="brick">
       <option name="closed" value="true" />
@@ -122,6 +155,9 @@
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="brick" />
