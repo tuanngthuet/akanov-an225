@@ -17,6 +17,7 @@ public class Ball extends Entity {
     private double directionX;
     private double directionY;
     private BallType type;
+    private double Ball_DropVelocity = 0;
 
     public BallType getBallType() {
         return type;
@@ -44,19 +45,16 @@ public class Ball extends Entity {
         this.addComponent(new CollidableComponent(true));
     }
     public void startFalling() {
-//        directionX = 0;
-//        directionY = InitVari.GRAVITY;
         double Ball_y = getY();
-        double Ball_Velocity = 0;
-        Ball_y += Ball_Velocity;
-        Ball_Velocity += InitVari.GRAVITY;
+        Ball_y += Ball_DropVelocity;
+        Ball_DropVelocity += InitVari.GRAVITY;
     }
     public void adjustDirectionAfterPaddleHit(Entity paddle) {
         double ballCenterX = this.getX() + this.getWidth() / 2;
         double paddleCenterX = paddle.getX() + paddle.getWidth() / 2;
         double paddleWidth = paddle.getWidth();
 
-        double gap = (ballCenterX - paddleCenterX) / (paddleWidth / 2);
+        double gap = (ballCenterX - paddleCenterX)/ (paddleWidth / 2);
 //       gap = Math.max(-1, Math.min(1, gap));
 
         double maxBounceAngle = Math.toRadians(80);
@@ -95,5 +93,9 @@ public class Ball extends Entity {
             setPosition(400, 50);
             startFalling();
         }
+    }
+    public void IncreaseBallSpeed() {
+        if(speed == 6) return;
+        speed = speed + 0.01;
     }
 }

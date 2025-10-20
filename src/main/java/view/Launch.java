@@ -52,6 +52,7 @@ public class Launch extends GameApplication {
         ball.update(tpf, paddle);
         ball.startFalling();
         paddle.update();
+        ball.IncreaseBallSpeed();
     }
     protected void initInput() {
         onKey(KeyCode.LEFT, () -> paddle.moveLeft());

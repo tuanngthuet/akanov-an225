@@ -6,16 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="745b6b40-0ebd-404d-8e11-c116d38a6322" name="Changes" comment="brick">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-07.45.19.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-07.47.19.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-07.47.52.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-07.48.53.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-07.50.25.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-07.50.47.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-07.51.10.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-07.52.06.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-07.53.43.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-08.02.19.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-08.05.41.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-08.08.33.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-08.10.23.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-08.10.56.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-08.13.18.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-08.20.28.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-08.20.35.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-08.21.59.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Ball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/paddle_control/Paddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/paddle_control/Paddle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/Launch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Launch.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
