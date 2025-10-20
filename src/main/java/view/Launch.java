@@ -4,6 +4,7 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.entity.Entity;
 import controller.InitVari;
+import controller.brick_control.BrickManager;
 import controller.paddle_control.Paddle;
 import controller.paddle_control.PaddleVari;
 import javafx.scene.input.KeyCode;
@@ -50,6 +51,7 @@ public class Launch extends GameApplication {
         // What is this ??
         getGameWorld().addEntity(paddle);
 //        ball.startFalling();
+        BrickManager bricks = new BrickManager(3);
 
     }
 
