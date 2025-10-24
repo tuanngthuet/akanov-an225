@@ -9,7 +9,7 @@ import javafx.scene.shape.Circle;
 import com.almasb.fxgl.entity.components.BoundingBoxComponent;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 
-public class Ball extends Entity {
+public class Ball extends Entity implements InitVari {
     public enum BallType {
         NORMAL, HARD, POWERUP
     }
@@ -46,11 +46,11 @@ public class Ball extends Entity {
     }
     public void startFalling() {
 //        directionX = 0;
-//        directionY = InitVari.GRAVITY;
+//        directionY = GRAVITY;
         double Ball_y = getY();
         double Ball_Velocity = 0;
         Ball_y += Ball_Velocity;
-        Ball_Velocity += InitVari.GRAVITY;
+        Ball_Velocity += GRAVITY;
     }
     public void adjustDirectionAfterPaddleHit(Entity paddle) {
         double ballCenterX = this.getX() + this.getWidth() / 2;
@@ -75,8 +75,8 @@ public class Ball extends Entity {
         if (getX() <= 0) {
             setX(0);
             directionX *= Math.sin(Math.toRadians(60));
-        } else if (getRightX() >= InitVari.width) {
-            setX(InitVari.width- getWidth());
+        } else if (getRightX() >= SCREEN_WIDTH) {
+            setX(SCREEN_WIDTH - getWidth());
             directionX *= Math.sin(Math.toRadians(60));
         }
         if (getY() <= 0) {
@@ -92,7 +92,7 @@ public class Ball extends Entity {
                 adjustDirectionAfterPaddleHit(paddle);
         }
 
-        if (getY() > InitVari.height) {
+        if (getY() > SCREEN_HEIGHT) {
             setPosition(400, 50);
             startFalling();
         }
