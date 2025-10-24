@@ -1,78 +1,77 @@
 package view;
 
-import controller.brick_control.BrickManager;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.entity.Entity;
 import controller.InitVari;
+import controller.brick_control.Brick;
+import controller.brick_control.BrickManager;
+import controller.paddle_control.Paddle;
+import controller.paddle_control.PaddleVari;
 import javafx.scene.input.KeyCode;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import controller.ball_control.Ball;
+import controller.paddle_control.BasicPaddle;
+import javafx.scene.paint.Color;
 
 import java.util.Map;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class Launch extends GameApplication {
+
+
+    public enum EntityType {
+        BALL,
+        PADDLE
+    }
+
+    private Ball ball;
+    private BasicPaddle paddle;
+    private BrickManager bricks;
+
+
     @Override
     public void initSettings(GameSettings settings) {
-        settings.setMainMenuEnabled(true);
-        settings.setGameMenuEnabled(true);
-        settings.setWidth(InitVari.width);
-        settings.setHeight(InitVari.height);
-        settings.setTitle(InitVari.GameName);
-        settings.setVersion(InitVari.Version);
+        GeneralInit.initScreenSettings(settings);
     }
 
-    @Override
-    protected void initInput() {
-        onKey(KeyCode.D, () -> {
-            player.translateX(5); // move right 5 pixels
-            inc("pixelsMoved", +5);
-        });
 
-        onKey(KeyCode.A, () -> {
-            player.translateX(-5); // move left 5 pixels
-            inc("pixelsMoved", -5);
-        });
-
-        onKey(KeyCode.LEFT, () -> {
-            player.translateX(-5); // move up 5 pixels
-            inc("pixelsMoved", -5);
-        });
-
-        onKey(KeyCode.RIGHT, () -> {
-            player.translateX(5); // move down 5 pixels
-            inc("pixelsMoved", +5);
-        });
-    }
-
-    @Override
-    protected void initGameVars(Map<String, Object> vars) {
-        vars.put("pixelsMoved", 0);
-    }
 
     private Entity player;
 
     @Override
     protected void initGame() {
-        player = entityBuilder()
-                .at(300, 300)
-                .view(new Rectangle(25, 25, Color.BLUE))
-                .buildAndAttach();
-        BrickManager bricks = new BrickManager(3);
+
+        ball = new Ball(600, 50, 4, 1, -1, Ball.BallType.NORMAL);
+        ball.setType(EntityType.BALL);
+        //What is this ??
+        getGameWorld().addEntity(ball);
+
+        paddle = new BasicPaddle(InitVari.width / 2, InitVari.height - PaddleVari.PADDLE_HEIGHT);
+        paddle.setType(EntityType.PADDLE);
+        // What is this ??
+        getGameWorld().addEntity(paddle);
+//        ball.startFalling();
+        bricks = new BrickManager(3);
+        for (Brick b : bricks.getBrickList()) {
+            getGameWorld().addEntity(b);
+        }
     }
 
     @Override
-    protected void initUI() {
-        Text textPixels = new Text();
-        textPixels.setTranslateX(50); // x = 50
-        textPixels.setTranslateY(100); // y = 100
+    protected void onUpdate(double tpf) {
+        ball.update(tpf, paddle);
+        ball.startFalling();
+        paddle.update();
 
-        textPixels.textProperty().bind(getWorldProperties().intProperty("pixelsMoved").asString());
-
-        getGameScene().addUINode(textPixels); // add to the scene graph
     }
+
+    protected void initInput() {
+        onKey(KeyCode.RIGHT, () ->   paddle.moveRight());
+        onKey(KeyCode.LEFT, ()  ->   paddle.moveLeft() );
+        onKey(KeyCode.D, () -> bricks.clearAll());
+    }
+
 
 }
