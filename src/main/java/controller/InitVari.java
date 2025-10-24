@@ -1,20 +1,31 @@
 package controller;
 
-public class InitVari {
+import javafx.scene.text.Font;
+
+import java.util.Objects;
+
+public interface InitVari {
     /**
      * Set up Screen size variables
      */
-    public static final int height = 720;
-    public static final int width = 960;
+    int SCREEN_HEIGHT = 720;
+    int SCREEN_WIDTH = 960;
     //  Define Game name: version 0.1
-    public static final String GameName = "Akanov-an225";
-    public static final String Version = "0.2";
+    String GAME_NAME = "Akanov-an225";
+    String VERSION = "0.2";
 
-    /**
-     * Init position of the paddle
-     */
-    public static int INIT_PADDLE_X = 300;
-    public static int INIT_PADDLE_Y = 550;
+//    /**
+//     * Init position of the paddle
+//     */
+//    int INIT_PADDLE_X = 300;
+//    int INIT_PADDLE_Y = 550;
 
-    public static double GRAVITY = 1;
+    double GRAVITY = 1;
+
+    Font TITLE_FONT =
+            Font.loadFont(Objects.requireNonNull(InitVari.class
+                    .getResource("/assets/fonts/font.ttf")).toExternalForm(), 60);
+    Font TEXT_FONT =
+            Font.loadFont(Objects.requireNonNull(InitVari.class
+                    .getResource("/assets/fonts/font.ttf")).toExternalForm(), 20);
 }
