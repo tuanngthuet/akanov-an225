@@ -21,7 +21,5 @@ public class GeneralInit implements InitVari{
             }
         });
     }
-
-
-
+  
 }
