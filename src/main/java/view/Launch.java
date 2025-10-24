@@ -4,6 +4,7 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.entity.Entity;
 import controller.InitVari;
+import controller.brick_control.Brick;
 import controller.brick_control.BrickManager;
 import controller.paddle_control.Paddle;
 import controller.paddle_control.PaddleVari;
@@ -27,6 +28,7 @@ public class Launch extends GameApplication {
 
     private Ball ball;
     private BasicPaddle paddle;
+    private BrickManager bricks;
 
 
     @Override
@@ -51,8 +53,10 @@ public class Launch extends GameApplication {
         // What is this ??
         getGameWorld().addEntity(paddle);
 //        ball.startFalling();
-        BrickManager bricks = new BrickManager(3);
-
+        bricks = new BrickManager(3);
+        for (Brick b : bricks.getBrickList()) {
+            getGameWorld().addEntity(b);
+        }
     }
 
     @Override
@@ -66,7 +70,7 @@ public class Launch extends GameApplication {
     protected void initInput() {
         onKey(KeyCode.RIGHT, () ->   paddle.moveRight());
         onKey(KeyCode.LEFT, ()  ->   paddle.moveLeft() );
-
+        onKey(KeyCode.D, () -> bricks.clearAll());
     }
 
 

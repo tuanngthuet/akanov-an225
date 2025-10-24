@@ -11,7 +11,5 @@ public class GeneralInit {
         settings.setTitle(InitVari.GameName);
         settings.setVersion(InitVari.Version);
     }
-
-
-
+  
 }

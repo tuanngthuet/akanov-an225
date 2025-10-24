@@ -74,10 +74,10 @@ public class Ball extends Entity {
 
         if (getX() <= 0) {
             setX(0);
-            directionX *= -1;
+            directionX *= Math.sin(Math.toRadians(60));
         } else if (getRightX() >= InitVari.width) {
             setX(InitVari.width- getWidth());
-            directionX *= -1;
+            directionX *= Math.sin(Math.toRadians(60));
         }
         if (getY() <= 0) {
             setY(0);
