@@ -1,6 +1,6 @@
 package controller;
 
-public class InitVari {
+public interface InitVari {
     /**
      * Set up Screen size variables
      */

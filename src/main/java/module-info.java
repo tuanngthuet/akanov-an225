@@ -5,6 +5,7 @@ module view {
     requires com.almasb.fxgl.entity;
     requires com.fasterxml.jackson.databind;
     requires javafx.graphics;
+    requires java.sql;
 //    requires view;
 //    requires view;
 

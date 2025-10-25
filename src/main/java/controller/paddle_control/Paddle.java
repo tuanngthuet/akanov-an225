@@ -12,7 +12,7 @@ import javafx.scene.shape.Rectangle;
 
 import static com.almasb.fxgl.dsl.FXGL.onKey;
 
-public abstract class Paddle extends Entity {
+public class Paddle extends Entity {
 
     public enum PaddleType {
         BASIC, BUFF, NERF, FROZEN;
