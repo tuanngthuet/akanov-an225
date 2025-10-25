@@ -6,6 +6,7 @@ module view {
     requires com.fasterxml.jackson.databind;
     requires javafx.graphics;
     requires annotations;
+    requires java.sql;
 //    requires view;
 //    requires view;
 

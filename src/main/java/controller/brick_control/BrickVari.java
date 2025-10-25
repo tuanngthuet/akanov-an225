@@ -20,12 +20,12 @@ public interface BrickVari {
     );
 
 //    int HARD_SPRITE_ROWS = 1;
-//    Image HARD_SPRITE = new Image(
-//            Objects.requireNonNull(BrickVari.class.getResource("/assets/textures/bricks/hard.png")).toExternalForm()
-//    );
-//
-//    int POWERUP_SPRITE_ROWS = 1;
-//    Image POWERUP_SPRITE = new Image(
-//            Objects.requireNonNull(BrickVari.class.getResource("/assets/textures/bricks/powerup.png")).toExternalForm()
-//    );
+    Image HARD_SPRITE = new Image(
+            Objects.requireNonNull(BrickVari.class.getResource("/assets/textures/bricks/hard.png")).toExternalForm()
+    );
+
+    int POWERUP_SPRITE_COLUMNS = 11;
+    Image POWERUP_SPRITE = new Image(
+            Objects.requireNonNull(BrickVari.class.getResource("/assets/textures/bricks/powerup.png")).toExternalForm()
+    );
 }

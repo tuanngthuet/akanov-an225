@@ -24,6 +24,15 @@ public class BrickManager extends Entity implements BrickVari{
     }
 
     public void removeBrick(Brick brick) {
+        if (brick.getBrickType() == HARD) {
+//            Brick nb = new Brick((int) brick.getX(), (int) brick.getY(), NORMAL);
+//            getGameWorld().addEntity(nb);
+//            brickList.add(nb);
+//            getGameWorld().removeEntity(brick);
+//            brickList.remove(brick);
+            brick.setType(NORMAL);
+            return;
+        }
         if (brick.getBrickType() == POWERUP) {
             getGameWorld().addEntity(new PowerUp(brick.getPosition()));
         }

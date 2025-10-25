@@ -5,18 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="745b6b40-0ebd-404d-8e11-c116d38a6322" name="Changes" comment="Edit workspace.xml">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-thg 10-2025-00.54.38.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-thg 10-2025-00.55.54.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-thg 10-2025-01.02.25.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-thg 10-2025-01.04.51.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-thg 10-2025-01.07.57.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-thg 10-2025-01.10.39.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-thg 10-2025-01.13.23.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-thg 10-2025-01.14.12.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-thg 10-2025-01.32.14.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-thg 10-2025-01.37.51.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/Brick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/Brick.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickVari.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameRun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameRun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Launch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Launch.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +72,7 @@
     "git-widget-placeholder": "tuan",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Tuanngth/Desktop/akanov-an225-huy",
+    "last_opened_file_path": "C:/Users/Tuanngth/Desktop/akanov-an225",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
