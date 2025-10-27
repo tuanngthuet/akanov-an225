@@ -4,6 +4,7 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.entity.Entity;
 import controller.InitVari;
+import controller.brick_control.BrickManager;
 import controller.paddle_control.Paddle;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
@@ -18,12 +19,16 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 public class Launch extends GameApplication {
     public enum EntityType {
         BALL,
-        PADDLE
+        PADDLE,
+        BRICK
     }
     private Ball ball;
     private BasicPaddle paddle;
+    private BrickManager bricks;
     @Override
     public void initSettings(GameSettings settings) {
+        settings.setMainMenuEnabled(true);
+        settings.setGameMenuEnabled(true);
         settings.setWidth(InitVari.width);
         settings.setHeight(InitVari.height);
         settings.setTitle(InitVari.GameName);
@@ -38,19 +43,19 @@ public class Launch extends GameApplication {
     @Override
     protected void initGame() {
 
-        ball = new Ball(600, 50, 4, 1, -1, Ball.BallType.NORMAL);
+        ball = new Ball(600, 350, 4, 1, -1, Ball.BallType.NORMAL);
         ball.setType(EntityType.BALL);
         getGameWorld().addEntity(ball);
 
         paddle = new BasicPaddle(550,550);
         paddle.setType(EntityType.PADDLE);
         getGameWorld().addEntity(paddle);
-//        ball.startFalling();
+        bricks = new BrickManager(4);
+        ball.startFalling();
     }
     @Override
     protected void onUpdate(double tpf) {
-        ball.update(tpf, paddle);
-        ball.startFalling();
+        ball.update(tpf, paddle,bricks);
         paddle.update();
         ball.IncreaseBallSpeed();
     }

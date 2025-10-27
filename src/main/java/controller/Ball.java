@@ -17,7 +17,6 @@ public class Ball extends Entity {
     private double directionX;
     private double directionY;
     private BallType type;
-    private double Ball_DropVelocity = 0;
 
     public BallType getBallType() {
         return type;
@@ -41,61 +40,84 @@ public class Ball extends Entity {
 
         this.getViewComponent().addChild(new Circle(12, color));
         this.addComponent(new BoundingBoxComponent());
-        getBoundingBoxComponent().addHitBox(new HitBox(BoundingShape.box(24, 24)));
+        getBoundingBoxComponent().addHitBox(new HitBox(BoundingShape.box(10, 10)));
         this.addComponent(new CollidableComponent(true));
     }
+
     public void startFalling() {
-        double Ball_y = getY();
-        Ball_y += Ball_DropVelocity;
-        Ball_DropVelocity += InitVari.GRAVITY;
+        directionY = 1;
+        directionX = 0;
     }
+
     public void adjustDirectionAfterPaddleHit(Entity paddle) {
-        double ballCenterX = this.getX() + this.getWidth() / 2;
+        double ballCenterX = getX() + getWidth() / 2;
         double paddleCenterX = paddle.getX() + paddle.getWidth() / 2;
-        double paddleWidth = paddle.getWidth();
 
-        double gap = (ballCenterX - paddleCenterX)/ (paddleWidth / 2);
-//       gap = Math.max(-1, Math.min(1, gap));
+        double gap = (ballCenterX - paddleCenterX) / (paddle.getWidth() / 2);
 
-        double maxBounceAngle = Math.toRadians(80);
-        double bounceAngle = gap * maxBounceAngle;
+        double bounceAngle = gap * Math.toRadians(80);
 
         directionX = Math.sin(bounceAngle);
         directionY = -Math.cos(bounceAngle);
     }
 
-    public void update(double tpf, Entity paddle) {
+    public void update(double tpf, Entity paddle,Entity brick) {
         double dx = directionX * speed * tpf * 60;
         double dy = directionY * speed * tpf * 60;
         this.translate(dx, dy);
-
         if (getX() <= 0) {
             setX(0);
             directionX *= -1;
         } else if (getRightX() >= InitVari.width) {
-            setX(InitVari.width- getWidth());
-            directionX *= -1;
-        }
-        if (getY() <= 0) {
+            setX(InitVari.width - getWidth());
+            directionX *= -Math.sin(Math.toRadians(60));
+        } else if (getY() <= 0) {
             setY(0);
             directionY *= -1;
         }
+        if(Check_PaddleHit(paddle)) {
+            setY(paddle.getY() - getHeight());
+            adjustDirectionAfterPaddleHit(paddle);
+        }
+        if(Check_BrickHitUp(brick)) {
+            setY(brick.getY() - getHeight());
+            adjustDirectionAfterBrickHit(brick);
+        }
+        if (getY() > InitVari.height) {
+            setPosition(400, 50);
+        }
+    }
 
-        if (directionY > 0 && getBottomY() >= paddle.getY() &&
+    public void IncreaseBallSpeed() {
+        if (speed == 6) return;
+        InitVari.Clock++;
+        if (InitVari.Clock % 10 == 0) speed = speed + 0.01;
+    }
+
+    public void adjustDirectionAfterBrickHit(Entity brick) {
+        double Ball_CenterX = getX() + getWidth() / 2;
+        double Brick_CenterX = brick.getX() + brick.getWidth() / 2;
+
+        double gap = (Ball_CenterX - Brick_CenterX) / (brick.getWidth() / 2);
+        double bounce_angle = gap * Math.toRadians(80);
+
+        directionX = Math.sin(bounce_angle);
+        directionY = -Math.cos(bounce_angle);
+    }
+    public boolean Check_PaddleHit(Entity paddle) {
+        if (getBottomY() >= paddle.getY() &&
                 getRightX() >= paddle.getX() &&
                 getX() <= paddle.getRightX() &&
                 getY() < paddle.getY()) {
-                setY(paddle.getY() - getHeight());
-                adjustDirectionAfterPaddleHit(paddle);
+            return true;
         }
-
-        if (getY() > InitVari.height) {
-            setPosition(400, 50);
-            startFalling();
-        }
+        return false;
     }
-    public void IncreaseBallSpeed() {
-        if(speed == 6) return;
-        speed = speed + 0.01;
+    public boolean Check_BrickHitUp(Entity brick) {
+        if(getRightX() >= brick.getX() && getX() <= brick.getRightX() && getY() >=
+                brick.getY() && getY() <= brick.getBottomY()) {
+            return true;
+        }
+        return false;
     }
 }
