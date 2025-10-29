@@ -1,6 +1,8 @@
 package controller.brick_control;
 
+import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.util.Objects;
 
@@ -28,4 +30,17 @@ public interface BrickVari {
     Image POWERUP_SPRITE = new Image(
             Objects.requireNonNull(BrickVari.class.getResource("/assets/textures/bricks/powerup.png")).toExternalForm()
     );
+
+    ImageView TEXTURE = new ImageView(NORMAL_SPRITE);
+    default void setView() {
+        TEXTURE.setScaleX(2);
+        TEXTURE.setScaleY(2);
+
+        TEXTURE.setViewport(new Rectangle2D(
+                0,
+                (double) (NORMAL_SPRITE_COLUMNS * BRICK_HEIGHT) / 2,
+                (double) BRICK_WIDTH / 2,
+                (double) BRICK_HEIGHT / 2
+        ));
+    }
 }

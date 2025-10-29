@@ -26,11 +26,6 @@ public class BrickManager extends Entity implements BrickVari{
 
     public void removeBrick(Brick brick) {
         if (brick.getBrickType() == HARD) {
-//            Brick nb = new Brick((int) brick.getX(), (int) brick.getY(), NORMAL);
-//            getGameWorld().addEntity(nb);
-//            brickList.add(nb);
-//            getGameWorld().removeEntity(brick);
-//            brickList.remove(brick);
             brick.getViewComponent().removeChild(brick.getViewComponent().getChild(1, ImageView.class));
             brick.setType(NORMAL);
             return;
@@ -38,15 +33,13 @@ public class BrickManager extends Entity implements BrickVari{
         if (brick.getBrickType() == POWERUP) {
             getGameWorld().addEntity(new PowerUp(brick.getPosition()));
         }
-        brick.breakAnimation(() -> {
-            getGameWorld().removeEntity(brick);
-            brickList.remove(brick);
-        });
+        brick.breakAnimation();
+        brickList.remove(brick);
     }
 
     public void clearAll() {
         if (brickList.isEmpty()) return;
-        for (Brick brick : brickList) {
+        for (Brick brick : new ArrayList<>(brickList)) {
             removeBrick(brick);
         }
     }
