@@ -7,7 +7,6 @@ import controller.InitVari;
 import controller.brick_control.Brick;
 import controller.brick_control.BrickManager;
 import controller.brick_control.BrickVari;
-import controller.ball_control.BallVari;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import com.almasb.fxgl.entity.components.BoundingBoxComponent;
@@ -19,7 +18,7 @@ import java.util.List;
 import static controller.paddle_control.PaddleVari.BASIC_PAD_WIDTH;
 
 
-public class Ball extends Entity implements InitVari, BrickVari, BallVari {
+public class Ball extends Entity implements InitVari, BrickVari, BallVari{
     public enum BallType {
         NORMAL, HARD, POWERUP
     }
