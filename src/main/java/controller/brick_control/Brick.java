@@ -8,8 +8,11 @@ import com.almasb.fxgl.physics.HitBox;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+
+import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameWorld;
 
 
 public class Brick extends Entity implements BrickVari{
@@ -90,8 +93,23 @@ public class Brick extends Entity implements BrickVari{
         getViewComponent().addChild(img);
     }
 
-    public void breakAnimation(Runnable onFinished) {
+    public void breakAnimation() {
+        removeFromWorld();
+        ImageView tx = new ImageView(NORMAL_SPRITE);
+        tx.setScaleX(2);
+        tx.setScaleY(2);
 
+        tx.setViewport(new Rectangle2D(
+                0,
+                (double) (rowInSpriteSheet * BRICK_HEIGHT) / 2,
+                (double) BRICK_WIDTH / 2,
+                (double) BRICK_HEIGHT / 2
+        ));
+        Entity breakani = FXGL.entityBuilder()
+                .at(getPosition())
+                .view(tx)
+                .zIndex(100)
+                .buildAndAttach();
         Timeline timeline = new Timeline();
 
         for (int frame = 1; frame < NORMAL_SPRITE_COLUMNS; frame++) {
@@ -99,20 +117,16 @@ public class Brick extends Entity implements BrickVari{
 
             timeline.getKeyFrames().add(new KeyFrame(
                     Duration.millis(50 * frame),
-                    e -> normaltexture.setViewport(new Rectangle2D(
-                            (double) (frameIndex * BRICK_WIDTH) / 2,
-                            (double) (rowInSpriteSheet * BRICK_HEIGHT) / 2,
-                            (double) BRICK_WIDTH / 2,
-                            (double) BRICK_HEIGHT / 2
+                    e -> tx.setViewport(new Rectangle2D(
+                            (frameIndex * BRICK_WIDTH) / 2.0,
+                            (rowInSpriteSheet * BRICK_HEIGHT) / 2.0,
+                            BRICK_WIDTH / 2.0,
+                            BRICK_HEIGHT / 2.0
                     ))
             ));
         }
-
         timeline.setOnFinished(e -> {
-            if (onFinished != null)
-                FXGL.runOnce(() -> {
-                    if (isActive()) onFinished.run();
-                }, Duration.ZERO);
+            FXGL.runOnce(breakani::removeFromWorld, Duration.ZERO);
         });
 
         timeline.play();
