@@ -3,7 +3,6 @@ package view;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import controller.InitVari;
-import controller.brick_control.Brick;
 import controller.brick_control.BrickManager;
 import controller.paddle_control.PaddleVari;
 import javafx.scene.input.KeyCode;

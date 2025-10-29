@@ -2,23 +2,18 @@ package controller.brick_control;
 
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
-import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
-
-import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameWorld;
 
 
 public class Brick extends Entity implements BrickVari{
     private BrickType type;
     private final int rowInSpriteSheet = FXGL.random(0, NORMAL_SPRITE_ROWS - 1);
-    private final ImageView normaltexture;
 
     public BrickType getBrickType() {
         return type;
@@ -32,8 +27,7 @@ public class Brick extends Entity implements BrickVari{
         this.type = type;
         setPosition(x, y);
 
-        normaltexture = new ImageView(NORMAL_SPRITE);
-        // Do size của cái sprite sheet là 32x16 còn size của brick là 64x32 nên set scale mới hiện đúng được
+        ImageView normaltexture = new ImageView(NORMAL_SPRITE);
         normaltexture.setScaleX(2);
         normaltexture.setScaleY(2);
 
@@ -47,7 +41,7 @@ public class Brick extends Entity implements BrickVari{
         if (type == BrickType.POWERUP) powerUpBrickTexture();
         else if (type == BrickType.HARD) hardBricktexture();
         getBoundingBoxComponent().addHitBox(new HitBox(BoundingShape.box(BRICK_WIDTH, BRICK_HEIGHT)));
-        addComponent(new CollidableComponent(true));
+//        addComponent(new CollidableComponent(true));
     }
 
     public void powerUpBrickTexture() {
@@ -94,7 +88,6 @@ public class Brick extends Entity implements BrickVari{
     }
 
     public void breakAnimation() {
-        removeFromWorld();
         ImageView tx = new ImageView(NORMAL_SPRITE);
         tx.setScaleX(2);
         tx.setScaleY(2);
@@ -105,7 +98,7 @@ public class Brick extends Entity implements BrickVari{
                 (double) BRICK_WIDTH / 2,
                 (double) BRICK_HEIGHT / 2
         ));
-        Entity breakani = FXGL.entityBuilder()
+        Entity breaked = FXGL.entityBuilder()
                 .at(getPosition())
                 .view(tx)
                 .zIndex(100)
@@ -126,7 +119,7 @@ public class Brick extends Entity implements BrickVari{
             ));
         }
         timeline.setOnFinished(e -> {
-            FXGL.runOnce(breakani::removeFromWorld, Duration.ZERO);
+            FXGL.runOnce(breaked::removeFromWorld, Duration.ZERO);
         });
 
         timeline.play();

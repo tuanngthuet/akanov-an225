@@ -4,24 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="">
+    <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="- Singleton Pattern &#10;- SpamBrick">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-16.48.50.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-16.50.31.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-16.52.42.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-16.55.01.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-16.55.43.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-16.56.26.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-16.56.42.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-16.57.20.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-17.00.38.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-thg 10-2025-17.27.42.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-thg 10-2025-17.31.41.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.04.04.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.05.05.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.06.12.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.08.29.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.13.21.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.18.07.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.20.46.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.24.25.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.24.54.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.36.31.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallVari.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/Brick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/Brick.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/powerup/PowerUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/powerup/PowerUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/powerup/PowerUpVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/powerup/PowerUpVari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/GeneralInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GeneralInit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/Launch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Launch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,21 +68,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.GameRun.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;qanh&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.GameRun.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "tuan",
+    "kotlin-language-version-configured": "true",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "editor.preferences.completion"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="GameRun" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.GameRun" />
-      <module name="demo" />
+      <module name="demo1" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="view.*" />

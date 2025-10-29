@@ -7,15 +7,17 @@ import java.util.Objects;
 
 public interface PowerUpVari {
     enum PowerType {
-        LASER,
-        EXPAND,
-        SHRINK,
-        MOREBALL
+        MULTIBALL,
+        HARDBALL,
+        SPEEDUPBALL,
+        EXTRALIFE,
+        // viết thêm
     }
 
     int POWER_SIZE = 30;
 
     int POWER_FALLING_SPEED = 70;
 
-    Image POWERUP = new Image(Objects.requireNonNull(InitVari.class.getResource("/assets/textures/powerup/powerup.png")).toExternalForm());
+    Image POWERUP = new Image(
+            Objects.requireNonNull(InitVari.class.getResource("/assets/textures/powerup/powerup.png")).toExternalForm());
 }

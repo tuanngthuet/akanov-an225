@@ -143,13 +143,10 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari{
         }
     }
     public boolean Check_PaddleHit(Entity paddle) {
-        if (getBottomY() >= paddle.getY() &&
+        return getBottomY() >= paddle.getY() &&
                 getRightX() >= paddle.getX() &&
                 getX() <= paddle.getRightX() &&
-                getY() < paddle.getY()) {
-            return true;
-        }
-        return false;
+                getY() < paddle.getY();
     }
     public boolean Check_BrickHit(Entity brick) {
         double center_ballX = getX() + BALL_RADIUS;

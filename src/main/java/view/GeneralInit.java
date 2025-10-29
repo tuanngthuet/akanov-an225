@@ -4,6 +4,7 @@ import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.SceneFactory;
 import controller.InitVari;
+import org.jetbrains.annotations.NotNull;
 
 public class GeneralInit implements InitVari{
 
@@ -15,10 +16,12 @@ public class GeneralInit implements InitVari{
         settings.setGameMenuEnabled(true);
         settings.setMainMenuEnabled(true);
         settings.setSceneFactory(new SceneFactory() {
+            @NotNull
             @Override
             public FXGLMenu newGameMenu() {
                 return new PauseMenu();
             }
+            @NotNull
             public FXGLMenu newMainMenu() {
                 return new MainMenu();
             }

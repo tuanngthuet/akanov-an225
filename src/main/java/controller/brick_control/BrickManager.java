@@ -1,7 +1,6 @@
 package controller.brick_control;
 
 import com.almasb.fxgl.dsl.FXGL;
-import com.almasb.fxgl.entity.Entity;
 import controller.InitVari;
 import controller.powerup.PowerUp;
 import javafx.scene.image.ImageView;
@@ -14,7 +13,7 @@ import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameWorld;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.random;
 import static controller.brick_control.BrickVari.BrickType.*;
 
-public class BrickManager extends Entity implements BrickVari{
+public class BrickManager implements BrickVari{
     //Singleton pattern
     private static BrickManager singleton;
     private final List<Brick> brickList = new ArrayList<>();
