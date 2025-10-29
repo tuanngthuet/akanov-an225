@@ -117,21 +117,14 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari{
         if (Clock % 10 == 0) speed = speed + 0.01;
     }
 
+    // tham khảo - axis aligned bounding box
     public void adjustDirectionAfterBrickHit(Entity brick) {
-//        double Ball_CenterX = getX() + getWidth() / 2;
-//        double Brick_CenterX = brick.getX() + brick.getWidth() / 2;
-//
-//        double gap = (Ball_CenterX - Brick_CenterX) / (brick.getWidth() / 3);
-//        double bounce_angle = gap * Math.toRadians(MAX_ANGLE);
-//
-//        directionX = Math.sin(bounce_angle);
-//        directionY = -Math.cos(bounce_angle);
+        double overlapLeft   = getRightX() - brick.getX(); // va chạm phần gạch bên trái
+        double overlapRight  = brick.getRightX() - getX(); // va chạm phần gạch bên phải
+        double overlapTop    = getBottomY() - brick.getY(); // va chạm phần gạch bên trên
+        double overlapBottom = brick.getBottomY() - getY(); // va chạm phần gạch bên dưới
 
-        double overlapLeft   = getRightX() - brick.getX();
-        double overlapRight  = brick.getRightX() - getX();
-        double overlapTop    = getBottomY() - brick.getY();
-        double overlapBottom = brick.getBottomY() - getY();
-
+        // xem là phần va chạm nào là nhỏ nhất để đổi chiều đi của quá bóng
         double minOverlap = Math.min(Math.min(overlapLeft, overlapRight),
                 Math.min(overlapTop, overlapBottom));
 
@@ -151,14 +144,16 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari{
         }
         return false;
     }
+    // tham khảo Circle - Rectangle collision detection
     public boolean Check_BrickHit(Entity brick) {
         double center_ballX = getX() + BALL_RADIUS;
         // nearestX - the closest coordinates of BrickX to BallCenterX
         double nearestX = Math.max(brick.getX(), Math.min(center_ballX, brick.getX() + BRICK_WIDTH));
         double center_ballY = getY() + BALL_RADIUS;
         // nearestY - the closest coordinates of BrickY to BallCenterY
-        double nearestY = Math.max(brick.getY(), Math.min(center_ballY, brick.getY() + BRICK_WIDTH));
+        double nearestY = Math.max(brick.getY(), Math.min(center_ballY, brick.getY() + BRICK_HEIGHT));
 
+        // caculate the distance between two points
         double deltaX = nearestX - center_ballX;
         double deltaY = nearestY - center_ballY;
 
