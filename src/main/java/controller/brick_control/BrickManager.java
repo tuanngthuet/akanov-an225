@@ -15,6 +15,10 @@ import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameWorld;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.random;
 
 public class BrickManager extends Entity {
+    public List<Brick> getBrickList() {
+        return brickList;
+    }
+
     private final List<Brick> brickList = new ArrayList<>();
 
     public void createBrick(int x, int y, Brick.BrickType brickType) {
@@ -59,30 +63,3 @@ public class BrickManager extends Entity {
     }
 }
 
-class Brick extends Entity {
-
-    public enum BrickType {
-        NORMAL, HARD, POWERUP
-    }
-
-    private BrickType type;
-
-    public BrickType getBrickType() {
-        return type;
-    }
-
-    public Brick(int x, int y, BrickType type) {
-        this.type = type;
-        Color color = switch (type) {
-            case HARD -> Color.BLACK;
-            case NORMAL -> Color.BROWN;
-            case POWERUP -> Color.YELLOW;
-        };
-        setPosition(x, y);
-        getViewComponent().addChild(
-                new Rectangle(InitVari.BRICK_WIDTH, InitVari.BRICK_HEIGHT, color)
-        );
-        getBoundingBoxComponent().addHitBox(new HitBox(BoundingShape.box(InitVari.BRICK_WIDTH, InitVari.BRICK_HEIGHT)));
-        addComponent(new CollidableComponent(true));
-    }
-}

@@ -5,20 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="745b6b40-0ebd-404d-8e11-c116d38a6322" name="Changes" comment="brick">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/Brick.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-13.11.29.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-13.44.43.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-13.45.51.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-13.46.11.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-13.46.42.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-13.47.14.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-13.48.30.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-14.07.51.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-14.08.24.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-20-Oct-2025-14.58.32.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-16.00.27.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-16.06.42.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-16.12.42.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-16.13.35.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-16.14.15.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-16.15.07.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-16.15.37.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-16.17.41.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-18.35.00.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-Oct-2025-15.45.38.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Ball.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameRun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameRun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/Launch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Launch.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -102,7 +104,10 @@
       <workItem from="1761060986921" duration="2885000" />
       <workItem from="1761120218515" duration="4925000" />
       <workItem from="1761132707054" duration="284000" />
-      <workItem from="1761554201845" duration="494000" />
+      <workItem from="1761554201845" duration="1453000" />
+      <workItem from="1761556820129" duration="28000" />
+      <workItem from="1761650854987" duration="23000" />
+      <workItem from="1761726295045" duration="1298000" />
     </task>
     <task id="LOCAL-00001" summary="brick">
       <option name="closed" value="true" />

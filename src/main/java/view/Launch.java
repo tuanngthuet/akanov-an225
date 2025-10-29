@@ -4,11 +4,12 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.entity.Entity;
 import controller.InitVari;
+import controller.ball_control.Ball;
+import controller.brick_control.Brick;
 import controller.brick_control.BrickManager;
 import controller.paddle_control.Paddle;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
-import controller.Ball;
 import controller.paddle_control.BasicPaddle;
 import javafx.scene.paint.Color;
 
@@ -55,7 +56,9 @@ public class Launch extends GameApplication {
     }
     @Override
     protected void onUpdate(double tpf) {
-        ball.update(tpf, paddle,bricks);
+        for (Brick brick : bricks.getBrickList()) {
+            ball.update(tpf, paddle, brick);
+        }
         paddle.update();
         ball.IncreaseBallSpeed();
     }

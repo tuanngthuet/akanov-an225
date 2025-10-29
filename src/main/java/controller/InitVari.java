@@ -21,4 +21,7 @@ public class InitVari {
     public static int BRICK_GAP = 30;
     
     public static int Clock = 0;
+
+    public static int BALL_RADIUS = 12;
+    public static int BALL_HITBOX = 10;
 }
