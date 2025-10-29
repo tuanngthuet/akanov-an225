@@ -4,7 +4,6 @@ import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
 import controller.InitVari;
 import javafx.geometry.Pos;
-import javafx.scene.CacheHint;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.effect.BoxBlur;
@@ -17,15 +16,12 @@ import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.almasb.fxgl.dsl.FXGL.getSettings;
 import static javafx.beans.binding.Bindings.when;
 
 public class MainMenu extends FXGLMenu implements InitVari {
     private int CurrentY = 200;
-    private final List<Node> buttons = new ArrayList<>();
 
     public MainMenu() {
         super(MenuType.MAIN_MENU);
@@ -73,7 +69,6 @@ public class MainMenu extends FXGLMenu implements InitVari {
         return group;
     }
 
-    private void doNothing(){}
 
     private Node createActionButton(String name, Runnable action) {
         var bg = new Rectangle(200, 50);
@@ -93,8 +88,6 @@ public class MainMenu extends FXGLMenu implements InitVari {
 
         btn.setAlignment(Pos.CENTER);
         btn.setOnMouseClicked(e -> action.run());
-
-        buttons.add(btn);
 
         return btn;
     }

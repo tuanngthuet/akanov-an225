@@ -1,9 +1,10 @@
 package controller.brick_control;
 
-import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.dsl.FXGL;
 import controller.InitVari;
 import controller.powerup.PowerUp;
 import javafx.scene.image.ImageView;
+import view.Launch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,9 @@ import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameWorld;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.random;
 import static controller.brick_control.BrickVari.BrickType.*;
 
-public class BrickManager extends Entity implements BrickVari{
+public class BrickManager implements BrickVari{
+    //Singleton pattern
+    private static BrickManager singleton;
     private final List<Brick> brickList = new ArrayList<>();
 
     public List<Brick> getBrickList() {
@@ -22,6 +25,8 @@ public class BrickManager extends Entity implements BrickVari{
     public void createBrick(int x, int y, BrickType brickType) {
         Brick brick = new Brick(x, y, brickType);
         brickList.add(brick);
+        FXGL.getGameWorld().addEntity(brick);
+        brick.setType(Launch.EntityType.BRICK);
     }
 
     public void removeBrick(Brick brick) {
@@ -53,7 +58,24 @@ public class BrickManager extends Entity implements BrickVari{
         else return POWERUP; // 5% PowerUp
     }
 
-    public BrickManager(int numRows) {
+    private BrickManager() {
+    }
+
+    public static BrickManager getInstance() {
+        if (singleton == null)
+            singleton = new BrickManager();
+        return singleton;
+    }
+
+
+    public boolean randomBrick() {
+        return random(0, 100) < 80;
+    }
+
+    //
+    //áp dụng design pattern factory đề tạo ra nhiều kiểu spam khác nhau
+    //
+    public void spamBrick(int numRows) {
         if (!brickList.isEmpty()) return;
         int bricksPerRow = (InitVari.SCREEN_WIDTH - BRICK_GAP) / (BRICK_WIDTH + BRICK_GAP);
 
@@ -68,9 +90,10 @@ public class BrickManager extends Entity implements BrickVari{
                 double y = startY + row * (BRICK_HEIGHT + BRICK_GAP * 1.5); // dọc
                 Brick.BrickType type = getRandomBrickType();
 
-                createBrick((int) x, (int) y, type);
+                if (randomBrick()) createBrick((int) x, (int) y, type);
             }
         }
     }
+
 }
 
