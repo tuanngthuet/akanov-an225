@@ -2,78 +2,67 @@ package view;
 
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
-import com.almasb.fxgl.entity.Entity;
 import controller.InitVari;
-import controller.ball_control.Ball;
 import controller.brick_control.Brick;
 import controller.brick_control.BrickManager;
-import controller.paddle_control.Paddle;
+import controller.paddle_control.PaddleVari;
 import javafx.scene.input.KeyCode;
-import javafx.scene.text.Text;
+import controller.ball_control.Ball;
 import controller.paddle_control.BasicPaddle;
-import javafx.scene.paint.Color;
-
-import java.util.Map;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 
-public class Launch extends GameApplication {
+public class Launch extends GameApplication implements InitVari {
+
     public enum EntityType {
         BALL,
         PADDLE,
-        BRICK
+        BRICK,
+        POWERUP
     }
+
     private Ball ball;
     private BasicPaddle paddle;
     private BrickManager bricks;
+
+
     @Override
     public void initSettings(GameSettings settings) {
-        settings.setMainMenuEnabled(true);
-        settings.setGameMenuEnabled(true);
-        settings.setWidth(InitVari.width);
-        settings.setHeight(InitVari.height);
-        settings.setTitle(InitVari.GameName);
-        settings.setVersion(InitVari.Version);
-    }
-    @Override
-    protected void initGameVars(Map<String, Object> vars) {
-        vars.put("pixelsMoved", 0);
+        GeneralInit.initScreenSettings(settings);
     }
 
-    private Entity player;
     @Override
     protected void initGame() {
-
-        ball = new Ball(600, 350, 4, 1, -1, Ball.BallType.NORMAL);
-        ball.setType(EntityType.BALL);
+        getGameScene().addGameView(BACKGROUND);
+        ball = new Ball(600, 50, 4, 1, -1, Ball.BallType.NORMAL);
         getGameWorld().addEntity(ball);
+        ball.setType(EntityType.BALL);
 
-        paddle = new BasicPaddle(550,550);
-        paddle.setType(EntityType.PADDLE);
+        paddle = new BasicPaddle(SCREEN_WIDTH / 2, SCREEN_HEIGHT - PaddleVari.PADDLE_HEIGHT);
+        // What is this ??
         getGameWorld().addEntity(paddle);
+        paddle.setType(EntityType.PADDLE);
+//        ball.startFalling();
+
         bricks = new BrickManager(4);
-        ball.startFalling();
+        for (Brick brick : bricks.getBrickList()) {
+            getGameWorld().addEntity(brick);
+            brick.setType(EntityType.BRICK);
+        }
     }
+
     @Override
     protected void onUpdate(double tpf) {
-        for (Brick brick : bricks.getBrickList()) {
-            ball.update(tpf, paddle, brick);
-        }
+        // Mấy cái này nen add Component vào Entity
+        ball.update(tpf, paddle);
+//        ball.startFalling();
         paddle.update();
-        ball.IncreaseBallSpeed();
+
     }
+
     protected void initInput() {
-        onKey(KeyCode.LEFT, () -> paddle.moveLeft());
-        onKey(KeyCode.RIGHT, () -> paddle.moveRight());
+        onKey(KeyCode.RIGHT, () ->   paddle.moveRight());
+        onKey(KeyCode.LEFT, ()  ->   paddle.moveLeft() );
+        onKey(KeyCode.D, () -> bricks.clearAll());
     }
-//    @Override
-//    protected void initUI() {
-//        Text textPixels = new Text();
-//        textPixels.setTranslateX(50); // x = 50
-//        textPixels.setTranslateY(100); // y = 100
-//
-//        textPixels.textProperty().bind(getWorldProperties().intProperty("pixelsMoved").asString());
-//
-//        getGameScene().addUINode(textPixels); // add to the scene graph
-//    }
 }

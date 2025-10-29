@@ -8,11 +8,9 @@ import controller.InitVari;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public abstract class Paddle extends Entity {
+import static com.almasb.fxgl.dsl.FXGL.onKey;
 
-    public enum PaddleType {
-        BASIC, BUFF, NERF, FROZEN;
-    }
+public abstract class Paddle extends Entity implements InitVari, PaddleVari {
 
     private int PADDLE_X, PADDLE_Y;
     private int PADDLE_WIDTH, PADDLE_HEIGHT;
@@ -20,7 +18,7 @@ public abstract class Paddle extends Entity {
     private PaddleType type;
 
 
-    public Paddle(int x, int y, int width, int height,int speed, PaddleType type, Color color) {
+    public Paddle(int x, int y, int width, int height, int speed, PaddleType type, Color color) {
         this.PADDLE_X = x;
         this.PADDLE_Y = y;
         this.PADDLE_WIDTH = width;
@@ -57,8 +55,12 @@ public abstract class Paddle extends Entity {
         return this.PADDLE_WIDTH;
     }
 
+    public int getPADDLE_HEIGHT() {
+        return this.PADDLE_HEIGHT;
+    }
+
     public void update() {
-        if(getX() < 0) setX(0);
-        if(getX() + PADDLE_WIDTH > InitVari.width)  setX(InitVari.width - PADDLE_WIDTH);
+        if (getX() < 0) setX(0);
+        if (getX() + PADDLE_WIDTH > SCREEN_WIDTH) setX(SCREEN_WIDTH - PADDLE_WIDTH);
     }
 }
