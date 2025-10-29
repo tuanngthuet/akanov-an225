@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallVari.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/FXGL-27-Oct-2025-15.51.13.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/FXGL-27-Oct-2025-15.51.34.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/FXGL-27-Oct-2025-15.53.06.log" beforeDir="false" />
@@ -16,21 +13,10 @@
       <change beforePath="$PROJECT_DIR$/logs/FXGL-27-Oct-2025-15.56.38.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/FXGL-27-Oct-2025-15.57.23.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/FXGL-27-thg 10-2025-23.30.46.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-thg 10-2025-23.36.42.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-thg 10-2025-23.39.16.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-thg 10-2025-23.39.57.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-thg 10-2025-23.40.24.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-thg 10-2025-23.42.34.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-thg 10-2025-23.52.04.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-28-thg 10-2025-00.10.24.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-28-thg 10-2025-00.20.06.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-15.46.40.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-15.46.47.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-15.46.56.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-thg 10-2025-15.49.02.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/Brick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/Brick.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Launch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Launch.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,16 +27,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="tuan" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -79,16 +59,15 @@
     "Application.GameRun.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "qanh",
+    "git-widget-placeholder": "tuan",
     "kotlin-language-version-configured": "true",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "editor.preferences.inline.completion"
+    "last_opened_file_path": "C:/Users/Tuanngth/Desktop/akanov-an225"
   }
 }]]></component>
   <component name="RunManager">
     <configuration name="GameRun" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.GameRun" />
-      <module name="demo" />
+      <module name="demo1" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="view.*" />
@@ -102,8 +81,6 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.GameRun" />
-        <item itemvalue="Application.GameRun" />
-        <item itemvalue="Application.GameRun" />
       </list>
     </recent_temporary>
   </component>
@@ -116,24 +93,5 @@
       <updated>1761554734846</updated>
     </task>
     <servers />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java</url>
-          <line>126</line>
-          <properties class="controller.ball_control.Ball" method="Check_BrickHit">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>
