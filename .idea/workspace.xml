@@ -4,22 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="745b6b40-0ebd-404d-8e11-c116d38a6322" name="Changes" comment="Edit workspace.xml">
+    <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-thg 10-2025-00.54.38.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-thg 10-2025-00.55.54.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-thg 10-2025-01.02.25.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-thg 10-2025-01.04.51.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-thg 10-2025-01.07.57.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-thg 10-2025-01.10.39.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-thg 10-2025-01.13.23.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-thg 10-2025-01.14.12.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-thg 10-2025-01.32.14.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-thg 10-2025-01.37.51.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/Brick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/Brick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hello.sav" beforeDir="false" afterPath="$PROJECT_DIR$/Hello.sav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-26-thg 10-2025-00.49.59.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-26-thg 10-2025-00.56.15.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-26-thg 10-2025-00.58.51.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-26-thg 10-2025-01.01.03.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-26-thg 10-2025-01.03.32.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-26-thg 10-2025-01.04.09.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-26-thg 10-2025-01.06.16.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-26-thg 10-2025-01.13.53.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-26-thg 10-2025-01.20.27.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-26-thg 10-2025-01.20.54.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickVari.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/PauseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/PauseMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,11 +34,6 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="qanh" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -53,38 +48,25 @@
     &quot;accountId&quot;: &quot;23eab361-f272-42d2-be5f-3ba08ba2150f&quot;
   }
 }</component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 3
 }</component>
-  <component name="ProjectId" id="348M9izywmxn9sFHgG958DzoeC9" />
+  <component name="ProjectId" id="34dsMA9YdXivkxSuZXI54RjedT1" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.GameRun.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "tuan",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Tuanngth/Desktop/akanov-an225",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.42528737",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GameRun.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;tuan&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.GameRun">
+  <component name="RunManager">
     <configuration name="GameRun" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.GameRun" />
       <module name="demo1" />
@@ -101,45 +83,17 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.GameRun" />
-        <item itemvalue="Application.GameRun" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26830.84" />
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.26830.84" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="745b6b40-0ebd-404d-8e11-c116d38a6322" name="Changes" comment="" />
-      <created>1760590595692</created>
+      <changelist id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="" />
+      <created>1761554734846</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1760590595692</updated>
-      <workItem from="1760877828441" duration="668000" />
-      <workItem from="1760894711897" duration="3259000" />
-      <workItem from="1760898121310" duration="5350000" />
+      <updated>1761554734846</updated>
     </task>
-    <task id="LOCAL-00001" summary="brick">
-      <option name="closed" value="true" />
-      <created>1760625277947</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1760625277947</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="brick" />
-    <option name="LAST_COMMIT_MESSAGE" value="brick" />
   </component>
 </project>

@@ -7,6 +7,9 @@ module view {
     requires javafx.graphics;
     requires annotations;
     requires java.sql;
+    requires javafx.base;
+//    requires view;
+//    requires view;
 //    requires view;
 //    requires view;
 

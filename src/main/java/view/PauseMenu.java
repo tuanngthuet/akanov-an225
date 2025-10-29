@@ -29,8 +29,8 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 import static javafx.beans.binding.Bindings.when;
 
 public class PauseMenu extends FXGLMenu implements InitVari {
-    ImageView bgBlur;
-    int CurrentY = 200;
+    private ImageView bgBlur;
+    private int CurrentY = 200;
 
     private final List<Node> buttons = new ArrayList<>();
 
@@ -70,17 +70,18 @@ public class PauseMenu extends FXGLMenu implements InitVari {
 
         if (bgBlur != null) getContentRoot().getChildren().remove(bgBlur);
 
-        WritableImage snapshot = getGameScene().getContentRoot().snapshot(null, null);
+        WritableImage snapshot = new WritableImage(getAppWidth(), getAppHeight());
+        getGameScene().getRoot().snapshot(null, snapshot);
         bgBlur = new ImageView(snapshot);
         bgBlur.setFitWidth(getAppWidth());
         bgBlur.setFitHeight(getAppHeight());
-        bgBlur.setEffect(new BoxBlur(10, 10, 7)); // thong so no the, thong cam
-        bgBlur.setPreserveRatio(true);
+        bgBlur.setEffect(new BoxBlur(10, 10, 7));
+        bgBlur.setPreserveRatio(false);
         bgBlur.setSmooth(true);
         bgBlur.setLayoutX(0);
         bgBlur.setLayoutY(0);
 
-        getContentRoot().getChildren().add(0, bgBlur); // luôn dưới menu
+        getContentRoot().getChildren().addFirst(bgBlur); // luôn dưới menu
 
         animIndex = 0;
 
@@ -105,11 +106,10 @@ public class PauseMenu extends FXGLMenu implements InitVari {
     }
 
     private Node createBody() {
-
         Node btnContinue = createActionButton("CONTINUE", this::fireContinue);
         Node btn1 = createActionButton("NEW GAME", this::fireNewGame);
         Node btn2 = createActionButton("SAVE", this::fireSave);
-        Node btn3 = createActionButton("EXIT", this::fireExit);
+        Node btn3 = createActionButton("EXIT", this::fireExitToMainMenu);
 
         Group group = new Group(btnContinue, btn1, btn2, btn3);
 

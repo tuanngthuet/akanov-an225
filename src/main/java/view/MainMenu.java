@@ -1,6 +1,5 @@
 package view;
 
-import Model.Score;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
 import controller.InitVari;
@@ -60,7 +59,7 @@ public class MainMenu extends FXGLMenu implements InitVari {
 
     private Node createBody() {
         Node btn1 = createActionButton("NEW GAME", this::fireNewGame);
-        Node btn2 = createActionButton("LOAD", Score::fireLoadMenu);
+        Node btn2 = createActionButton("LOAD", this::fireNewGame);
         Node btn3 = createActionButton("EXIT", this::fireExit);
 
         Group group = new Group( btn1, btn2, btn3);

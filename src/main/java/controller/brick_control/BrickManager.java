@@ -3,6 +3,7 @@ package controller.brick_control;
 import com.almasb.fxgl.entity.Entity;
 import controller.InitVari;
 import controller.powerup.PowerUp;
+import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,7 @@ public class BrickManager extends Entity implements BrickVari{
 //            brickList.add(nb);
 //            getGameWorld().removeEntity(brick);
 //            brickList.remove(brick);
+            brick.getViewComponent().removeChild(brick.getViewComponent().getChild(1, ImageView.class));
             brick.setType(NORMAL);
             return;
         }
@@ -43,6 +45,7 @@ public class BrickManager extends Entity implements BrickVari{
     }
 
     public void clearAll() {
+        if (brickList.isEmpty()) return;
         for (Brick brick : brickList) {
             removeBrick(brick);
         }
@@ -57,7 +60,7 @@ public class BrickManager extends Entity implements BrickVari{
     }
 
     public BrickManager(int numRows) {
-
+        if (!brickList.isEmpty()) return;
         int bricksPerRow = (InitVari.SCREEN_WIDTH - BRICK_GAP) / (BRICK_WIDTH + BRICK_GAP);
 
         double totalWidth = bricksPerRow * BRICK_WIDTH + (bricksPerRow - 1) * BRICK_GAP;
