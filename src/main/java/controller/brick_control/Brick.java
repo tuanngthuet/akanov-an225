@@ -94,7 +94,7 @@ public class Brick extends Entity implements BrickVari{
     }
 
     public void breakAnimation() {
-//        removeFromWorld();
+        removeFromWorld();
         ImageView tx = new ImageView(NORMAL_SPRITE);
         tx.setScaleX(2);
         tx.setScaleY(2);

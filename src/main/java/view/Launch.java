@@ -34,7 +34,7 @@ public class Launch extends GameApplication implements InitVari {
     @Override
     protected void initGame() {
         getGameScene().addGameView(BACKGROUND);
-        ball = new Ball((double) SCREEN_WIDTH / 2, SCREEN_HEIGHT - PaddleVari.PADDLE_HEIGHT - 50, 4, 1, -1, Ball.BallType.NORMAL);
+        ball = new Ball( 1, -1, Ball.BallType.NORMAL);
         getGameWorld().addEntity(ball);
         ball.setType(EntityType.BALL);
 
