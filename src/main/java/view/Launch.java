@@ -34,7 +34,7 @@ public class Launch extends GameApplication implements InitVari {
     @Override
     protected void initGame() {
         getGameScene().addGameView(BACKGROUND);
-        ball = new Ball(600, 50, 4, 1, -1, Ball.BallType.NORMAL);
+        ball = new Ball((double) SCREEN_WIDTH / 2, SCREEN_HEIGHT - PaddleVari.PADDLE_HEIGHT - 50, 4, 1, -1, Ball.BallType.NORMAL);
         getGameWorld().addEntity(ball);
         ball.setType(EntityType.BALL);
 
@@ -42,7 +42,7 @@ public class Launch extends GameApplication implements InitVari {
         // What is this ??
         getGameWorld().addEntity(paddle);
         paddle.setType(EntityType.PADDLE);
-//        ball.startFalling();
+        ball.startFalling();
 
         bricks = new BrickManager(4);
         for (Brick brick : bricks.getBrickList()) {
@@ -54,10 +54,9 @@ public class Launch extends GameApplication implements InitVari {
     @Override
     protected void onUpdate(double tpf) {
         // Mấy cái này nen add Component vào Entity
-        ball.update(tpf, paddle);
-//        ball.startFalling();
+        ball.update(tpf, paddle, bricks);
         paddle.update();
-
+        ball.IncreaseBallSpeed();
     }
 
     protected void initInput() {

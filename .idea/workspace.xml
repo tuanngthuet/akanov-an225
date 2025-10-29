@@ -4,23 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="745b6b40-0ebd-404d-8e11-c116d38a6322" name="Changes" comment="brick">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/Brick.java" afterDir="false" />
+    <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallVari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-16.00.27.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-16.06.42.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-16.12.42.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-16.13.35.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-16.14.15.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-16.15.07.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-16.15.37.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-16.17.41.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-18.35.00.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-Oct-2025-15.45.38.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Ball.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-Oct-2025-15.51.13.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-Oct-2025-15.51.34.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-Oct-2025-15.53.06.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-Oct-2025-15.53.41.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-Oct-2025-15.56.06.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-Oct-2025-15.56.38.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-Oct-2025-15.57.23.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-thg 10-2025-23.30.46.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-thg 10-2025-23.36.42.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-thg 10-2025-23.39.16.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-thg 10-2025-23.39.57.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-thg 10-2025-23.40.24.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-thg 10-2025-23.42.34.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-thg 10-2025-23.52.04.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-28-thg 10-2025-00.10.24.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-28-thg 10-2025-00.20.06.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-15.46.40.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-15.46.47.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-15.46.56.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-thg 10-2025-15.49.02.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/Brick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/Brick.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/Launch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Launch.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,10 +41,16 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="tuan" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -50,92 +65,75 @@
     &quot;accountId&quot;: &quot;23eab361-f272-42d2-be5f-3ba08ba2150f&quot;
   }
 }</component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 3
 }</component>
-  <component name="ProjectId" id="348M9izywmxn9sFHgG958DzoeC9" />
+  <component name="ProjectId" id="34dsMA9YdXivkxSuZXI54RjedT1" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.GameRun.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;qanh&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Tuanngth/OneDrive - vnu.edu.vn/Desktop/akanov-an225-huy&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.42528737&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.GameRun.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "qanh",
+    "kotlin-language-version-configured": "true",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "editor.preferences.inline.completion"
   }
-}</component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26830.84" />
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.26830.84" />
-      </set>
-    </attachedChunks>
+}]]></component>
+  <component name="RunManager">
+    <configuration name="GameRun" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="view.GameRun" />
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="view.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.GameRun" />
+        <item itemvalue="Application.GameRun" />
+        <item itemvalue="Application.GameRun" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="745b6b40-0ebd-404d-8e11-c116d38a6322" name="Changes" comment="" />
-      <created>1760590595692</created>
+      <changelist id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="" />
+      <created>1761554734846</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1760590595692</updated>
-      <workItem from="1760877828441" duration="668000" />
-      <workItem from="1760894711897" duration="3259000" />
-      <workItem from="1760898121310" duration="5350000" />
-      <workItem from="1761033041875" duration="289000" />
-      <workItem from="1761034434885" duration="61000" />
-      <workItem from="1761060986921" duration="2885000" />
-      <workItem from="1761120218515" duration="4925000" />
-      <workItem from="1761132707054" duration="284000" />
-      <workItem from="1761554201845" duration="1453000" />
-      <workItem from="1761556820129" duration="28000" />
-      <workItem from="1761650854987" duration="23000" />
-      <workItem from="1761726295045" duration="1298000" />
+      <updated>1761554734846</updated>
     </task>
-    <task id="LOCAL-00001" summary="brick">
-      <option name="closed" value="true" />
-      <created>1760625277947</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1760625277947</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java</url>
+          <line>126</line>
+          <properties class="controller.ball_control.Ball" method="Check_BrickHit">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="brick" />
-    <option name="LAST_COMMIT_MESSAGE" value="brick" />
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
