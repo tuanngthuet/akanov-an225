@@ -1,41 +1,27 @@
 package controller;
 
-import com.almasb.fxgl.app.scene.GameView;
-import com.almasb.fxgl.dsl.FXGL;
-import controller.brick_control.BrickVari;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.text.Font;
-
-import java.util.Objects;
-
-public interface InitVari {
+public class InitVari {
     /**
      * Set up Screen size variables
      */
-    int SCREEN_HEIGHT = 720;
-    int SCREEN_WIDTH = 960;
+    public static final int height = 600;
+    public static final int width = 800;
     //  Define Game name: version 0.1
-    String GAME_NAME = "Akanov-an225";
-    String VERSION = "0.2";
+    public static final String GameName = "Akanov-an225";
+    public static final String Version = "0.1";
 
-//    /**
-//     * Init position of the paddle
-//     */
-//    int INIT_PADDLE_X = 300;
-//    int INIT_PADDLE_Y = 550;
+    /**
+     * Init position of the paddle
+     */
+    public static int INIT_PADDLE_X = 300;
+    public static int INIT_PADDLE_Y = 550;
 
-    double GRAVITY = 1;
+    public static int BRICK_WIDTH = 90;
+    public static int BRICK_HEIGHT = 30;
+    public static int BRICK_GAP = 30;
+    
+    public static int Clock = 0;
 
-    GameView BACKGROUND = new GameView(
-            new ImageView( new Image(Objects.requireNonNull(InitVari.class.getResource("/assets/textures/background/background.png").toExternalForm()))),
-            -1000
-    );
-
-    Font TITLE_FONT =
-            Font.loadFont(Objects.requireNonNull(InitVari.class
-                    .getResource("/assets/fonts/font.ttf")).toExternalForm(), 60);
-    Font TEXT_FONT =
-            Font.loadFont(Objects.requireNonNull(InitVari.class
-                    .getResource("/assets/fonts/font.ttf")).toExternalForm(), 20);
+    public static int BALL_RADIUS = 12;
+    public static int BALL_HITBOX = 10;
 }

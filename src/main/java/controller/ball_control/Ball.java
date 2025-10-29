@@ -9,7 +9,7 @@ import javafx.scene.shape.Circle;
 import com.almasb.fxgl.entity.components.BoundingBoxComponent;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 
-public class Ball extends Entity implements InitVari {
+public class Ball extends Entity {
     public enum BallType {
         NORMAL, HARD, POWERUP
     }
@@ -39,62 +39,94 @@ public class Ball extends Entity implements InitVari {
         this.directionX = dirX / len;
         this.directionY = dirY / len;
 
-        this.getViewComponent().addChild(new Circle(12, color));
+        this.getViewComponent().addChild(new Circle(controller.InitVari.BALL_RADIUS, color));
         this.addComponent(new BoundingBoxComponent());
-        getBoundingBoxComponent().addHitBox(new HitBox(BoundingShape.box(24, 24)));
+        getBoundingBoxComponent().addHitBox(new HitBox(BoundingShape.box(controller.InitVari.BALL_HITBOX, controller.InitVari.BALL_HITBOX)));
         this.addComponent(new CollidableComponent(true));
     }
+
     public void startFalling() {
-//        directionX = 0;
-//        directionY = GRAVITY;
-        double Ball_y = getY();
-        double Ball_Velocity = 0;
-        Ball_y += Ball_Velocity;
-        Ball_Velocity += GRAVITY;
+        directionY = 1;
+        directionX = 0;
     }
+
     public void adjustDirectionAfterPaddleHit(Entity paddle) {
-        double ballCenterX = this.getX() + this.getWidth() / 2;
+        double ballCenterX = getX() + getWidth() / 2;
         double paddleCenterX = paddle.getX() + paddle.getWidth() / 2;
-        double paddleWidth = paddle.getWidth();
 
-        double gap = (ballCenterX - paddleCenterX) / (paddleWidth / 2);
-//       gap = Math.max(-1, Math.min(1, gap));
+        double gap = (ballCenterX - paddleCenterX) / (paddle.getWidth() / 2);
 
-        double maxBounceAngle = Math.toRadians(80);
-        double bounceAngle = gap * maxBounceAngle;
+        double bounceAngle = gap * Math.toRadians(80);
 
         directionX = Math.sin(bounceAngle);
         directionY = -Math.cos(bounceAngle);
     }
 
-    public void update(double tpf, Entity paddle) {
-        double dx = directionX * speed * tpf * 60;
-        double dy = directionY * speed * tpf * 60;
+    public void update(double tpf, Entity paddle,Entity brick) {
+        double dx = directionX * speed * tpf * 3;
+        double dy = directionY * speed * tpf * 3;
         this.translate(dx, dy);
-
         if (getX() <= 0) {
             setX(0);
-            directionX *= Math.sin(Math.toRadians(60));
-        } else if (getRightX() >= SCREEN_WIDTH) {
-            setX(SCREEN_WIDTH - getWidth());
-            directionX *= Math.sin(Math.toRadians(60));
-        }
-        if (getY() <= 0) {
+            directionX *= -1;
+        } else if (getRightX() >= controller.InitVari.width) {
+            setX(controller.InitVari.width - getWidth());
+            directionX *= -Math.sin(Math.toRadians(60));
+        } else if (getY() <= 0) {
             setY(0);
             directionY *= -1;
         }
+        if(Check_PaddleHit(paddle)) {
+            setY(paddle.getY() - getHeight());
+            adjustDirectionAfterPaddleHit(paddle);
+        }
+        if(Check_BrickHit(brick)) {
+//            setY(brick.getY() - getHeight());
+            adjustDirectionAfterBrickHit(brick);
+        }
+        if (getY() > controller.InitVari.height) {
+            setPosition(400, 50);
+        }
+    }
 
-        if (directionY > 0 && getBottomY() >= paddle.getY() &&
+    public void IncreaseBallSpeed() {
+        if (speed == 6) return;
+        controller.InitVari.Clock++;
+        if (controller.InitVari.Clock % 100 == 0) speed = speed + 0.01;
+    }
+
+    public void adjustDirectionAfterBrickHit(Entity brick) {
+        double Ball_CenterX = getX() + getWidth() / 2;
+        double Brick_CenterX = brick.getX() + brick.getWidth() / 2;
+
+        double gap = (Ball_CenterX - Brick_CenterX) / (brick.getWidth() / 2);
+        double bounce_angle = gap * Math.toRadians(60);
+
+        directionX = Math.sin(bounce_angle);
+        directionY = -Math.cos(bounce_angle);
+    }
+    public boolean Check_PaddleHit(Entity paddle) {
+        if (getBottomY() >= paddle.getY() &&
                 getRightX() >= paddle.getX() &&
                 getX() <= paddle.getRightX() &&
                 getY() < paddle.getY()) {
-                setY(paddle.getY() - getHeight());
-                adjustDirectionAfterPaddleHit(paddle);
+            return true;
         }
+        return false;
+    }
+    public boolean Check_BrickHit(Entity brick) {
+        double center_ballX = getX() + controller.InitVari.BALL_RADIUS;
+        // nearestX - the closest coordinates of BrickX to BallCenterX
+        double nearestX = Math.max(brick.getX(), Math.min(center_ballX, brick.getX() + controller.InitVari.BRICK_WIDTH));
+        double center_ballY = getY() + controller.InitVari.BALL_RADIUS;
+        // nearestY - the closest coordinates of BrickY to BallCenterY
+        double nearestY = Math.max(brick.getY(), Math.min(center_ballY, brick.getY() + controller.InitVari.BRICK_WIDTH));
 
-        if (getY() > SCREEN_HEIGHT) {
-            setPosition(400, 50);
-            startFalling();
-        }
+        double deltaX = nearestX - center_ballX;
+        double deltaY = nearestY - center_ballY;
+
+        double distance = (deltaX * deltaX) + (deltaY * deltaY);
+        return distance <= Math.pow(controller.InitVari.BALL_RADIUS, 2);
     }
 }
+
