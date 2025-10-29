@@ -13,11 +13,14 @@ public class GeneralInit implements InitVari{
         settings.setTitle(GAME_NAME);
         settings.setVersion(VERSION);
         settings.setGameMenuEnabled(true);
+        settings.setMainMenuEnabled(true);
         settings.setSceneFactory(new SceneFactory() {
             @Override
             public FXGLMenu newGameMenu() {
-                //return new SimpleGameMenu();
                 return new PauseMenu();
+            }
+            public FXGLMenu newMainMenu() {
+                return new MainMenu();
             }
         });
     }

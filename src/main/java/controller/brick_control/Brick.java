@@ -2,7 +2,6 @@ package controller.brick_control;
 
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
-import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
@@ -12,13 +11,11 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
-import java.sql.Time;
-import java.text.SimpleDateFormat;
 
 public class Brick extends Entity implements BrickVari{
     private BrickType type;
-    private int rowInSpriteSheet = FXGL.random(0, NORMAL_SPRITE_ROWS - 1);;
-    private ImageView normaltexture;
+    private final int rowInSpriteSheet = FXGL.random(0, NORMAL_SPRITE_ROWS - 1);
+    private final ImageView normaltexture;
 
     public BrickType getBrickType() {
         return type;
@@ -26,10 +23,6 @@ public class Brick extends Entity implements BrickVari{
 
     public void setType(BrickType type) {
         this.type = type;
-    }
-
-    public int getRowInSpriteSheet() {
-        return rowInSpriteSheet;
     }
 
     public Brick(int x, int y, BrickType type) {
@@ -43,9 +36,9 @@ public class Brick extends Entity implements BrickVari{
 
         normaltexture.setViewport(new Rectangle2D(
                 0,
-                rowInSpriteSheet * BRICK_HEIGHT / 2,
-                BRICK_WIDTH / 2,
-                BRICK_HEIGHT / 2
+                (double) (rowInSpriteSheet * BRICK_HEIGHT) / 2,
+                (double) BRICK_WIDTH / 2,
+                (double) BRICK_HEIGHT / 2
         ));
         getViewComponent().addChild(normaltexture);
         if (type == BrickType.POWERUP) powerUpBrickTexture();
@@ -98,30 +91,28 @@ public class Brick extends Entity implements BrickVari{
     }
 
     public void breakAnimation(Runnable onFinished) {
-//        // Mới có normal brick th :v
-//        if (type != BrickType.NORMAL)
-//            return;
 
         Timeline timeline = new Timeline();
 
-        // Bỏ frame 0 (nguyên vẹn)
         for (int frame = 1; frame < NORMAL_SPRITE_COLUMNS; frame++) {
             int frameIndex = frame;
 
             timeline.getKeyFrames().add(new KeyFrame(
                     Duration.millis(50 * frame),
                     e -> normaltexture.setViewport(new Rectangle2D(
-                            frameIndex * BRICK_WIDTH / 2,
-                            rowInSpriteSheet * BRICK_HEIGHT / 2,
-                            BRICK_WIDTH / 2,
-                            BRICK_HEIGHT / 2
+                            (double) (frameIndex * BRICK_WIDTH) / 2,
+                            (double) (rowInSpriteSheet * BRICK_HEIGHT) / 2,
+                            (double) BRICK_WIDTH / 2,
+                            (double) BRICK_HEIGHT / 2
                     ))
             ));
         }
 
         timeline.setOnFinished(e -> {
             if (onFinished != null)
-                onFinished.run();
+                FXGL.runOnce(() -> {
+                    if (isActive()) onFinished.run();
+                }, Duration.ZERO);
         });
 
         timeline.play();

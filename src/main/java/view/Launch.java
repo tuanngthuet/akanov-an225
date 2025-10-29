@@ -33,8 +33,8 @@ public class Launch extends GameApplication implements InitVari {
 
     @Override
     protected void initGame() {
+        getGameScene().addGameView(BACKGROUND);
         ball = new Ball(600, 50, 4, 1, -1, Ball.BallType.NORMAL);
-        //What is this ??
         getGameWorld().addEntity(ball);
         ball.setType(EntityType.BALL);
 

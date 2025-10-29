@@ -1,5 +1,10 @@
 package controller;
 
+import com.almasb.fxgl.app.scene.GameView;
+import com.almasb.fxgl.dsl.FXGL;
+import controller.brick_control.BrickVari;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
 
 import java.util.Objects;
@@ -21,6 +26,11 @@ public interface InitVari {
 //    int INIT_PADDLE_Y = 550;
 
     double GRAVITY = 1;
+
+    GameView BACKGROUND = new GameView(
+            new ImageView( new Image(Objects.requireNonNull(InitVari.class.getResource("/assets/textures/background/background.png").toExternalForm()))),
+            -1000
+    );
 
     Font TITLE_FONT =
             Font.loadFont(Objects.requireNonNull(InitVari.class
