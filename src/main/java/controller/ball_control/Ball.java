@@ -7,12 +7,15 @@ import controller.InitVari;
 import controller.brick_control.Brick;
 import controller.brick_control.BrickManager;
 import controller.brick_control.BrickVari;
+import controller.paddle_control.PaddleVari;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import com.almasb.fxgl.entity.components.BoundingBoxComponent;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 
+
 import java.util.ArrayList;
+import java.util.List;
 
 import static controller.paddle_control.PaddleVari.BASIC_PAD_WIDTH;
 
@@ -32,8 +35,9 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari{
         return type;
     }
 
-    public Ball(double x, double y, double speed, double dirX, double dirY, BallType type) {
-        this.setPosition(x, y);
+    public Ball(double dirX, double dirY, BallType type) {
+        this.setX((double) SCREEN_WIDTH / 2);
+        this.setY(SCREEN_HEIGHT - PaddleVari.PADDLE_HEIGHT - 50);
         this.type = type;
 
         Color color = switch (type) {
@@ -42,7 +46,7 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari{
             case POWERUP -> Color.BLUE;
         };
 
-        this.speed = speed;
+        this.speed = 4;
 
         double len = Math.sqrt(dirX * dirX + dirY * dirY);
         this.directionX = dirX / len;
@@ -57,7 +61,6 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari{
     public void startFalling() {
         directionY = 1;
         directionX = 0;
-//        boolean start_falling = true;
     }
 
     public void adjustDirectionAfterPaddleHit(Entity paddle) {
@@ -90,12 +93,19 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari{
             setY(paddle.getY() - getHeight());
             adjustDirectionAfterPaddleHit(paddle);
         }
-        for (Brick brick : new ArrayList<>(bricks.getBrickList())) {
+        List<Brick> toRemove = new ArrayList<>();
+
+        for (Brick brick : bricks.getBrickList()) {
             if (Check_BrickHit(brick)) {
-                bricks.removeBrick(brick);
+                toRemove.add(brick);
                 adjustDirectionAfterBrickHit(brick);
             }
         }
+
+        for (Brick brick : toRemove) {
+            bricks.removeBrick(brick);
+        }
+
         if (getY() > SCREEN_HEIGHT) {
             setPosition(400, 50);
         }
@@ -104,18 +114,33 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari{
     public void IncreaseBallSpeed() {
         if (speed == 6) return;
         Clock++;
-        if (Clock % 100 == 0) speed = speed + 0.01;
+        if (Clock % 10 == 0) speed = speed + 0.01;
     }
 
     public void adjustDirectionAfterBrickHit(Entity brick) {
-        double Ball_CenterX = getX() + getWidth() / 2;
-        double Brick_CenterX = brick.getX() + brick.getWidth() / 2;
+//        double Ball_CenterX = getX() + getWidth() / 2;
+//        double Brick_CenterX = brick.getX() + brick.getWidth() / 2;
+//
+//        double gap = (Ball_CenterX - Brick_CenterX) / (brick.getWidth() / 3);
+//        double bounce_angle = gap * Math.toRadians(MAX_ANGLE);
+//
+//        directionX = Math.sin(bounce_angle);
+//        directionY = -Math.cos(bounce_angle);
 
-        double gap = (Ball_CenterX - Brick_CenterX) / (brick.getWidth() / 3);
-        double bounce_angle = gap * Math.toRadians(MAX_ANGLE);
+        double overlapLeft   = getRightX() - brick.getX();
+        double overlapRight  = brick.getRightX() - getX();
+        double overlapTop    = getBottomY() - brick.getY();
+        double overlapBottom = brick.getBottomY() - getY();
 
-        directionX = Math.sin(bounce_angle);
-        directionY = -Math.cos(bounce_angle);
+        double minOverlap = Math.min(Math.min(overlapLeft, overlapRight),
+                Math.min(overlapTop, overlapBottom));
+
+        if (minOverlap == overlapLeft || minOverlap == overlapRight) {
+            directionX *= -1;
+        }
+        else {
+            directionY *= -1;
+        }
     }
     public boolean Check_PaddleHit(Entity paddle) {
         if (getBottomY() >= paddle.getY() &&
@@ -141,4 +166,3 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari{
         return distance <= Math.pow(BALL_RADIUS, 2);
     }
 }
-
