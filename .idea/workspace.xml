@@ -5,18 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-Oct-2025-15.51.13.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-Oct-2025-15.51.34.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-Oct-2025-15.53.06.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-Oct-2025-15.53.41.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-Oct-2025-15.56.06.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-Oct-2025-15.56.38.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-Oct-2025-15.57.23.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-27-thg 10-2025-23.30.46.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-15.46.40.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-15.46.47.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-15.46.56.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-16.48.50.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-thg 10-2025-17.27.42.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-thg 10-2025-17.31.41.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/Launch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Launch.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +57,8 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "tuan",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Tuanngth/Desktop/akanov-an225"
+    "last_opened_file_path": "C:/Users/Tuanngth/Desktop/akanov-an225",
+    "settings.editor.selected.configurable": "Errors"
   }
 }]]></component>
   <component name="RunManager">
@@ -93,5 +90,28 @@
       <updated>1761554734846</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="tuan" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

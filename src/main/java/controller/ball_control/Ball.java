@@ -12,6 +12,8 @@ import javafx.scene.shape.Circle;
 import com.almasb.fxgl.entity.components.BoundingBoxComponent;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 
+import java.util.ArrayList;
+
 import static controller.paddle_control.PaddleVari.BASIC_PAD_WIDTH;
 
 
@@ -55,6 +57,7 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari{
     public void startFalling() {
         directionY = 1;
         directionX = 0;
+//        boolean start_falling = true;
     }
 
     public void adjustDirectionAfterPaddleHit(Entity paddle) {
@@ -87,8 +90,8 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari{
             setY(paddle.getY() - getHeight());
             adjustDirectionAfterPaddleHit(paddle);
         }
-        for (Brick brick : bricks.getBrickList()){
-            if(Check_BrickHit(brick)) {
+        for (Brick brick : new ArrayList<>(bricks.getBrickList())) {
+            if (Check_BrickHit(brick)) {
                 bricks.removeBrick(brick);
                 adjustDirectionAfterBrickHit(brick);
             }

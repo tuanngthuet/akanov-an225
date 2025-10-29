@@ -38,17 +38,15 @@ public class Launch extends GameApplication implements InitVari {
         getGameWorld().addEntity(ball);
         ball.setType(EntityType.BALL);
 
+
         paddle = new BasicPaddle(SCREEN_WIDTH / 2, SCREEN_HEIGHT - PaddleVari.PADDLE_HEIGHT);
         // What is this ??
         getGameWorld().addEntity(paddle);
         paddle.setType(EntityType.PADDLE);
         ball.startFalling();
 
-        bricks = new BrickManager(4);
-        for (Brick brick : bricks.getBrickList()) {
-            getGameWorld().addEntity(brick);
-            brick.setType(EntityType.BRICK);
-        }
+        bricks = BrickManager.getInstance();
+        bricks.spamBrick(4);
     }
 
     @Override
@@ -63,5 +61,6 @@ public class Launch extends GameApplication implements InitVari {
         onKey(KeyCode.RIGHT, () ->   paddle.moveRight());
         onKey(KeyCode.LEFT, ()  ->   paddle.moveLeft() );
         onKey(KeyCode.D, () -> bricks.clearAll());
+        onKey(KeyCode.R, () -> bricks.spamBrick(4));
     }
 }
