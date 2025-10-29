@@ -34,6 +34,7 @@ public class BrickManager extends Entity implements BrickVari{
             getGameWorld().addEntity(new PowerUp(brick.getPosition()));
         }
         brick.breakAnimation();
+        getGameWorld().removeEntity(brick);
         brickList.remove(brick);
     }
 
