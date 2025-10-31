@@ -8,54 +8,80 @@ import controller.brick_control.Brick;
 import controller.brick_control.BrickManager;
 import controller.brick_control.BrickVari;
 import controller.paddle_control.PaddleVari;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import com.almasb.fxgl.entity.components.BoundingBoxComponent;
 import com.almasb.fxgl.entity.components.CollidableComponent;
-
+import view.Launch;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static controller.paddle_control.PaddleVari.BASIC_PAD_WIDTH;
-
-
-public class Ball extends Entity implements InitVari, BrickVari, BallVari{
+public class Ball extends Entity implements InitVari, BrickVari, BallVari, PaddleVari{
     public enum BallType {
-        NORMAL, HARD, POWERUP
+        NORMAL, HARDBALL, SPEEDUPBALL, MULTIBALL, EXTRALIFE;
     }
 
+    private boolean isHardBall = false;
     private double speed;
     private double directionX;
     private double directionY;
     private BallType type;
     private int Clock;
-
-    public BallType getBallType() {
-        return type;
-    }
+    private ImageView imageView;
 
     public Ball(double dirX, double dirY, BallType type) {
-        this.setX((double) SCREEN_WIDTH / 2);
-        this.setY(SCREEN_HEIGHT - PaddleVari.PADDLE_HEIGHT - 50);
         this.type = type;
-
-        Color color = switch (type) {
-            case NORMAL -> Color.RED;
-            case HARD -> Color.GREEN;
-            case POWERUP -> Color.BLUE;
-        };
-
-        this.speed = 4;
+        this.speed = DEFAULT_SPEED;
 
         double len = Math.sqrt(dirX * dirX + dirY * dirY);
         this.directionX = dirX / len;
         this.directionY = dirY / len;
 
-        this.getViewComponent().addChild(new Circle(BALL_RADIUS, color));
+        imageView = new ImageView(getImageByType(type));
+        imageView.setFitWidth(BALL_RADIUS * 2);
+        imageView.setFitHeight(BALL_RADIUS * 2);
+        getViewComponent().addChild(imageView);
+
         this.addComponent(new BoundingBoxComponent());
         getBoundingBoxComponent().addHitBox(new HitBox(BoundingShape.box(BALL_HITBOX, BALL_HITBOX)));
         this.addComponent(new CollidableComponent(true));
+    }
+
+    public void setType(BallType type) {
+        if (imageView != null) {
+            imageView.setImage(getImageByType(type));
+        }
+    }
+    public void setHardBall(boolean hardBall) {
+        isHardBall = hardBall;
+    }
+
+    public double getDirectionX() {
+        return directionX;
+    }
+
+    public double getDirectionY() {
+        return directionY;
+    }
+
+    public void setDirection(double dirX, double dirY) {
+        double len = Math.sqrt(dirX * dirX + dirY * dirY);
+        this.directionX = dirX / len;
+        this.directionY = dirY / len;
+    }
+
+    public Image getImageByType(BallType type) {
+        return switch (type) {
+            case SPEEDUPBALL -> SPEEDUP_BALL;
+            case MULTIBALL -> MULTI_BALL;
+            case HARDBALL -> HARD_BALL;
+            default -> NORMAL_BALL;
+        };
+    }
+
+    public void setSpeed(double speed) {
+        this.speed = speed;
     }
 
     public void startFalling() {
@@ -75,9 +101,9 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari{
         directionY = -Math.cos(bounceAngle);
     }
 
-    public void update(double tpf, Entity paddle, BrickManager bricks) {
-        double dx = directionX * speed * tpf * 60;
-        double dy = directionY * speed * tpf * 60;
+    public void update(double tpf, Entity paddle, BrickManager bricks, LifeManager lifeManager) {
+        double dx = directionX * speed * tpf * ADJUST_BALL_SPEED;
+        double dy = directionY * speed * tpf * ADJUST_BALL_SPEED;
         this.translate(dx, dy);
         if (getX() <= 0) {
             setX(0);
@@ -98,7 +124,9 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari{
         for (Brick brick : bricks.getBrickList()) {
             if (Check_BrickHit(brick)) {
                 toRemove.add(brick);
-                adjustDirectionAfterBrickHit(brick);
+                if(!isHardBall) {
+                    adjustDirectionAfterBrickHit(brick);
+                }
             }
         }
 
@@ -107,16 +135,19 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari{
         }
 
         if (getY() > SCREEN_HEIGHT) {
-            setPosition(400, 50);
+            setPosition(paddle.getX() + BASIC_PAD_WIDTH / 2, paddle.getY() - BALL_RADIUS * 2);
+            if(lifeManager != null) {
+                lifeManager.loseHeart();
+            }
+            directionY = 1;
         }
     }
 
     public void IncreaseBallSpeed() {
-        if (speed == 6) return;
+        if (speed == MAX_SPEED) return;
         Clock++;
-        if (Clock % 10 == 0) speed = speed + 0.01;
+        if (Clock % CLOCK_TIME == 0) speed = speed + SPEED_RATE;
     }
-
     // tham khảo - axis aligned bounding box
     public void adjustDirectionAfterBrickHit(Entity brick) {
         double overlapLeft   = getRightX() - brick.getX(); // va chạm phần gạch bên trái
@@ -143,18 +174,18 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari{
     }
     // tham khảo Circle - Rectangle collision detection
     public boolean Check_BrickHit(Entity brick) {
-        double center_ballX = getX() + BALL_RADIUS;
-        // nearestX - the closest coordinates of BrickX to BallCenterX
-        double nearestX = Math.max(brick.getX(), Math.min(center_ballX, brick.getX() + BRICK_WIDTH));
-        double center_ballY = getY() + BALL_RADIUS;
-        // nearestY - the closest coordinates of BrickY to BallCenterY
-        double nearestY = Math.max(brick.getY(), Math.min(center_ballY, brick.getY() + BRICK_HEIGHT));
+            double center_ballX = getX() + BALL_RADIUS;
+            // nearestX - the closest coordinates of BrickX to BallCenterX
+            double nearestX = Math.max(brick.getX(), Math.min(center_ballX, brick.getX() + BRICK_WIDTH));
+            double center_ballY = getY() + BALL_RADIUS;
+            // nearestY - the closest coordinates of BrickY to BallCenterY
+            double nearestY = Math.max(brick.getY(), Math.min(center_ballY, brick.getY() + BRICK_HEIGHT));
 
-        // caculate the distance between two points
-        double deltaX = nearestX - center_ballX;
-        double deltaY = nearestY - center_ballY;
+            // caculate the distance between two points
+            double deltaX = nearestX - center_ballX;
+            double deltaY = nearestY - center_ballY;
 
-        double distance = (deltaX * deltaX) + (deltaY * deltaY);
-        return distance <= Math.pow(BALL_RADIUS, 2);
+            double distance = (deltaX * deltaX) + (deltaY * deltaY);
+            return distance <= Math.pow(BALL_RADIUS, 2);
     }
 }

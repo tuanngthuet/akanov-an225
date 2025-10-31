@@ -5,14 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/LifeManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/PowerUpHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.04.04.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.05.05.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.06.12.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.08.29.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.13.21.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.43.24.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-23.12.22.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-23.16.50.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-23.18.59.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-23.35.22.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-23.35.24.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallVari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/paddle_control/PaddleVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/paddle_control/PaddleVari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/powerup/PowerUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/powerup/PowerUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/powerup/PowerUpVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/powerup/PowerUpVari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/Launch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Launch.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +33,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>

@@ -1,5 +1,10 @@
 package controller.paddle_control;
 
+import controller.ball_control.BallVari;
+import javafx.scene.image.Image;
+
+import java.util.Objects;
+
 public interface PaddleVari {
     enum PaddleType {
         BASIC, BUFF, NERF, FROZEN;
@@ -21,4 +26,5 @@ public interface PaddleVari {
 
     // Value for the FROZEN paddle
     int FROZEN_PAD_SPEED = 0;
+
 }
