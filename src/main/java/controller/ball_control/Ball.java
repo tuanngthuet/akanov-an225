@@ -64,6 +64,9 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
     public double getDirectionY() {
         return directionY;
     }
+    public double getSpeed() {
+        return speed;
+    }
 
     public void setDirection(double dirX, double dirY) {
         double len = Math.sqrt(dirX * dirX + dirY * dirY);
@@ -135,10 +138,7 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
         }
 
         if (getY() > SCREEN_HEIGHT) {
-            setPosition(paddle.getX() + BASIC_PAD_WIDTH / 2, paddle.getY() - BALL_RADIUS * 2);
-            if(lifeManager != null) {
-                lifeManager.loseHeart();
-            }
+            BallManager.handleBall_OutScreen(this,lifeManager,paddle);
             directionY = 1;
         }
     }

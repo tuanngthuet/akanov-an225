@@ -9,9 +9,9 @@ import static controller.InitVari.SCREEN_HEIGHT;
 import static controller.InitVari.SCREEN_WIDTH;
 
 public interface BallVari {
-    double BALL_RADIUS = 12;
+    double BALL_RADIUS = 18;
     double MAX_ANGLE = 70;
-    double BALL_HITBOX = 24;
+    double BALL_HITBOX = 36;
 
     double DEFAULT_DirectionX = 1;
     double DEFAULT_DirectionY = -1;
@@ -24,7 +24,7 @@ public interface BallVari {
     double ADJUST_BALL_SPEED = 60;
     int DEFAULT_LIFE = 3;
     int MAX_LIFE = 5;
-    double RESET_TIME = 20;
+    double RESET_TIME = 10;
 
     double HEART_SIZE = 60;
     double FIRST_HEART_X = 20;

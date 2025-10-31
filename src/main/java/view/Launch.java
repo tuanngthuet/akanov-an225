@@ -9,6 +9,8 @@ import controller.paddle_control.PaddleVari;
 import javafx.scene.input.KeyCode;
 import controller.paddle_control.BasicPaddle;
 
+import java.util.ArrayList;
+
 import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class Launch extends GameApplication implements InitVari {
@@ -63,7 +65,7 @@ public class Launch extends GameApplication implements InitVari {
     @Override
     protected void onUpdate(double tpf) {
         // Mấy cái này nen add Component vào Entity
-        for (Ball b : ballManager.getBalls()) {
+        for (Ball b : new ArrayList<>(BallManager.getInstance().getBalls())) {
             b.update(tpf, paddle, bricks, lifeManager);
             b.IncreaseBallSpeed();
             paddle.update();

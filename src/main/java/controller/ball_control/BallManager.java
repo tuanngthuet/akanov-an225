@@ -12,6 +12,11 @@ import java.util.List;
 
 public class BallManager extends Entity implements InitVari, PaddleVari, BallVari {
     private List<Ball> balls = new ArrayList<>();
+    private static BallManager instance;
+
+    public BallManager() {
+        instance = this;
+    }
 
     public Ball spawn_InitBall() {
         Ball ball = new Ball(BallVari.DEFAULT_DirectionX, BallVari.DEFAULT_DirectionY, Ball.BallType.NORMAL);
@@ -23,6 +28,10 @@ public class BallManager extends Entity implements InitVari, PaddleVari, BallVar
 
     public List<Ball> getBalls() {
         return balls;
+    }
+
+    public static BallManager getInstance() {
+        return instance;
     }
 
     public void spawnExtraBall() {
@@ -43,9 +52,14 @@ public class BallManager extends Entity implements InitVari, PaddleVari, BallVar
     }
 
     public void reset_ToNormal(Ball ball) {
+        double temp_speed;
+        if(ball.getSpeed() != POWER_UP_SPEED) {
+            temp_speed = ball.getSpeed();
+        }
+        else temp_speed = DEFAULT_SPEED;
         FXGL.runOnce(() -> {
             ball.setType(Ball.BallType.NORMAL);
-            ball.setSpeed(DEFAULT_SPEED);
+            ball.setSpeed(temp_speed);
             ball.setHardBall(false);
         }, Duration.seconds(RESET_TIME));
     }
@@ -55,5 +69,20 @@ public class BallManager extends Entity implements InitVari, PaddleVari, BallVar
         if (len != 0) {
             ball.setDirection(ball.getDirectionX() / len, ball.getDirectionY() / len);
         }
+    }
+
+    public static void handleBall_OutScreen(Ball ball, LifeManager lifeManager, Entity paddle) {
+        BallManager manager = getInstance();
+
+        if(manager == null) return;
+        manager.getBalls().remove(ball);
+        if(manager.getBalls().isEmpty()) {
+            lifeManager.loseHeart();
+
+            Ball newBall = manager.spawn_InitBall();
+            newBall.setPosition(paddle.getX() + BASIC_PAD_WIDTH / 2, paddle.getY() - BALL_RADIUS * 2);
+
+        }
+
     }
 }

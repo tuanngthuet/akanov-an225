@@ -31,7 +31,7 @@ public class PowerUpHandler extends Entity implements BallVari{
             case EXTRALIFE -> lifeManager.gainHeart();
         }
         for(Ball ball : ballManager.getBalls()) {
-            ballManager.reset_ToNormal(Launch.ball);
+            ballManager.reset_ToNormal(ball);
         }
     }
 }
