@@ -12,14 +12,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import com.almasb.fxgl.entity.components.BoundingBoxComponent;
 import com.almasb.fxgl.entity.components.CollidableComponent;
-import view.Launch;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Ball extends Entity implements InitVari, BrickVari, BallVari, PaddleVari{
     public enum BallType {
-        NORMAL, HARDBALL, SPEEDUPBALL, MULTIBALL, EXTRALIFE;
+        NORMAL, HARDBALL, SPEEDUPBALL, MULTIBALL;
     }
 
     private boolean isHardBall = false;

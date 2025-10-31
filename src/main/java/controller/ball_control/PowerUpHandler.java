@@ -4,7 +4,7 @@ import com.almasb.fxgl.entity.Entity;
 import controller.powerup.PowerUp;
 import view.Launch;
 
-public class PowerUpHandler extends Entity implements BallVari{
+public class PowerUpHandler implements BallVari{
     private BallManager ballManager;
     private LifeManager lifeManager;
 
