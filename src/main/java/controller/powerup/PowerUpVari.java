@@ -11,7 +11,9 @@ public interface PowerUpVari {
         HARDBALL,
         SPEEDUPBALL,
         EXTRALIFE,
-        // viết thêm
+        BUFF,
+        NERF,
+        FROZEN
     }
 
     int POWER_SIZE = 30;
