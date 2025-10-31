@@ -2,13 +2,13 @@ package controller.paddle_control;
 
 import javafx.scene.paint.Color;
 
-public class NerfPaddle extends Paddle {
+public class NerfPaddle extends Paddle implements PaddleVari {
 
     public NerfPaddle(int x, int y) {
         super(x, y,
-                PaddleVari.NERF_PAD_WIDTH,
-                PaddleVari.PADDLE_HEIGHT,
-                PaddleVari.NERF_PAD_SPEED,
+                NERF_PAD_WIDTH,
+                PADDLE_HEIGHT,
+                NERF_PAD_SPEED,
                 PaddleType.NERF, Color.RED
         );
     }

@@ -1,39 +1,28 @@
 package view;
-//Routing import
 
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
-import com.almasb.fxgl.entity.Entity;
 import controller.InitVari;
-import controller.ball_control.Ball;
 import controller.brick_control.BrickManager;
-import controller.paddle_control.BasicPaddle;
-import controller.paddle_control.BuffPaddle;
-import controller.paddle_control.Paddle;
 import controller.paddle_control.PaddleVari;
-//Java import
 import javafx.scene.input.KeyCode;
-//Game library import
-import java.time.Duration;
-import java.time.LocalTime;
+import controller.ball_control.Ball;
+import controller.paddle_control.BasicPaddle;
 
-import static com.almasb.fxgl.dsl.FXGL.getGameWorld;
-import static com.almasb.fxgl.dsl.FXGL.onKey;
+import static com.almasb.fxgl.dsl.FXGL.*;
 
-public class Launch extends GameApplication {
-
+public class Launch extends GameApplication implements InitVari {
 
     public enum EntityType {
         BALL,
-        PADDLE
+        PADDLE,
+        BRICK,
+        POWERUP
     }
 
     private Ball ball;
-    private Paddle paddle;
-    private LocalTime GameStartTime;
-
-    private int time_second_counter = 0;
-    private boolean paddle_switch_flag = false;
+    private BasicPaddle paddle;
+    private BrickManager bricks;
 
 
     @Override
@@ -41,61 +30,36 @@ public class Launch extends GameApplication {
         GeneralInit.initScreenSettings(settings);
     }
 
-
-    private Entity player;
-
     @Override
     protected void initGame() {
-
-        GameStartTime = LocalTime.now();
-
-        ball = new Ball(600, 50, 4, 1, -1, Ball.BallType.NORMAL);
-        ball.setType(EntityType.BALL);
+        getGameScene().addGameView(BACKGROUND);
+        ball = new Ball( 1, -1, Ball.BallType.NORMAL);
         getGameWorld().addEntity(ball);
+        ball.setType(EntityType.BALL);
 
-        paddle = new BasicPaddle(InitVari.width / 2, InitVari.height - PaddleVari.PADDLE_HEIGHT);
-        paddle.setType(EntityType.PADDLE);
+
+        paddle = new BasicPaddle(SCREEN_WIDTH / 2, SCREEN_HEIGHT - PaddleVari.PADDLE_HEIGHT);
+        // What is this ??
         getGameWorld().addEntity(paddle);
+        paddle.setType(EntityType.PADDLE);
+        ball.startFalling();
 
-        BrickManager bricks = new BrickManager(3);
-
+        bricks = BrickManager.getInstance();
+        bricks.spamBrick(4);
     }
 
     @Override
     protected void onUpdate(double tpf) {
-
-            ball.update(tpf, paddle);
-            ball.startFalling();
-            paddle.update();
-
-
-        time_second_counter = LocalTime.now().toSecondOfDay() - GameStartTime.toSecondOfDay();
-
-        if (time_second_counter == 2 && !paddle_switch_flag) {
-            paddle_switch_flag = true;
-
-            int current_paddle_x = (int) paddle.getX();
-            int current_paddle_y = (int) paddle.getY();
-
-            getGameWorld().removeEntity(paddle);
-
-            paddle = (BuffPaddle) new BuffPaddle(current_paddle_x, current_paddle_y);
-
-
-            getGameWorld().addEntity(paddle);
-            System.out.println("Paddle switch success !");
-
-        }
-
-
+        // Mấy cái này nen add Component vào Entity
+        ball.update(tpf, paddle, bricks);
+        paddle.update();
+        ball.IncreaseBallSpeed();
     }
 
     protected void initInput() {
-        onKey(KeyCode.RIGHT, () -> paddle.moveRight());
-        onKey(KeyCode.LEFT, () -> paddle.moveLeft());
-
-
+        onKey(KeyCode.RIGHT, () ->   paddle.moveRight());
+        onKey(KeyCode.LEFT, ()  ->   paddle.moveLeft() );
+        onKey(KeyCode.D, () -> bricks.clearAll());
+        onKey(KeyCode.R, () -> bricks.spamBrick(4));
     }
-
-
 }

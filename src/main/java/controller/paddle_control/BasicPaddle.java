@@ -5,13 +5,13 @@ import javafx.scene.paint.Color;
 
 import static com.almasb.fxgl.dsl.FXGL.onKey;
 
-public class BasicPaddle extends Paddle {
+public class BasicPaddle extends Paddle implements PaddleVari {
 
     public BasicPaddle(int x, int y) {
         super(x, y,
-                PaddleVari.BASIC_PAD_WIDTH,
-                PaddleVari.PADDLE_HEIGHT,
-                PaddleVari.BASIC_PAD_SPEED,
+                BASIC_PAD_WIDTH,
+                PADDLE_HEIGHT,
+                BASIC_PAD_SPEED,
                 PaddleType.BASIC, Color.YELLOW
         );
     }

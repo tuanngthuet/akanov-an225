@@ -4,20 +4,13 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
-import com.fasterxml.jackson.databind.deser.ContextualKeyDeserializer;
 import controller.InitVari;
-import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 import static com.almasb.fxgl.dsl.FXGL.onKey;
 
-public class Paddle extends Entity {
-
-    public enum PaddleType {
-        BASIC, BUFF, NERF, FROZEN;
-    }
-
+public abstract class Paddle extends Entity implements InitVari, PaddleVari {
 
     private int PADDLE_X, PADDLE_Y;
     private int PADDLE_WIDTH, PADDLE_HEIGHT;
@@ -68,8 +61,6 @@ public class Paddle extends Entity {
 
     public void update() {
         if (getX() < 0) setX(0);
-        if (getX() + PADDLE_WIDTH > InitVari.width) setX(InitVari.width - PADDLE_WIDTH);
+        if (getX() + PADDLE_WIDTH > SCREEN_WIDTH) setX(SCREEN_WIDTH - PADDLE_WIDTH);
     }
-
-
 }
