@@ -1,36 +1,45 @@
 package controller.ball_control;
 
-import com.almasb.fxgl.entity.Entity;
 import controller.powerup.PowerUp;
+import controller.paddle_control.*;
 import view.Launch;
 
-public class PowerUpHandler extends Entity implements BallVari{
+public class PowerUpHandler implements BallVari {
+
     private BallManager ballManager;
     private LifeManager lifeManager;
+    private Paddle paddle;
 
-    public PowerUpHandler(BallManager ballManager, LifeManager lifeManager) {
+    public PowerUpHandler(BallManager ballManager, LifeManager lifeManager, Paddle paddle) {
         this.ballManager = ballManager;
         this.lifeManager = lifeManager;
+        this.paddle = paddle;
     }
 
     public void Pick_Up(PowerUp.PowerType type) {
         switch (type) {
             case MULTIBALL -> ballManager.spawnExtraBall();
             case SPEEDUPBALL -> {
-                for(Ball ball : ballManager.getBalls()) {
+                for (Ball ball : ballManager.getBalls()) {
                     ball.setSpeed(POWER_UP_SPEED);
                     ball.setType(Ball.BallType.SPEEDUPBALL);
                 }
             }
             case HARDBALL -> {
-                for(Ball ball : ballManager.getBalls()) {
+                for (Ball ball : ballManager.getBalls()) {
                     ball.setHardBall(true);
                     ball.setType(Ball.BallType.HARDBALL);
                 }
             }
             case EXTRALIFE -> lifeManager.gainHeart();
+
+            case BUFF -> PaddleManager.applyPaddlePowerUp(PaddleVari.PaddleType.BUFF, 20);
+
+            case NERF -> PaddleManager.applyPaddlePowerUp(PaddleVari.PaddleType.NERF, 20);
+
+            case FROZEN -> PaddleManager.applyPaddlePowerUp(PaddleVari.PaddleType.FROZEN, 1);
         }
-        for(Ball ball : ballManager.getBalls()) {
+        for (Ball ball : ballManager.getBalls()) {
             ballManager.reset_ToNormal(Launch.ball);
         }
     }
