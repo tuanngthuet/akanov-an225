@@ -16,7 +16,7 @@ public interface PowerUpVari {
 
     int POWER_SIZE = 30;
 
-    int POWER_FALLING_SPEED = 70;
+    int POWER_FALLING_SPEED = 80;
 
     Image POWERUP = new Image(
             Objects.requireNonNull(InitVari.class.getResource("/assets/textures/powerup/powerup.png")).toExternalForm());
