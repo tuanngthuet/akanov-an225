@@ -56,6 +56,7 @@ public class MainMenu extends FXGLMenu implements InitVari {
     private Node createBody() {
         Node btn1 = createActionButton("NEW GAME", this::fireNewGame);
         Node btn2 = createActionButton("LOAD", this::fireNewGame);
+        Node bt3 = createActionButton("SETTING", this::settingMenu);
         Node btn3 = createActionButton("EXIT", this::fireExit);
 
         Group group = new Group( btn1, btn2, btn3);
@@ -67,6 +68,10 @@ public class MainMenu extends FXGLMenu implements InitVari {
             CurrentY += (int) (1.75 * bg.getHeight());
         }
         return group;
+    }
+
+    private void settingMenu() {
+
     }
 
 
@@ -84,7 +89,6 @@ public class MainMenu extends FXGLMenu implements InitVari {
                 .then(Color.LIGHTGREEN)
                 .otherwise(Color.DARKGRAY)
         );
-
 
         btn.setAlignment(Pos.CENTER);
         btn.setOnMouseClicked(e -> action.run());

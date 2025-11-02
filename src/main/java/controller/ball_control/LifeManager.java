@@ -13,7 +13,7 @@ import javafx.util.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LifeManager extends Entity implements BallVari{
+public class LifeManager implements BallVari{
     private List<ImageView> hearts = new ArrayList<>();
     private HBox heartsBox = new HBox(10);
 

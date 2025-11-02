@@ -9,8 +9,6 @@ import controller.paddle_control.PaddleVari;
 import javafx.scene.input.KeyCode;
 import controller.paddle_control.BasicPaddle;
 
-import java.util.ArrayList;
-
 import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class Launch extends GameApplication implements InitVari {
@@ -46,26 +44,23 @@ public class Launch extends GameApplication implements InitVari {
         ballManager = new BallManager();
 
         powerHandler = new PowerUpHandler(ballManager, lifeManager);
-
         ball = new Ball( BallVari.DEFAULT_DirectionX, BallVari.DEFAULT_DirectionY, Ball.BallType.NORMAL);
         ball = ballManager.spawn_InitBall();
 //        ball.setType(EntityType.BALL);
 //        getGameWorld().addEntity(ball);
 
         paddle = new BasicPaddle(SCREEN_WIDTH / 2, SCREEN_HEIGHT - PaddleVari.PADDLE_HEIGHT);
-        // What is this ??
         getGameWorld().addEntity(paddle);
         paddle.setType(EntityType.PADDLE);
-        ball.startFalling();
+//        ball.startFalling();
 
         bricks = BrickManager.getInstance();
-        bricks.spamBrick(4);
+        bricks.spawnBrick();
     }
 
     @Override
     protected void onUpdate(double tpf) {
-        // Mấy cái này nen add Component vào Entity
-        for (Ball b : new ArrayList<>(BallManager.getInstance().getBalls())) {
+        for (Ball b : ballManager.getBalls()) {
             b.update(tpf, paddle, bricks, lifeManager);
             b.IncreaseBallSpeed();
             paddle.update();
@@ -76,6 +71,6 @@ public class Launch extends GameApplication implements InitVari {
         onKey(KeyCode.RIGHT, () ->   paddle.moveRight());
         onKey(KeyCode.LEFT, ()  ->   paddle.moveLeft() );
         onKey(KeyCode.D, () -> bricks.clearAll());
-        onKey(KeyCode.R, () -> bricks.spamBrick(4));
+        onKey(KeyCode.R, () -> bricks.spawnBrick());
     }
 }
