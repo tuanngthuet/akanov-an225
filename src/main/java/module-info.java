@@ -16,4 +16,6 @@ module view {
     exports controller to javafx.fxml;
     exports controller.ball_control to javafx.fxml;
     opens controller.ball_control to javafx.fxml;
+    exports controller.ScoreControl to javafx.fxml;
+    opens controller.ScoreControl to javafx.fxml;
 }

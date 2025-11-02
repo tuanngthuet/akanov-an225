@@ -10,15 +10,14 @@ import javafx.scene.text.Font;
 import java.util.Objects;
 
 public interface InitVari {
-    /**
-     * Set up Screen size variables
-     */
+
     int SCREEN_HEIGHT = 720;
     int SCREEN_WIDTH = 960;
-    //  Define Game name: version 0.1
+
     String GAME_NAME = "Akanov-an225";
     String VERSION = "0.2";
 
+    int init_game_score = 0;
 //    /**
 //     * Init position of the paddle
 //     */
@@ -36,4 +35,8 @@ public interface InitVari {
     Font TEXT_FONT =
             Font.loadFont(Objects.requireNonNull(InitVari.class
                     .getResource("/assets/fonts/font.ttf")).toExternalForm(), 20);
+    Font SCORE_TEXT_FONT =
+            Font.loadFont(Objects.requireNonNull(InitVari.class
+                    .getResource("/assets/fonts/score_text_font.ttf")).toExternalForm(), 40);
+
 }

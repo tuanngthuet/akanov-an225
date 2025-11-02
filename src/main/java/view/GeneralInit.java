@@ -27,5 +27,9 @@ public class GeneralInit implements InitVari{
             }
         });
     }
-  
+
+    public static int getCurrentScore(){
+        return 0;
+    }
+
 }

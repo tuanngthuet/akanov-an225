@@ -4,6 +4,7 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
 import controller.InitVari;
+import controller.ScoreControl.Score_control;
 import controller.brick_control.Brick;
 import controller.brick_control.BrickManager;
 import controller.brick_control.BrickVari;
@@ -101,7 +102,7 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
         directionY = -Math.cos(bounceAngle);
     }
 
-    public void update(double tpf, Entity paddle, BrickManager bricks, LifeManager lifeManager) {
+    public void update(double tpf, Entity paddle, BrickManager bricks, LifeManager lifeManager, Score_control current_score) {
         double dx = directionX * speed * tpf * ADJUST_BALL_SPEED;
         double dy = directionY * speed * tpf * ADJUST_BALL_SPEED;
         this.translate(dx, dy);
@@ -126,6 +127,10 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
                 toRemove.add(brick);
                 if(!isHardBall) {
                     adjustDirectionAfterBrickHit(brick);
+                    current_score.update_score(1);
+                }
+                else {
+                    current_score.update_score(5);
                 }
             }
         }
