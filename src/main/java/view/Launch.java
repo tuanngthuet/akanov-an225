@@ -2,6 +2,7 @@ package view;
 
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
+import com.almasb.fxgl.dsl.FXGL;
 import controller.InitVari;
 import controller.ScoreControl.Score_control;
 import controller.ball_control.*;
@@ -36,6 +37,7 @@ public class Launch extends GameApplication implements InitVari {
 
     @Override
     protected void initGame() {
+
         getGameScene().addGameView(BACKGROUND);
 
         lifeManager = new LifeManager();

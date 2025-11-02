@@ -1,14 +1,16 @@
 package controller.ScoreControl;
 
 import com.almasb.fxgl.animation.Interpolators;
+import com.almasb.fxgl.audio.Audio;
+import com.almasb.fxgl.audio.Sound;
 import com.almasb.fxgl.dsl.FXGL;
 import javafx.geometry.Point2D;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
-import static com.almasb.fxgl.dsl.FXGLForKtKt.animationBuilder;
-import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameScene;
+import static com.almasb.fxgl.dsl.FXGLForKtKt.*;
+import static com.almasb.fxgl.dsl.FXGLForKtKt.getAudioPlayer;
+import static com.almasb.fxgl.dsl.FXGLForKtKt.play;
 import static controller.InitVari.*;
 
 public class Score_control implements ScoreVari {
@@ -93,6 +95,9 @@ public class Score_control implements ScoreVari {
     public void update_score(int amount){
         current_score_int += amount;
         current_score_string = Integer.toString(current_score_int);
+
+        one_score_up_sound.setVolume(0.4);
+        one_score_up_sound.play();
 
         score_number.setText(current_score_string);
         showFloatingText("+ " + amount, SCORE_NUMBER_POS_X, SCORE_TEXT_POS_Y);

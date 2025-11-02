@@ -5,6 +5,7 @@ import com.almasb.fxgl.dsl.FXGL;
 import controller.brick_control.BrickVari;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.AudioClip;
 import javafx.scene.text.Font;
 
 import java.util.Objects;
@@ -38,5 +39,8 @@ public interface InitVari {
     Font SCORE_TEXT_FONT =
             Font.loadFont(Objects.requireNonNull(InitVari.class
                     .getResource("/assets/fonts/score_text_font.ttf")).toExternalForm(), 40);
-
+    AudioClip one_score_up_sound = new AudioClip(
+            Objects.requireNonNull(InitVari.class.getResource("/assets/sounds/one_score_up.wav"))
+                    .toExternalForm()
+    );
 }

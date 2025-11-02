@@ -8,6 +8,7 @@ module view {
     requires annotations;
     requires java.sql;
     requires javafx.base;
+    requires javafx.media;
 //    requires view;
 
     opens view to javafx.fxml;
