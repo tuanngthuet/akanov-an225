@@ -5,9 +5,8 @@ import com.almasb.fxgl.app.GameSettings;
 import controller.InitVari;
 import controller.ball_control.*;
 import controller.brick_control.BrickManager;
-import controller.paddle_control.PaddleVari;
+import controller.paddle_control.*;
 import javafx.scene.input.KeyCode;
-import controller.paddle_control.BasicPaddle;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 
@@ -21,13 +20,11 @@ public class Launch extends GameApplication implements InitVari {
     }
 
     public static Ball ball;
-    public BasicPaddle paddle;
+    public static Paddle paddle;
     public BrickManager bricks;
     public LifeManager lifeManager;
     public static PowerUpHandler powerHandler;
     public BallManager ballManager;
-
-
 
     @Override
     public void initSettings(GameSettings settings) {
@@ -43,19 +40,16 @@ public class Launch extends GameApplication implements InitVari {
 
         ballManager = new BallManager();
 
-        powerHandler = new PowerUpHandler(ballManager, lifeManager);
-        ball = new Ball( BallVari.DEFAULT_DirectionX, BallVari.DEFAULT_DirectionY, Ball.BallType.NORMAL);
-        ball = ballManager.spawn_InitBall();
-//        ball.setType(EntityType.BALL);
-//        getGameWorld().addEntity(ball);
-
-        paddle = new BasicPaddle(SCREEN_WIDTH / 2, SCREEN_HEIGHT - PaddleVari.PADDLE_HEIGHT);
-        getGameWorld().addEntity(paddle);
+        PaddleManager.initPaddle(SCREEN_WIDTH / 2, SCREEN_HEIGHT - PaddleVari.PADDLE_HEIGHT);
+        paddle = PaddleManager.getCurrentPaddle();
         paddle.setType(EntityType.PADDLE);
-//        ball.startFalling();
+        powerHandler = new PowerUpHandler(ballManager, lifeManager, paddle);
+
+        ball = ballManager.spawn_InitBall();
+        ball.startFalling();
 
         bricks = BrickManager.getInstance();
-        bricks.spawnBrick();
+        bricks.spamBrick(4);
     }
 
     @Override
@@ -63,14 +57,15 @@ public class Launch extends GameApplication implements InitVari {
         for (Ball b : ballManager.getBalls()) {
             b.update(tpf, paddle, bricks, lifeManager);
             b.IncreaseBallSpeed();
-            paddle.update();
         }
+        paddle.update();
     }
 
+    @Override
     protected void initInput() {
-        onKey(KeyCode.RIGHT, () ->   paddle.moveRight());
-        onKey(KeyCode.LEFT, ()  ->   paddle.moveLeft() );
+        onKey(KeyCode.RIGHT, () -> paddle.moveRight());
+        onKey(KeyCode.LEFT, () -> paddle.moveLeft());
         onKey(KeyCode.D, () -> bricks.clearAll());
-        onKey(KeyCode.R, () -> bricks.spawnBrick());
+        onKey(KeyCode.R, () -> bricks.spamBrick(4));
     }
 }
