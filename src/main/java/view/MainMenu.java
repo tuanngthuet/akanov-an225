@@ -6,9 +6,12 @@ import controller.InitVari;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
@@ -22,11 +25,12 @@ import static javafx.beans.binding.Bindings.when;
 
 public class MainMenu extends FXGLMenu implements InitVari {
     private int CurrentY = 200;
+    private Text title;
 
     public MainMenu() {
         super(MenuType.MAIN_MENU);
 
-        Text title = new Text(getSettings().getTitle());
+        title = new Text(getSettings().getTitle());
         title.setFont(TITLE_FONT);
 
         LinearGradient gradient = new LinearGradient(
@@ -47,16 +51,19 @@ public class MainMenu extends FXGLMenu implements InitVari {
 
         CurrentY += 70;
 
-        var body = createBody();
+        getContentRoot().getChildren().addAll(title, createLoginBox());
 
-        getContentRoot().getChildren().addAll(title, body);
     }
-
 
     private Node createBody() {
         Node btn1 = createActionButton("NEW GAME", this::fireNewGame);
         Node btn2 = createActionButton("LOAD", this::fireNewGame);
         Node btn3 = createActionButton("EXIT", this::fireExit);
+        Node logout_btn = createActionButton("LOG OUT", () -> {
+            getContentRoot().getChildren().clear();
+
+            getContentRoot().getChildren().addAll(title, createLoginBox());
+        });
 
         Group group = new Group( btn1, btn2, btn3);
 
@@ -69,6 +76,84 @@ public class MainMenu extends FXGLMenu implements InitVari {
         return group;
     }
 
+    private Node createLoginBox() {
+        TextField usernameField = new TextField();
+        usernameField.setPromptText("Username");
+        usernameField.setPrefWidth(250);
+        usernameField.setPrefHeight(40);
+        usernameField.setTranslateX(SCREEN_WIDTH/2 - 250/2);
+        usernameField.setTranslateY(SCREEN_HEIGHT/2 - 40);
+
+        usernameField.setStyle("""
+            -fx-background-color: rgba(255,255,255,0.8);
+            -fx-border-color: black;
+            -fx-border-width: 2;
+            -fx-border-radius: 10;
+            -fx-background-radius: 10;
+            -fx-font-size: 16px;
+            -fx-text-fill: #222;
+            -fx-prompt-text-fill: #888;
+        """);
+
+        PasswordField passwordField = new PasswordField();
+        passwordField.setPromptText("Password");
+        passwordField.setPrefWidth(250);
+        passwordField.setPrefHeight(40);
+        passwordField.setTranslateX(SCREEN_WIDTH / 2 - 250/2);
+        passwordField.setTranslateY(SCREEN_HEIGHT/2 - 30);
+
+        Text wrong_pass = new Text("Invalid username or password!");
+        wrong_pass.setTranslateX(SCREEN_WIDTH / 2 );
+        wrong_pass.setTranslateY(SCREEN_HEIGHT - 30);
+        wrong_pass.setFont(TEXT_FONT);
+
+        passwordField.setStyle("""
+            -fx-background-color: rgba(255,255,255,0.8);
+            -fx-border-color: black;
+            -fx-border-width: 2;
+            -fx-border-radius: 10;
+            -fx-background-radius: 10;
+            -fx-font-size: 16px;
+            -fx-text-fill: #222;
+            -fx-prompt-text-fill: #888;
+            """
+        );
+
+        Node loginBtn = createActionButton("LOGIN", () -> {
+            String user = usernameField.getText();
+            String pass = passwordField.getText();
+
+            if (user.equals("admin") && pass.equals("123")) {
+                System.out.println("Login successful!");
+
+                getContentRoot().getChildren().clear();
+
+                getContentRoot().getChildren().addAll(title, createBody());
+
+            } else {
+                System.out.println("Invalid username or password!");
+
+                getContentRoot().getChildren().add(wrong_pass);
+            }
+        });
+        loginBtn.setTranslateX(SCREEN_WIDTH / 2 - 250/2);
+        loginBtn.setTranslateY(SCREEN_HEIGHT/2);
+
+        Node guest_play = createActionButton("GUEST", () -> {
+            getContentRoot().getChildren().clear();
+
+            getContentRoot().getChildren().addAll(title, createBody());
+        });
+        guest_play.setTranslateX(SCREEN_WIDTH / 2 - 250/2);
+        guest_play.setTranslateY(SCREEN_HEIGHT/2);
+
+        VBox vbox = new VBox(10, usernameField, passwordField, loginBtn, guest_play);
+        vbox.setAlignment(Pos.CENTER);
+
+        StackPane box = new StackPane(vbox);
+        box.setAlignment(Pos.CENTER);
+        return box;
+    }
 
     private Node createActionButton(String name, Runnable action) {
         var bg = new Rectangle(200, 50);
