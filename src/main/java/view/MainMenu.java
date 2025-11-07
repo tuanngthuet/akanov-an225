@@ -18,6 +18,7 @@ import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import model.SQL_connector;
 
 
 import static com.almasb.fxgl.dsl.FXGL.getSettings;
@@ -26,6 +27,7 @@ import static javafx.beans.binding.Bindings.when;
 public class MainMenu extends FXGLMenu implements InitVari {
     private int CurrentY = 200;
     private Text title;
+    private SQL_connector connector = new SQL_connector();
 
     public MainMenu() {
         super(MenuType.MAIN_MENU);
@@ -123,7 +125,10 @@ public class MainMenu extends FXGLMenu implements InitVari {
             String user = usernameField.getText();
             String pass = passwordField.getText();
 
-            if (user.equals("admin") && pass.equals("123")) {
+            boolean login_status = false;
+            login_status = connector.authenticator(user, pass);
+
+            if (login_status) {
                 System.out.println("Login successful!");
 
                 getContentRoot().getChildren().clear();
@@ -176,4 +181,5 @@ public class MainMenu extends FXGLMenu implements InitVari {
 
         return btn;
     }
+
 }
