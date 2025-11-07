@@ -3,6 +3,7 @@ package view;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
 import controller.InitVari;
+import controller.user.User;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -67,10 +68,10 @@ public class MainMenu extends FXGLMenu implements InitVari {
             getContentRoot().getChildren().addAll(title, createLoginBox());
         });
 
-        Group group = new Group( btn1, btn2, btn3);
+        Group group = new Group(btn1, btn2, btn3);
 
         for (Node n : group.getChildren()) {
-            Rectangle bg = (Rectangle)((StackPane)n).getChildren().getFirst();
+            Rectangle bg = (Rectangle) ((StackPane) n).getChildren().getFirst();
             n.setLayoutX((InitVari.SCREEN_WIDTH - bg.getWidth()) / 2);
             n.setLayoutY(CurrentY);
             CurrentY += (int) (1.75 * bg.getHeight());
@@ -83,43 +84,52 @@ public class MainMenu extends FXGLMenu implements InitVari {
         usernameField.setPromptText("Username");
         usernameField.setPrefWidth(250);
         usernameField.setPrefHeight(40);
-        usernameField.setTranslateX(SCREEN_WIDTH/2 - 250/2);
-        usernameField.setTranslateY(SCREEN_HEIGHT/2 - 40);
+        usernameField.setTranslateX(SCREEN_WIDTH / 2 - 250 / 2);
+        usernameField.setTranslateY(SCREEN_HEIGHT / 2 - 40);
 
         usernameField.setStyle("""
-            -fx-background-color: rgba(255,255,255,0.8);
-            -fx-border-color: black;
-            -fx-border-width: 2;
-            -fx-border-radius: 10;
-            -fx-background-radius: 10;
-            -fx-font-size: 16px;
-            -fx-text-fill: #222;
-            -fx-prompt-text-fill: #888;
-        """);
+                    -fx-background-color: rgba(255,255,255,0.8);
+                    -fx-border-color: black;
+                    -fx-border-width: 2;
+                    -fx-border-radius: 10;
+                    -fx-background-radius: 10;
+                    -fx-font-size: 16px;
+                    -fx-text-fill: #222;
+                    -fx-prompt-text-fill: #888;
+                """);
 
         PasswordField passwordField = new PasswordField();
         passwordField.setPromptText("Password");
         passwordField.setPrefWidth(250);
         passwordField.setPrefHeight(40);
-        passwordField.setTranslateX(SCREEN_WIDTH / 2 - 250/2);
-        passwordField.setTranslateY(SCREEN_HEIGHT/2 - 30);
+        passwordField.setTranslateX(SCREEN_WIDTH / 2 - 250 / 2);
+        passwordField.setTranslateY(SCREEN_HEIGHT / 2 - 30);
 
         Text wrong_pass = new Text("Invalid username or password!");
-        wrong_pass.setTranslateX(SCREEN_WIDTH / 2 );
+        wrong_pass.setTranslateX(SCREEN_WIDTH / 2);
         wrong_pass.setTranslateY(SCREEN_HEIGHT - 30);
         wrong_pass.setFont(TEXT_FONT);
 
         passwordField.setStyle("""
-            -fx-background-color: rgba(255,255,255,0.8);
-            -fx-border-color: black;
-            -fx-border-width: 2;
-            -fx-border-radius: 10;
-            -fx-background-radius: 10;
-            -fx-font-size: 16px;
-            -fx-text-fill: #222;
-            -fx-prompt-text-fill: #888;
-            """
+                -fx-background-color: rgba(255,255,255,0.8);
+                -fx-border-color: black;
+                -fx-border-width: 2;
+                -fx-border-radius: 10;
+                -fx-background-radius: 10;
+                -fx-font-size: 16px;
+                -fx-text-fill: #222;
+                -fx-prompt-text-fill: #888;
+                """
         );
+
+        Node guest_play = createActionButton("GUEST", () -> {
+            getContentRoot().getChildren().clear();
+
+            getContentRoot().getChildren().addAll(title, createBody());
+        });
+        guest_play.setTranslateX(SCREEN_WIDTH / 2 - 250 / 2);
+        guest_play.setTranslateY(SCREEN_HEIGHT / 2);
+
 
         Node loginBtn = createActionButton("LOGIN", () -> {
             String user = usernameField.getText();
@@ -129,28 +139,28 @@ public class MainMenu extends FXGLMenu implements InitVari {
             login_status = connector.authenticator(user, pass);
 
             if (login_status) {
-                System.out.println("Login successful!");
-
                 getContentRoot().getChildren().clear();
 
+                User.user_init_score = connector.get_user_score_by_session(0);
+                if (User.user_init_score != -5) {
+                    System.out.println("User information fetched successfully! User init score is:" + User.user_init_score);
+                } else {
+                    System.out.println("User information fetching FAILED!");
+                }
+
+                connector.closeSQLConnection();
+
                 getContentRoot().getChildren().addAll(title, createBody());
-
             } else {
-                System.out.println("Invalid username or password!");
-
-                getContentRoot().getChildren().add(wrong_pass);
+                if (!getContentRoot().getChildren().contains(wrong_pass)) {
+                    getContentRoot().getChildren().add(wrong_pass);
+                }
             }
         });
-        loginBtn.setTranslateX(SCREEN_WIDTH / 2 - 250/2);
-        loginBtn.setTranslateY(SCREEN_HEIGHT/2);
 
-        Node guest_play = createActionButton("GUEST", () -> {
-            getContentRoot().getChildren().clear();
+        loginBtn.setTranslateX(SCREEN_WIDTH / 2 - 250 / 2);
+        loginBtn.setTranslateY(SCREEN_HEIGHT / 2);
 
-            getContentRoot().getChildren().addAll(title, createBody());
-        });
-        guest_play.setTranslateX(SCREEN_WIDTH / 2 - 250/2);
-        guest_play.setTranslateY(SCREEN_HEIGHT/2);
 
         VBox vbox = new VBox(10, usernameField, passwordField, loginBtn, guest_play);
         vbox.setAlignment(Pos.CENTER);
@@ -181,5 +191,6 @@ public class MainMenu extends FXGLMenu implements InitVari {
 
         return btn;
     }
+
 
 }

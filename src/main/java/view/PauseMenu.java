@@ -122,7 +122,6 @@ public class PauseMenu extends FXGLMenu implements InitVari {
         return group;
     }
 
-
     private Node createActionButton(String name, Runnable action) {
         var bg = new Rectangle(200, 50);
         bg.setEffect(new BoxBlur());

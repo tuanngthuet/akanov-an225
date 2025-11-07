@@ -8,6 +8,7 @@ import controller.ScoreControl.Score_control;
 import controller.ball_control.*;
 import controller.brick_control.BrickManager;
 import controller.paddle_control.*;
+import controller.user.User;
 import javafx.scene.input.KeyCode;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
@@ -43,7 +44,7 @@ public class Launch extends GameApplication implements InitVari {
         lifeManager = new LifeManager();
         lifeManager.init();
 
-        scoreControl = new Score_control(0);
+        scoreControl = new Score_control(User.user_init_score);
         scoreControl.initScore();
 
         ballManager = new BallManager();

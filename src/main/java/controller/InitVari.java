@@ -18,7 +18,6 @@ public interface InitVari {
     String GAME_NAME = "Akanov-an225";
     String VERSION = "0.2";
 
-    int init_game_score = 0;
 //    /**
 //     * Init position of the paddle
 //     */
