@@ -109,6 +109,17 @@ public class SQL_connector implements SQL_InitVari {
         return login_flag;
     }
 
+    public void createNewSession(String start_time, String end_time) throws SQLException{
+        String query = "INSERT INTO game_sessions VALUES (?, ?, ?, ?, ?, 0, 3, 1)";
+        PreparedStatement preparedStatement = current_connection.prepareStatement(query);
+
+        preparedStatement.setString(1, Integer.toString(user_score_by_sessions.size() + 1));
+        preparedStatement.setString(2, user_id);
+        preparedStatement.setString(3, "1");
+        preparedStatement.setString(4, start_time);
+        preparedStatement.setString(5, end_time);
+    }
+
     public ArrayList<String> getUserSession(){
         ArrayList<String> concatList = new ArrayList<>();
 
