@@ -8,8 +8,14 @@ import java.util.ArrayList;
 public class SQL_connector implements SQL_InitVari {
 
     private String user_id;
+    private String user_name;
     private Connection current_connection;
-    public ArrayList<Integer> user_score_by_sessions = new ArrayList<>();
+    private ArrayList<Integer> user_score_by_sessions = new ArrayList<>();
+    private ArrayList<Integer> user_level_by_sessions = new ArrayList<>();
+    private ArrayList<String> user_start_time_by_sessions = new ArrayList<>();
+    private ArrayList<String> user_end_time_by_sessions = new ArrayList<>();
+    private ArrayList<String> user_lives_left_by_sessions = new ArrayList<>();
+
 
     public SQL_connector() {
         current_connection = this.createSQLConnection();
@@ -19,7 +25,7 @@ public class SQL_connector implements SQL_InitVari {
         Connection connection = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(URL, username, password);
+            connection = DriverManager.getConnection(URL, SQL_username, SQL_password);
         } catch (ClassNotFoundException classNotFoundException) {
             System.out.println("ClassNotFoundException: " + classNotFoundException);
         } catch (SQLException sqlException) {
@@ -53,6 +59,7 @@ public class SQL_connector implements SQL_InitVari {
                 if (rs.getString("password").equals(password)) {
                     System.out.println("Password is correct!");
                     this.user_id = rs.getString("user_id");
+                    this.user_name = rs.getString("user_name");
 //                    System.out.println(this.user_id);
                     return true;
                 }
@@ -62,8 +69,8 @@ public class SQL_connector implements SQL_InitVari {
         return false;
     }
 
-    private void user_score_query() throws SQLException {
-        String query = "SELECT total_score FROM game_sessions WHERE user_id = ?";
+    private void user_info_query() throws SQLException {
+        String query = "SELECT level, start_time, end_time, total_score, lives_left FROM game_sessions WHERE user_id = ?";
         PreparedStatement preparedStatement = current_connection.prepareStatement(query);
 
         preparedStatement.setString(1, this.user_id);
@@ -72,7 +79,13 @@ public class SQL_connector implements SQL_InitVari {
         ResultSet rs = preparedStatement.executeQuery();
 
         while (rs.next()) {
+            user_level_by_sessions.add(rs.getInt("level"));
+            user_start_time_by_sessions.add(rs.getString("start_time"));
+            user_end_time_by_sessions.add(rs.getString("end_time"));
             user_score_by_sessions.add(rs.getInt("total_score"));
+            user_lives_left_by_sessions.add(rs.getString("lives_left"));
+
+//            System.out.println(user_level_by_sessions.getLast() + user_start_time_by_sessions.getLast() + user_end_time_by_sessions.getLast());
 //            System.out.println(user_score_by_sessions.getLast());
         }
 
@@ -81,13 +94,12 @@ public class SQL_connector implements SQL_InitVari {
     public boolean authenticator(String username, String password) {
         boolean login_flag = false;
         try {
-
             if (current_connection == null) {
                 System.out.println("Conection to database is failed!");
                 return false;
             } else {
                 login_flag = this.login(username, password);
-                this.user_score_query();
+                this.user_info_query();
 
             }
         } catch (SQLException sqlException) {
@@ -97,12 +109,31 @@ public class SQL_connector implements SQL_InitVari {
         return login_flag;
     }
 
-    public int get_user_score_by_session(int game_session) {
+    public ArrayList<String> getUserSession(){
+        ArrayList<String> concatList = new ArrayList<>();
 
-        if (!user_score_by_sessions.isEmpty()) {
-            return user_score_by_sessions.get(game_session);
+        for (int i = 0; i < user_start_time_by_sessions.size(); ++i){
+            concatList.add(user_start_time_by_sessions.get(i).concat(" - ").concat(user_end_time_by_sessions.get(i)));
         }
 
-        return -5;
+        return concatList;
     }
+
+    public ArrayList<Integer> getUserScoreBySessions() {
+        return new ArrayList<>(user_score_by_sessions);
+    }
+
+    public ArrayList<Integer> getUserLevelBySessions() {
+        return new ArrayList<>(user_level_by_sessions);
+    }
+
+    public ArrayList<String> getUserLivesLeftBySessions() {
+        return new ArrayList<>(user_lives_left_by_sessions);
+    }
+
+    public String getUsername(){
+        return user_name;
+    }
+
+
 }

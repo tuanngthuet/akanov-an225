@@ -22,6 +22,8 @@ import javafx.scene.text.Text;
 import model.SQL_connector;
 
 
+import java.util.ArrayList;
+
 import static com.almasb.fxgl.dsl.FXGL.getSettings;
 import static javafx.beans.binding.Bindings.when;
 
@@ -29,6 +31,7 @@ public class MainMenu extends FXGLMenu implements InitVari {
     private int CurrentY = 200;
     private Text title;
     private SQL_connector connector = new SQL_connector();
+    private ArrayList<Integer> session_list = new ArrayList<>();
 
     public MainMenu() {
         super(MenuType.MAIN_MENU);
@@ -130,7 +133,6 @@ public class MainMenu extends FXGLMenu implements InitVari {
         guest_play.setTranslateX(SCREEN_WIDTH / 2 - 250 / 2);
         guest_play.setTranslateY(SCREEN_HEIGHT / 2);
 
-
         Node loginBtn = createActionButton("LOGIN", () -> {
             String user = usernameField.getText();
             String pass = passwordField.getText();
@@ -141,12 +143,13 @@ public class MainMenu extends FXGLMenu implements InitVari {
             if (login_status) {
                 getContentRoot().getChildren().clear();
 
-                User.user_init_score = connector.get_user_score_by_session(0);
-                if (User.user_init_score != -5) {
-                    System.out.println("User information fetched successfully! User init score is:" + User.user_init_score);
-                } else {
-                    System.out.println("User information fetching FAILED!");
-                }
+                User.user_name = connector.getUsername();
+                User.user_session = connector.getUserSession();
+                User.user_init_score_by_session = connector.getUserScoreBySessions();
+                User.user_level_by_sessions = connector.getUserLevelBySessions();
+                User.user_lives_left_by_sessions = connector.getUserLivesLeftBySessions();
+
+                User.printOutUserInfo();
 
                 connector.closeSQLConnection();
 

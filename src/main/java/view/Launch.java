@@ -44,7 +44,7 @@ public class Launch extends GameApplication implements InitVari {
         lifeManager = new LifeManager();
         lifeManager.init();
 
-        scoreControl = new Score_control(User.user_init_score);
+        scoreControl = new Score_control(0);
         scoreControl.initScore();
 
         ballManager = new BallManager();
