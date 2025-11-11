@@ -2,12 +2,15 @@ package view;
 
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
+import com.almasb.fxgl.app.scene.GameView;
 import com.almasb.fxgl.dsl.FXGL;
 import controller.InitVari;
 import controller.ScoreControl.Score_control;
 import controller.ball_control.*;
 import controller.brick_control.BrickManager;
 import controller.paddle_control.*;
+import controller.sound_control.AudioManager;
+import controller.sound_control.SoundVari;
 import controller.user.User;
 import javafx.scene.input.KeyCode;
 
@@ -37,7 +40,10 @@ public class Launch extends GameApplication implements InitVari {
 
     @Override
     protected void initGame() {
-        getGameScene().addGameView(BACKGROUND);
+        getGameScene().addGameView(new GameView(BACKGROUND, -1000));
+
+        AudioManager.MUSIC.setVolume(SoundVari.DEFAULT_VOLUME);
+        AudioManager.MUSIC.playSound(SoundVari.THEME_SOUND,true);
 
         lifeManager = new LifeManager();
         lifeManager.init();

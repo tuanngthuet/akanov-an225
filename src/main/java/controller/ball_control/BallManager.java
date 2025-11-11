@@ -43,9 +43,16 @@ public class BallManager implements InitVari, PaddleVari, BallVari {
     }
 
     public void reset_ToNormal(Ball ball) {
+        double current_speed;
+        if(ball.getSpeed() != BallVari.POWER_UP_SPEED)  {
+            current_speed = ball.getSpeed();
+        }
+        else {
+            current_speed = PowerUpHandler.prev_speed;
+        }
         FXGL.runOnce(() -> {
             ball.setType(Ball.BallType.NORMAL);
-            ball.setSpeed(DEFAULT_SPEED);
+            ball.setSpeed(current_speed);
             ball.setHardBall(false);
         }, Duration.seconds(RESET_TIME));
     }

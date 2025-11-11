@@ -4,15 +4,19 @@ import com.almasb.fxgl.animation.Interpolators;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
 import controller.InitVari;
+import controller.sound_control.AudioManager;
+import controller.sound_control.MusicManager;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.CacheHint;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.control.Slider;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
@@ -31,6 +35,9 @@ import static javafx.beans.binding.Bindings.when;
 public class PauseMenu extends FXGLMenu implements InitVari {
     private ImageView bgBlur;
     private int CurrentY = 200;
+    private Text title;
+    private Node body;
+    private Node volumebox;
 
     private final List<Node> buttons = new ArrayList<>();
 
@@ -39,30 +46,31 @@ public class PauseMenu extends FXGLMenu implements InitVari {
     public PauseMenu() {
         super(MenuType.GAME_MENU);
 
-        Text title = new Text(getSettings().getTitle());
+        title = new Text(getSettings().getTitle());
         title.setFont(TITLE_FONT);
 
-        LinearGradient gradient = new LinearGradient(
-                0, 0, 1, 1, true, CycleMethod.NO_CYCLE,
-                new Stop(0, Color.RED),
-                new Stop(1, Color.YELLOW)
+        LinearGradient verticalGradient = new LinearGradient(
+                0, 0, 0, 1, true, CycleMethod.NO_CYCLE,
+                new Stop(0, Color.MAGENTA),
+                new Stop(1, Color.CYAN)
         );
-        title.setFill(gradient);
+        title.setFill(verticalGradient);
 
         DropShadow ds = new DropShadow();
+        ds.setRadius(10);
         ds.setOffsetX(2);
         ds.setOffsetY(2);
         ds.setColor(Color.color(0, 0, 0, 0.7));
         title.setEffect(ds);
 
         title.setLayoutX((getAppWidth() - title.getLayoutBounds().getWidth()) / 2);
-        title.setLayoutY(CurrentY);
+        title.setLayoutY(230);
 
-        CurrentY += 70;
+        this.body = createBody();
+        this.volumebox = VolumeSettings();
+        volumebox.setVisible(false);
 
-        var body = createBody();
-
-        getContentRoot().getChildren().addAll(title, body);
+        getContentRoot().getChildren().addAll(title, body, volumebox);
     }
 
     @Override
@@ -106,39 +114,60 @@ public class PauseMenu extends FXGLMenu implements InitVari {
     }
 
     private Node createBody() {
-        Node btnContinue = createActionButton("CONTINUE", this::fireContinue);
-        Node btn1 = createActionButton("NEW GAME", this::fireNewGame);
-        Node btn2 = createActionButton("SAVE", this::fireSave);
-        Node btn3 = createActionButton("EXIT", this::fireExitToMainMenu);
+        CurrentY = 300;
 
-        Group group = new Group(btnContinue, btn1, btn2, btn3);
+        Node btnContinue = createActionButton("CONTINUE", this::fireResume);
+        Node btn1 = createActionButton("NEW GAME", this::fireNewGame);
+        Node volume_btn = createActionButton("VOLUME OPTION", () -> {
+            body.setVisible(false);
+            volumebox.setVisible(true);
+        });
+        Node exitbtn = createActionButton("EXIT", this::fireExitToMainMenu);
+
+        Group group = new Group(btnContinue, btn1, volume_btn, exitbtn);
 
         for (Node n : group.getChildren()) {
             Rectangle bg = (Rectangle)((StackPane)n).getChildren().getFirst();
             n.setLayoutX((InitVari.SCREEN_WIDTH - bg.getWidth()) / 2);
             n.setLayoutY(CurrentY);
-            CurrentY += (int) (1.75 * bg.getHeight());
+            CurrentY += (int) (1.5 * bg.getHeight());
         }
         return group;
     }
 
     private Node createActionButton(String name, Runnable action) {
         var bg = new Rectangle(200, 50);
-        bg.setEffect(new BoxBlur());
+        bg.setArcWidth(15);
+        bg.setArcHeight(15);
+        bg.setFill(Color.web("#2b1b3f"));
 
         var text = new Text(name);
-        text.setFill(Color.BLACK);
+        text.setFill(Color.WHITE);
         text.setFont(TEXT_FONT);
 
         var btn = new StackPane(bg, text);
-
-        bg.fillProperty().bind(when(btn.hoverProperty())
-                .then(Color.LIGHTGREEN)
-                .otherwise(Color.DARKGRAY)
-        );
-
-
+        btn.setPickOnBounds(false);
         btn.setAlignment(Pos.CENTER);
+
+        DropShadow glow = new DropShadow();
+        glow.setColor(Color.web("#ff4fd8"));
+        glow.setRadius(2);
+        glow.setSpread(0.4);
+
+        bg.setEffect(glow);
+
+        btn.setOnMouseEntered(e -> {
+            glow.setRadius(12);
+            bg.setFill(Color.web("#ff4fd8"));
+            text.setFill(Color.web("#ffffff"));
+        });
+
+        btn.setOnMouseExited(e -> {
+            glow.setRadius(0);
+            bg.setFill(Color.web("#2b1b3f"));
+            text.setFill(Color.WHITE);
+        });
+
         btn.setOnMouseClicked(e -> action.run());
 
         // clipping
@@ -154,4 +183,93 @@ public class PauseMenu extends FXGLMenu implements InitVari {
 
         return btn;
     }
+
+    private Node VolumeSettings() {
+        Text musicText = new Text("MUSIC VOLUME");
+        musicText.setFont(TEXT_FONT);
+        musicText.setEffect(new DropShadow(4, Color.MAGENTA));
+        musicText.setFill(Color.MAGENTA);
+
+        Slider musicSlider = new Slider(0, 1, AudioManager.MUSIC.getVolume());
+        styleSlider(musicSlider);
+
+        musicSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
+            float v = newVal.floatValue();
+            AudioManager.MUSIC.setVolume(v);
+        });
+
+        Text sfxText = new Text("SFX VOLUME");
+        sfxText.setFont(TEXT_FONT);
+        sfxText.setEffect(new DropShadow(4, Color.MAGENTA));
+        sfxText.setFill(Color.MAGENTA);
+
+        Slider sfxSlider = new Slider(0, 1, AudioManager.SFX.getVolume());
+        styleSlider(sfxSlider);
+
+        sfxSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
+            float v = newVal.floatValue();
+            AudioManager.SFX.setVolume(v);
+        });
+
+        Node back_btn = createBackButton("BACK", () -> {
+            body.setVisible(true);
+            volumebox.setVisible(false);
+        });
+
+        VBox vbox = new VBox(20, musicText, musicSlider, sfxText, sfxSlider, back_btn);
+        vbox.setAlignment(Pos.CENTER);
+        vbox.setLayoutX((SCREEN_WIDTH - 300 ) / 2.0);
+        vbox.setSpacing(20);
+        vbox.setLayoutY(270);
+
+        return vbox;
+    }
+    private void styleSlider(Slider slider) {
+        slider.setShowTickLabels(true);
+        slider.setShowTickMarks(true);
+        slider.setMajorTickUnit(0.25);
+        slider.setBlockIncrement(0.1);
+        slider.setPrefWidth(300);
+    }
+
+    private Node createBackButton(String name, Runnable action) {
+        var bg = new Rectangle(200, 50);
+        bg.setArcWidth(15);
+        bg.setArcHeight(15);
+        bg.setFill(Color.web("#2b1b3f"));
+
+        var text = new Text(name);
+        text.setFill(Color.WHITE);
+        text.setFont(TEXT_FONT);
+
+        var btn = new StackPane(bg, text);
+        btn.setPickOnBounds(false);
+        btn.setAlignment(Pos.CENTER);
+
+        // Hiệu ứng viền sáng (neon)
+        DropShadow glow = new DropShadow();
+        glow.setColor(Color.web("#ff4fd8"));
+        glow.setRadius(0);
+        glow.setSpread(0.4);
+
+        bg.setEffect(glow);
+
+        btn.setOnMouseEntered(e -> {
+            glow.setRadius(12);
+            bg.setFill(Color.web("#ff4fd8"));
+            text.setFill(Color.web("#ffffff"));
+        });
+
+        btn.setOnMouseExited(e -> {
+            glow.setRadius(0);
+            bg.setFill(Color.web("#2b1b3f"));
+            text.setFill(Color.WHITE);
+        });
+
+        btn.setOnMouseClicked(e -> action.run());
+
+        return btn;
+    }
+
+
 }

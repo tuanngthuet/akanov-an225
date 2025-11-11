@@ -72,6 +72,10 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
         this.directionY = dirY / len;
     }
 
+    public double getSpeed() {
+        return speed;
+    }
+
     public Image getImageByType(BallType type) {
         return switch (type) {
             case SPEEDUPBALL -> SPEEDUP_BALL;
@@ -141,7 +145,7 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
         }
 
         if (getY() > SCREEN_HEIGHT) {
-            setPosition(paddle.getX() + BASIC_PAD_WIDTH / 2, paddle.getY() - BALL_RADIUS * 2);
+            setPosition(paddle.getX() + (float) BASIC_PAD_WIDTH / 2, paddle.getY() - BALL_RADIUS * 2);
             if(lifeManager != null) {
                 lifeManager.loseHeart();
             }
