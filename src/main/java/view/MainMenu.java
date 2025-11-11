@@ -28,7 +28,6 @@ import static com.almasb.fxgl.dsl.FXGL.getSettings;
 import static javafx.beans.binding.Bindings.when;
 
 public class MainMenu extends FXGLMenu implements InitVari {
-    private int CurrentY = 200;
     private Text title;
     private SQL_connector connector = new SQL_connector();
     private ArrayList<Integer> session_list = new ArrayList<>();
@@ -53,15 +52,14 @@ public class MainMenu extends FXGLMenu implements InitVari {
         title.setEffect(ds);
 
         title.setLayoutX((getAppWidth() - title.getLayoutBounds().getWidth()) / 2);
-        title.setLayoutY(CurrentY);
-
-        CurrentY += 70;
+        title.setLayoutY(200);
 
         getContentRoot().getChildren().addAll(title, createLoginBox());
     }
 
 
     private Node createBody() {
+        int CurrentY = 270;
         Node btn1 = createActionButton("NEW GAME", this::fireNewGame);
         Node btn2 = createActionButton("LOAD", this::fireNewGame);
         Node btn3 = createActionButton("EXIT", this::fireExit);
@@ -71,7 +69,7 @@ public class MainMenu extends FXGLMenu implements InitVari {
             getContentRoot().getChildren().addAll(title, createLoginBox());
         });
 
-        Group group = new Group(btn1, btn2, btn3);
+        Group group = new Group(btn1, btn2, btn3, logout_btn);
 
         for (Node n : group.getChildren()) {
             Rectangle bg = (Rectangle) ((StackPane) n).getChildren().getFirst();
