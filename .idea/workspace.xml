@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="- Add create new session function (undone): just have pending method in backend&#10;- Create logic for function is pending">
+    <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="functioning commit, no code change">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/SQL_connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/SQL_connector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

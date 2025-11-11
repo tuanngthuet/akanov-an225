@@ -29,8 +29,9 @@ import static javafx.beans.binding.Bindings.when;
 
 public class MainMenu extends FXGLMenu implements InitVari {
     private Text title;
-    private SQL_connector connector = new SQL_connector();
+    private SQL_connector connector;
     private ArrayList<Integer> session_list = new ArrayList<>();
+    private boolean login_status = false;
 
     public MainMenu() {
         super(MenuType.MAIN_MENU);
@@ -64,6 +65,11 @@ public class MainMenu extends FXGLMenu implements InitVari {
         Node btn2 = createActionButton("LOAD", this::fireNewGame);
         Node btn3 = createActionButton("EXIT", this::fireExit);
         Node logout_btn = createActionButton("LOG OUT", () -> {
+
+            login_status = false;
+            User.usr_logout();
+            connector = null;
+
             getContentRoot().getChildren().clear();
 
             getContentRoot().getChildren().addAll(title, createLoginBox());
@@ -135,7 +141,8 @@ public class MainMenu extends FXGLMenu implements InitVari {
             String user = usernameField.getText();
             String pass = passwordField.getText();
 
-            boolean login_status = false;
+            connector = new SQL_connector();
+
             login_status = connector.authenticator(user, pass);
 
             if (login_status) {
