@@ -1,10 +1,15 @@
 package controller.paddle_control;
 
+import controller.ball_control.BallVari;
+import javafx.scene.image.Image;
+
+import java.util.Objects;
+
 public interface PaddleVari {
     enum PaddleType {
         BASIC, BUFF, NERF, FROZEN;
     }
-    
+
     // Values for the default paddle
     int PADDLE_HEIGHT = 20;
 
@@ -13,7 +18,7 @@ public interface PaddleVari {
     int BASIC_PAD_SPEED = 10;
 
     // Value for the BUFF paddle
-    int BUFF_PAD_WIDTH = 200;
+    int BUFF_PAD_WIDTH = 240;
 
     // Values for the NERF paddle
     int NERF_PAD_WIDTH = 150;
@@ -21,4 +26,21 @@ public interface PaddleVari {
 
     // Value for the FROZEN paddle
     int FROZEN_PAD_SPEED = 0;
+
+    Image BASIC_PADDLE = new Image(
+            Objects.requireNonNull(PaddleVari.class.getResource("/assets/textures/paddles/basicpaddle.png")).toExternalForm()
+    );
+
+    Image BUFF_PADDLE = new Image(
+            Objects.requireNonNull(PaddleVari.class.getResource("/assets/textures/paddles/buffpaddle.png")).toExternalForm()
+    );
+
+    Image NERF_PADDLE = new Image(
+            Objects.requireNonNull(PaddleVari.class.getResource("/assets/textures/paddles/nerfpaddle.png")).toExternalForm()
+    );
+
+    Image FROZEN_PADDLE = new Image(
+            Objects.requireNonNull(PaddleVari.class.getResource("/assets/textures/paddles/frozenpaddle.png")).toExternalForm()
+    );
+
 }

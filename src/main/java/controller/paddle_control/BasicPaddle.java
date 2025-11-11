@@ -12,7 +12,7 @@ public class BasicPaddle extends Paddle implements PaddleVari {
                 BASIC_PAD_WIDTH,
                 PADDLE_HEIGHT,
                 BASIC_PAD_SPEED,
-                PaddleType.BASIC, Color.YELLOW
+                PaddleType.BASIC
         );
     }
 

@@ -1,6 +1,8 @@
 package controller.brick_control;
 
+import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.util.Objects;
 
@@ -11,7 +13,8 @@ public interface BrickVari {
     
     int BRICK_WIDTH = 64;
     int BRICK_HEIGHT = 32;
-    int BRICK_GAP = 20;
+    int BRICK_GAP = 6;
+    int BRICK_ROWS = 5;
 
     int NORMAL_SPRITE_ROWS = 6;
     int NORMAL_SPRITE_COLUMNS = 11;
@@ -20,12 +23,12 @@ public interface BrickVari {
     );
 
 //    int HARD_SPRITE_ROWS = 1;
-//    Image HARD_SPRITE = new Image(
-//            Objects.requireNonNull(BrickVari.class.getResource("/assets/textures/bricks/hard.png")).toExternalForm()
-//    );
-//
-//    int POWERUP_SPRITE_ROWS = 1;
-//    Image POWERUP_SPRITE = new Image(
-//            Objects.requireNonNull(BrickVari.class.getResource("/assets/textures/bricks/powerup.png")).toExternalForm()
-//    );
+    Image HARD_SPRITE = new Image(
+            Objects.requireNonNull(BrickVari.class.getResource("/assets/textures/bricks/hard.png")).toExternalForm()
+    );
+
+    int POWERUP_SPRITE_COLUMNS = 11;
+    Image POWERUP_SPRITE = new Image(
+            Objects.requireNonNull(BrickVari.class.getResource("/assets/textures/bricks/powerup.png")).toExternalForm()
+    );
 }

@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="745b6b40-0ebd-404d-8e11-c116d38a6322" name="Changes" comment="Edit workspace.xml" />
+    <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="Fix MainMenu + Add GameOverMenu">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ScoreControl/Score_control.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ScoreControl/Score_control.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/LifeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/LifeManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickSpawnerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickSpawnerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameOver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameOver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/GeneralInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GeneralInit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/Launch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Launch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/PauseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/PauseMenu.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +25,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -20,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="qanh" />
+        <entry key="$PROJECT_DIR$" value="tuan" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,13 +50,11 @@
     &quot;accountId&quot;: &quot;23eab361-f272-42d2-be5f-3ba08ba2150f&quot;
   }
 }</component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 3
 }</component>
-  <component name="ProjectId" id="348M9izywmxn9sFHgG958DzoeC9" />
+  <component name="ProjectId" id="34dsMA9YdXivkxSuZXI54RjedT1" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -53,22 +64,13 @@
     &quot;Application.GameRun.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;tuan&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Tuanngth/OneDrive - vnu.edu.vn/Desktop/akanov-an225-huy&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.42528737&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.GameRun">
+  <component name="RunManager">
     <configuration name="GameRun" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.GameRun" />
       <module name="demo1" />
@@ -86,44 +88,44 @@
       <list>
         <item itemvalue="Application.GameRun" />
         <item itemvalue="Application.GameRun" />
+        <item itemvalue="Application.GameRun" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26830.84" />
-        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.26830.84" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="745b6b40-0ebd-404d-8e11-c116d38a6322" name="Changes" comment="" />
-      <created>1760590595692</created>
+      <changelist id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="" />
+      <created>1761554734846</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1760590595692</updated>
-      <workItem from="1760877828441" duration="668000" />
-      <workItem from="1760894711897" duration="3259000" />
-      <workItem from="1760898121310" duration="5350000" />
+      <updated>1761554734846</updated>
     </task>
-    <task id="LOCAL-00001" summary="brick">
+    <task id="LOCAL-00001" summary="Merge code">
       <option name="closed" value="true" />
-      <created>1760625277947</created>
+      <created>1762826790763</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1760625277947</updated>
+      <updated>1762826790763</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fix MainMenu + Add GameOverMenu">
+      <option name="closed" value="true" />
+      <created>1762829381854</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1762829381855</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="brick" />
-    <option name="LAST_COMMIT_MESSAGE" value="brick" />
+    <MESSAGE value="Merge code" />
+    <MESSAGE value="Fix MainMenu + Add GameOverMenu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix MainMenu + Add GameOverMenu" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

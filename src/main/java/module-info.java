@@ -6,7 +6,10 @@ module view {
     requires com.fasterxml.jackson.databind;
     requires javafx.graphics;
     requires annotations;
-//    requires view;
+    requires java.sql;
+    requires javafx.base;
+    requires javafx.media;
+    requires java.desktop;
 //    requires view;
 
     opens view to javafx.fxml;
@@ -15,4 +18,6 @@ module view {
     exports controller to javafx.fxml;
     exports controller.ball_control to javafx.fxml;
     opens controller.ball_control to javafx.fxml;
+    exports controller.ScoreControl to javafx.fxml;
+    opens controller.ScoreControl to javafx.fxml;
 }

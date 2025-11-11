@@ -2,88 +2,123 @@ package controller.brick_control;
 
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
-import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
+
 public class Brick extends Entity implements BrickVari{
     private BrickType type;
-    private int rowInSpriteSheet;
-    private int columnInSpriteSheet;
-    private ImageView texture;
+    private final int rowInSpriteSheet = FXGL.random(0, NORMAL_SPRITE_ROWS - 1);
 
     public BrickType getBrickType() {
         return type;
     }
 
-    public Brick(int x, int y, BrickType type) {
+    public void setType(BrickType type) {
         this.type = type;
-//        rowInSpriteSheet = FXGL.random(0, switch (type) {
-//                    case POWERUP -> POWERUP_SPRITE_ROWS;
-//                    case NORMAL -> NORMAL_SPRITE_ROWS;
-//                    case HARD -> HARD_SPRITE_ROWS;
-//                } - 1);
-        rowInSpriteSheet = FXGL.random(0, NORMAL_SPRITE_ROWS - 1);
-//        columnInSpriteSheet = switch (type) {
-//            case POWERUP -> POWERUP_SPRITE;
-//            case NORMAL -> NORMAL_SPRITE_COLUMNS;
-//            case HARD -> HARD_SPRITE;
-//        }
-        columnInSpriteSheet = NORMAL_SPRITE_COLUMNS;
-        setPosition(x, y);
-
-//        ImageView texture = new ImageView(switch (type) {
-//            case POWERUP -> POWERUP_SPRITE;
-//            case NORMAL -> NORMAL_SPRITE;
-//            case HARD -> HARD_SPRITE;
-//        });
-        texture = new ImageView(NORMAL_SPRITE);
-        // Do size của cái sprite sheet là 32x16 còn size của brick là 64x32 nên set scale mới hiện đúng được
-        texture.setScaleX(2);
-        texture.setScaleY(2);
-
-        texture.setViewport(new Rectangle2D(
-                0,
-                rowInSpriteSheet * BRICK_HEIGHT / 2,
-                BRICK_WIDTH / 2,
-                BRICK_HEIGHT / 2
-        ));
-        getViewComponent().addChild(texture);
-        getBoundingBoxComponent().addHitBox(new HitBox(BoundingShape.box(BRICK_WIDTH, BRICK_HEIGHT)));
-        addComponent(new CollidableComponent(true));
     }
 
-    public void breakAnimation(Runnable onFinished) {
-//        // Mới có normal brick th :v
-//        if (type != BrickType.NORMAL)
-//            return;
+    public Brick(int x, int y, BrickType type) {
+        this.type = type;
+        setPosition(x, y);
 
+        ImageView normaltexture = new ImageView(NORMAL_SPRITE);
+        normaltexture.setFitHeight(BRICK_HEIGHT);
+        normaltexture.setFitWidth(BRICK_WIDTH);
+        normaltexture.setViewport(new Rectangle2D(
+                0,
+                (double) (rowInSpriteSheet * BRICK_HEIGHT) / 2,
+                (double) BRICK_WIDTH / 2,
+                (double) BRICK_HEIGHT / 2
+        ));
+        getViewComponent().addChild(normaltexture);
+        if (type == BrickType.POWERUP) powerUpBrickTexture();
+        else if (type == BrickType.HARD) hardBricktexture();
+        getBoundingBoxComponent().addHitBox(new HitBox(BoundingShape.box(BRICK_WIDTH, BRICK_HEIGHT)));
+//        addComponent(new CollidableComponent(true));
+    }
+
+    public void powerUpBrickTexture() {
+        Timeline timeline = new Timeline();
+        ImageView img = new ImageView(POWERUP_SPRITE);
+        img.setFitWidth(BRICK_WIDTH);
+        img.setFitHeight(BRICK_HEIGHT);
+
+        img.setViewport(new Rectangle2D(
+                0,
+                0,
+                (double) BRICK_WIDTH / 2,
+                (double) BRICK_HEIGHT / 2
+        ));
+
+        getViewComponent().addChild(img);
+        for (int frame = 0; frame < POWERUP_SPRITE_COLUMNS; frame++) {
+            int frameIndex = frame;
+
+            timeline.getKeyFrames().add(new KeyFrame(
+                    Duration.millis(130 * frame),
+                    e -> {
+                        img.setViewport(new Rectangle2D(
+                                (double) (frameIndex * BRICK_WIDTH) / 2,
+                                0,
+                                (double) BRICK_WIDTH / 2,
+                                (double) BRICK_HEIGHT / 2
+                        ));
+                    }
+            ));
+        }
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();    
+    }
+
+    public void hardBricktexture() {
+        ImageView img = new ImageView(HARD_SPRITE);
+        img.setFitWidth(BRICK_WIDTH + 6);
+        img.setFitHeight(BRICK_HEIGHT + 6);
+        img.setTranslateX(-3);
+        img.setTranslateY(-3);
+        img.setViewport(new Rectangle2D( 0, 0, (double) (BRICK_WIDTH + 12) /2, (double) (BRICK_HEIGHT + 12) /2));
+        getViewComponent().addChild(img);
+    }
+
+    public void breakAnimation() {
+        ImageView tx = new ImageView(NORMAL_SPRITE);
+        tx.setFitWidth(BRICK_WIDTH);
+        tx.setFitHeight(BRICK_HEIGHT);
+
+        tx.setViewport(new Rectangle2D(
+                0,
+                (double) (rowInSpriteSheet * BRICK_HEIGHT) / 2,
+                (double) BRICK_WIDTH / 2,
+                (double) BRICK_HEIGHT / 2
+        ));
+        Entity breaked = FXGL.entityBuilder()
+                .at(getPosition())
+                .view(tx)
+                .zIndex(100)
+                .buildAndAttach();
         Timeline timeline = new Timeline();
 
-        // Bỏ frame 0 (nguyên vẹn)
-        for (int frame = 1; frame < columnInSpriteSheet; frame++) {
+        for (int frame = 1; frame < NORMAL_SPRITE_COLUMNS; frame++) {
             int frameIndex = frame;
 
             timeline.getKeyFrames().add(new KeyFrame(
                     Duration.millis(50 * frame),
-                    e -> texture.setViewport(new Rectangle2D(
-                            frameIndex * BRICK_WIDTH / 2,
-                            rowInSpriteSheet * BRICK_HEIGHT / 2,
-                            BRICK_WIDTH / 2,
-                            BRICK_HEIGHT / 2
+                    e -> tx.setViewport(new Rectangle2D(
+                            (frameIndex * BRICK_WIDTH) / 2.0,
+                            (rowInSpriteSheet * BRICK_HEIGHT) / 2.0,
+                            BRICK_WIDTH / 2.0,
+                            BRICK_HEIGHT / 2.0
                     ))
             ));
         }
-
         timeline.setOnFinished(e -> {
-            if (onFinished != null)
-                onFinished.run();
+            FXGL.runOnce(breaked::removeFromWorld, Duration.ZERO);
         });
 
         timeline.play();

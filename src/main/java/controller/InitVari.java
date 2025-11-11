@@ -1,16 +1,20 @@
 package controller;
 
+import com.almasb.fxgl.app.scene.GameView;
+import com.almasb.fxgl.dsl.FXGL;
+import controller.brick_control.BrickVari;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.media.AudioClip;
 import javafx.scene.text.Font;
 
 import java.util.Objects;
 
 public interface InitVari {
-    /**
-     * Set up Screen size variables
-     */
+
     int SCREEN_HEIGHT = 720;
     int SCREEN_WIDTH = 960;
-    //  Define Game name: version 0.1
+
     String GAME_NAME = "Akanov-an225";
     String VERSION = "0.2";
 
@@ -20,12 +24,25 @@ public interface InitVari {
 //    int INIT_PADDLE_X = 300;
 //    int INIT_PADDLE_Y = 550;
 
-    double GRAVITY = 1;
+    ImageView BACKGROUND =
+            new ImageView( new Image(Objects.requireNonNull(InitVari.class.getResource("/assets/textures/background/background.png").toExternalForm())));
+
+    ImageView BACKGROUND2 =
+            new ImageView( new Image(Objects.requireNonNull(InitVari.class.getResource("/assets/textures/background/bg2.png").toExternalForm())));
 
     Font TITLE_FONT =
             Font.loadFont(Objects.requireNonNull(InitVari.class
-                    .getResource("/assets/fonts/font.ttf")).toExternalForm(), 60);
+                    .getResource("/assets/fonts/title.ttf")).toExternalForm(), 100);
+    Font SMALL_TITLE =
+            Font.loadFont(Objects.requireNonNull(InitVari.class
+                    .getResource("/assets/fonts/title.ttf")).toExternalForm(), 40);
     Font TEXT_FONT =
             Font.loadFont(Objects.requireNonNull(InitVari.class
                     .getResource("/assets/fonts/font.ttf")).toExternalForm(), 20);
+    Font SMALL_TEXT_FONT =
+            Font.loadFont(Objects.requireNonNull(InitVari.class
+                    .getResource("/assets/fonts/font.ttf")).toExternalForm(), 13);
+    Font SCORE_TEXT_FONT =
+            Font.loadFont(Objects.requireNonNull(InitVari.class
+                    .getResource("/assets/fonts/score_text_font.ttf")).toExternalForm(), 40);
 }
