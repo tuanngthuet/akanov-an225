@@ -23,4 +23,14 @@ public abstract class User {
             System.out.println("NO USER SESSION INFO, PLEASE CHECK AGAIN!");
         }
     }
+
+    public static void usr_logout(){
+        user_name = "";
+        current_session = "";
+        user_session.clear();
+
+        user_init_score_by_session.clear();;
+        user_level_by_sessions.clear();
+        user_lives_left_by_sessions.clear();
+    }
 }

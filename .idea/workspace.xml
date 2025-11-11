@@ -4,22 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="- Singleton Pattern &#10;- SpamBrick">
+    <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="- Add create new session function (undone): just have pending method in backend&#10;- Create logic for function is pending">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-18.48.02.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-18.48.55.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-18.50.31.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-18.51.59.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-18.55.11.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-18.55.59.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-18.56.08.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-18.56.46.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-18.57.21.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-Oct-2025-15.39.56.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ScoreControl/Score_control.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ScoreControl/Score_control.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Launch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Launch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/SQL_connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/SQL_connector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,9 +40,12 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/tuanngthuet/akanov-an225.git&quot;,
-    &quot;accountId&quot;: &quot;23eab361-f272-42d2-be5f-3ba08ba2150f&quot;
+    &quot;accountId&quot;: &quot;4721a5d6-138d-4e2a-88c1-239330ca2911&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 3
@@ -63,22 +55,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.GameRun.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "editor.preferences.completion"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GameRun.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SQL_connector.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RunManager" selected="Application.GameRun">
     <configuration name="GameRun" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.GameRun" />
       <module name="demo1" />
@@ -92,15 +91,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SQL_connector" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="model.SQL_connector" />
+      <module name="demo1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.GameRun" />
-        <item itemvalue="Application.GameRun" />
+        <item itemvalue="Application.SQL_connector" />
         <item itemvalue="Application.GameRun" />
         <item itemvalue="Application.GameRun" />
         <item itemvalue="Application.GameRun" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26830.84" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.26830.84" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -109,6 +129,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1761554734846</updated>
+      <workItem from="1762191714933" duration="13501000" />
+      <workItem from="1762502954485" duration="32598000" />
+      <workItem from="1762821923070" duration="6050000" />
     </task>
     <task id="LOCAL-00001" summary="Add basic score function (without load and fetch data):&#10;+Create new package: ScoreControl&#10;+Edit Ball class (edit update function with new input to handle score change)&#10;+Score can be init in Launch (set init value)">
       <option name="closed" value="true" />
@@ -126,13 +149,70 @@
       <option name="project" value="LOCAL" />
       <updated>1762111111687</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add score up sound:&#10;+Edit initVari: add new AudioClip&#10;+Edit Score_control">
+      <option name="closed" value="true" />
+      <created>1762115978899</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1762115978899</updated>
+    </task>
+    <task id="LOCAL-00004" summary="-Add Login screen:&#10;+ Default login account (admin/123)&#10;+ Log out function pending">
+      <option name="closed" value="true" />
+      <created>1762416752327</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1762416752327</updated>
+    </task>
+    <task id="LOCAL-00005" summary="- Runable login function:&#10;+ add 3 new demo account&#10;+ real username and password connect to database&#10;+ simple method &#10;+ haven't has sign up function">
+      <option name="closed" value="true" />
+      <created>1762515824235</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1762515824235</updated>
+    </task>
+    <task id="LOCAL-00006" summary="- Login function fix&#10;- Fetch user score function">
+      <option name="closed" value="true" />
+      <created>1762548319922</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1762548319922</updated>
+    </task>
+    <task id="LOCAL-00007" summary="- Fetch user detail in an ArrayList">
+      <option name="closed" value="true" />
+      <created>1762592444968</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1762592444968</updated>
+    </task>
+    <task id="LOCAL-00008" summary="- Add create new session function (undone): just have pending method in backend&#10;- Create logic for function is pending">
+      <option name="closed" value="true" />
+      <created>1762593649464</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1762593649464</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add basic score function (without load and fetch data):&#10;+Create new package: ScoreControl&#10;+Edit Ball class (edit update function with new input to handle score change)&#10;+Score can be init in Launch (set init value)" />
     <MESSAGE value="Edit gitignore (add .idea)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edit gitignore (add .idea)" />
+    <MESSAGE value="Add score up sound:&#10;+Edit initVari: add new AudioClip&#10;+Edit Score_control" />
+    <MESSAGE value="-Add Login screen:&#10;+ Default login account (admin/123)&#10;+ Log out function pending" />
+    <MESSAGE value="- Runable login function:&#10;+ add 3 new demo account&#10;+ real username and password connect to database&#10;+ simple method &#10;+ haven't has sign up function" />
+    <MESSAGE value="- Login function fix&#10;- Fetch user score function" />
+    <MESSAGE value="- Fetch user detail in an ArrayList" />
+    <MESSAGE value="- Add create new session function (undone): just have pending method in backend&#10;- Create logic for function is pending" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Add create new session function (undone): just have pending method in backend&#10;- Create logic for function is pending" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

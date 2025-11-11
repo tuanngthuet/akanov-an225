@@ -100,11 +100,12 @@ public class SQL_connector implements SQL_InitVari {
             } else {
                 login_flag = this.login(username, password);
                 this.user_info_query();
-
             }
         } catch (SQLException sqlException) {
             System.out.println(sqlException);
             System.out.println("INVALID LOGIN FUNCTION, PLEASE PLAY AS GUEST!");
+            user_id = "guest";
+            username = "guest";
         }
         return login_flag;
     }

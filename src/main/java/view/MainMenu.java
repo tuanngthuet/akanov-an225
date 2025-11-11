@@ -32,7 +32,6 @@ public class MainMenu extends FXGLMenu implements InitVari {
     private Text title;
     private SQL_connector connector = new SQL_connector();
     private ArrayList<Integer> session_list = new ArrayList<>();
-
     public MainMenu() {
         super(MenuType.MAIN_MENU);
 
@@ -58,28 +57,23 @@ public class MainMenu extends FXGLMenu implements InitVari {
         CurrentY += 70;
 
         getContentRoot().getChildren().addAll(title, createLoginBox());
-
     }
 
     private Node createBody() {
         Node btn1 = createActionButton("NEW GAME", this::fireNewGame);
         Node btn2 = createActionButton("LOAD", this::fireNewGame);
         Node btn3 = createActionButton("EXIT", this::fireExit);
-        Node logout_btn = createActionButton("LOG OUT", () -> {
-            getContentRoot().getChildren().clear();
 
-            getContentRoot().getChildren().addAll(title, createLoginBox());
-        });
+        Group  btn_group = new Group(btn1, btn2, btn3);
 
-        Group group = new Group(btn1, btn2, btn3);
-
-        for (Node n : group.getChildren()) {
+        for (Node n : btn_group.getChildren()) {
             Rectangle bg = (Rectangle) ((StackPane) n).getChildren().getFirst();
             n.setLayoutX((InitVari.SCREEN_WIDTH - bg.getWidth()) / 2);
             n.setLayoutY(CurrentY);
             CurrentY += (int) (1.75 * bg.getHeight());
         }
-        return group;
+
+        return btn_group;
     }
 
     private Node createLoginBox() {
@@ -188,12 +182,10 @@ public class MainMenu extends FXGLMenu implements InitVari {
                 .otherwise(Color.DARKGRAY)
         );
 
-
         btn.setAlignment(Pos.CENTER);
         btn.setOnMouseClicked(e -> action.run());
 
         return btn;
     }
-
 
 }
