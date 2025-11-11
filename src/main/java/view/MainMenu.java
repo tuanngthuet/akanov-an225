@@ -80,7 +80,7 @@ public class MainMenu extends FXGLMenu implements InitVari {
         Node logout_btn = createActionButton("LOG OUT", () -> {
             getContentRoot().getChildren().clear();
             bgImageView.setImage(bgLogin);
-            title.setText("Hello");
+            title.setText("");
             getContentRoot().getChildren().addAll(bgImageView, title, createLoginBox());
         });
 
@@ -88,7 +88,7 @@ public class MainMenu extends FXGLMenu implements InitVari {
 
         for (Node n : group.getChildren()) {
             Rectangle bg = (Rectangle) ((StackPane) n).getChildren().getFirst();
-            n.setLayoutX((InitVari.SCREEN_WIDTH - bg.getWidth()) / 2 + 190);
+            n.setLayoutX((InitVari.SCREEN_WIDTH - bg.getWidth()) / 2 + 245);
             n.setLayoutY(CurrentY);
             CurrentY += (int) (1.75 * bg.getHeight());
         }
@@ -140,7 +140,7 @@ public class MainMenu extends FXGLMenu implements InitVari {
 
         Node guest_play = createActionButton("GUEST", () -> {
             getContentRoot().getChildren().clear();
-            title.setText("Hello Guest");
+            title.setText("Hello Guest!");
             bgImageView.setImage(bgWelcome);
             getContentRoot().getChildren().addAll(bgImageView, title, createBody());
         });
@@ -156,7 +156,7 @@ public class MainMenu extends FXGLMenu implements InitVari {
             if (login_status) {
                 getContentRoot().getChildren().clear();
                 User.user_name = user;
-                title.setText("Hello " + User.user_name);
+                title.setText("Hello " + User.user_name +"!");
                 bgImageView.setImage(bgWelcome);
                 getContentRoot().getChildren().addAll(bgImageView, title, createBody());
 

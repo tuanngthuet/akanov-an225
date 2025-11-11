@@ -6,14 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="Merge code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-21.53.50.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-21.55.11.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-22.16.53.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-22.17.06.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-22.33.55.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/paddle_control/PaddleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/paddle_control/PaddleManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-22.37.50.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-22.38.11.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-22.42.16.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-22.42.58.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-22.50.22.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-22.50.52.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-22.51.11.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-22.51.37.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/textures/background/bgwelcome.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/textures/background/bgwelcome.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
