@@ -28,9 +28,8 @@ public class Brick extends Entity implements BrickVari{
         setPosition(x, y);
 
         ImageView normaltexture = new ImageView(NORMAL_SPRITE);
-        normaltexture.setScaleX(2);
-        normaltexture.setScaleY(2);
-
+        normaltexture.setFitHeight(BRICK_HEIGHT);
+        normaltexture.setFitWidth(BRICK_WIDTH);
         normaltexture.setViewport(new Rectangle2D(
                 0,
                 (double) (rowInSpriteSheet * BRICK_HEIGHT) / 2,
@@ -47,8 +46,8 @@ public class Brick extends Entity implements BrickVari{
     public void powerUpBrickTexture() {
         Timeline timeline = new Timeline();
         ImageView img = new ImageView(POWERUP_SPRITE);
-        img.setScaleY(2);
-        img.setScaleX(2);
+        img.setFitWidth(BRICK_WIDTH);
+        img.setFitHeight(BRICK_HEIGHT);
 
         img.setViewport(new Rectangle2D(
                 0,
@@ -74,13 +73,13 @@ public class Brick extends Entity implements BrickVari{
             ));
         }
         timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
+        timeline.play();    
     }
 
     public void hardBricktexture() {
         ImageView img = new ImageView(HARD_SPRITE);
-        img.setScaleY(2);
-        img.setScaleX(2);
+        img.setFitWidth(BRICK_WIDTH + 6);
+        img.setFitHeight(BRICK_HEIGHT + 6);
         img.setTranslateX(-3);
         img.setTranslateY(-3);
         img.setViewport(new Rectangle2D( 0, 0, (double) (BRICK_WIDTH + 12) /2, (double) (BRICK_HEIGHT + 12) /2));
@@ -89,8 +88,8 @@ public class Brick extends Entity implements BrickVari{
 
     public void breakAnimation() {
         ImageView tx = new ImageView(NORMAL_SPRITE);
-        tx.setScaleX(2);
-        tx.setScaleY(2);
+        tx.setFitWidth(BRICK_WIDTH);
+        tx.setFitHeight(BRICK_HEIGHT);
 
         tx.setViewport(new Rectangle2D(
                 0,

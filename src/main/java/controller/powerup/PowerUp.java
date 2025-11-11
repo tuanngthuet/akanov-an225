@@ -7,10 +7,14 @@ import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.HitBox;
+import controller.ball_control.BallVari;
+import controller.ball_control.Ball;
+import controller.ball_control.PowerUpHandler;
 import javafx.animation.FadeTransition;
 import javafx.animation.SequentialTransition;
 import javafx.geometry.Point2D;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -19,7 +23,7 @@ import view.Launch;
 
 import static com.almasb.fxgl.core.math.FXGLMath.random;
 
-public class PowerUp extends Entity implements PowerUpVari {
+public class PowerUp extends Entity implements PowerUpVari, BallVari {
     private final PowerType powerType = PowerType.values()[FXGL.random(0, PowerType.values().length - 1)];
 
     public PowerUp(Point2D position) {
@@ -34,19 +38,8 @@ public class PowerUp extends Entity implements PowerUpVari {
 
     // viết function vo
     public void activated() {
-        switch (powerType) {
-            case MULTIBALL -> {
-
-            }
-            case HARDBALL -> {
-
-            }
-            case SPEEDUPBALL -> {
-
-            }
-            case EXTRALIFE -> {
-
-            }
+        if(Launch.powerHandler != null) {
+            Launch.powerHandler.Pick_Up(powerType);
         }
     }
 

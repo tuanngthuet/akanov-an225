@@ -25,8 +25,6 @@ public interface InitVari {
 //    int INIT_PADDLE_X = 300;
 //    int INIT_PADDLE_Y = 550;
 
-    double GRAVITY = 1;
-
     GameView BACKGROUND = new GameView(
             new ImageView( new Image(Objects.requireNonNull(InitVari.class.getResource("/assets/textures/background/background.png").toExternalForm()))),
             -1000

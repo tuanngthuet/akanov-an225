@@ -1,7 +1,6 @@
 package controller.brick_control;
 
 import com.almasb.fxgl.dsl.FXGL;
-import controller.InitVari;
 import controller.powerup.PowerUp;
 import javafx.scene.image.ImageView;
 import view.Launch;
@@ -50,7 +49,7 @@ public class BrickManager implements BrickVari{
         }
     }
 
-    private BrickType getRandomBrickType() {
+    public static BrickType getRandomBrickType() {
         double r = random(0, 100);
 
         if (r < 80) return NORMAL; // 80% chance of Normal Brick
@@ -68,32 +67,15 @@ public class BrickManager implements BrickVari{
     }
 
 
-    public boolean randomBrick() {
-        return random(0, 100) < 80;
+    public static boolean isSpawn() {
+        return random(0, 100) < 95;
     }
 
     //
     //áp dụng design pattern factory đề tạo ra nhiều kiểu spam khác nhau
     //
-    public void spamBrick(int numRows) {
-        if (!brickList.isEmpty()) return;
-        int bricksPerRow = (InitVari.SCREEN_WIDTH - BRICK_GAP) / (BRICK_WIDTH + BRICK_GAP);
-
-        double totalWidth = bricksPerRow * BRICK_WIDTH + (bricksPerRow - 1) * BRICK_GAP;
-        double startX = (InitVari.SCREEN_WIDTH - totalWidth) / 1.25;
-
-        double startY = BRICK_GAP * 2;
-
-        for (int row = 0; row < numRows; row++) {
-            for (int col = 0; col < bricksPerRow; col++) {
-                double x = startX + col * (BRICK_WIDTH + BRICK_GAP); // ngang
-                double y = startY + row * (BRICK_HEIGHT + BRICK_GAP * 1.5); // dọc
-                Brick.BrickType type = getRandomBrickType();
-
-                if (randomBrick()) createBrick((int) x, (int) y, type);
-            }
-        }
+    public void spawnBrick() {
+        BrickSpawner b = BrickSpawnerFactory.createSpawner();
+        b.spawn(brickList);
     }
-
 }
-

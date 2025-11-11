@@ -4,25 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="- Singleton Pattern &#10;- SpamBrick">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
+    <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickSpawner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickSpawnerFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/CircleLayout.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/RectangleLayout.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/TriangleLayout.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.04.04.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.05.05.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.06.12.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.08.29.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.13.21.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.18.07.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.20.46.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.24.25.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.24.54.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.36.31.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-13.02.12.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-13.03.13.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-13.04.45.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-13.04.51.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-13.06.32.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-13.07.24.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-13.07.47.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-13.10.42.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-13.11.51.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-13.13.03.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/LifeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/LifeManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/PowerUpHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/PowerUpHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/Brick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/Brick.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/powerup/PowerUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/powerup/PowerUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/powerup/PowerUpVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/powerup/PowerUpVari.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/GeneralInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GeneralInit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickVari.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/Launch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Launch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" afterDir="false" />
     </list>
@@ -34,8 +39,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -73,7 +78,6 @@
     "Application.GameRun.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "tuan",
     "kotlin-language-version-configured": "true",
     "node.js.selected.package.tslint": "(autodetect)",
