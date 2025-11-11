@@ -44,7 +44,7 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
         getViewComponent().addChild(imageView);
 
         this.addComponent(new BoundingBoxComponent());
-        getBoundingBoxComponent().addHitBox(new HitBox(BoundingShape.box(BALL_HITBOX, BALL_HITBOX)));
+        getBoundingBoxComponent().addHitBox(new HitBox(BoundingShape.circle(BALL_RADIUS)));
         this.addComponent(new CollidableComponent(true));
     }
 
@@ -94,7 +94,7 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
     }
 
     public void adjustDirectionAfterPaddleHit(Entity paddle) {
-        double ballCenterX = getX() + BALL_RADIUS / 2;
+        double ballCenterX = getX() + BALL_RADIUS;
         double paddleCenterX = paddle.getX() + (double) BASIC_PAD_WIDTH / 2;
 
         double gap = (ballCenterX - paddleCenterX) / (paddle.getWidth() / 2);
@@ -143,12 +143,12 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
         }
 
         if (getY() > SCREEN_HEIGHT) {
-            setPosition(paddle.getX() + (float) BASIC_PAD_WIDTH / 2, paddle.getY() - BALL_RADIUS * 2);
-            if(lifeManager != null) {
-                lifeManager.loseHeart();
-            }
+            BallManager.handleBall_OutScreen(this,lifeManager,paddle);
             directionY = 1;
         }
+
+        double angle = Math.toDegrees(Math.atan2(directionY, directionX));
+        imageView.setRotate(angle);
     }
 
     public void IncreaseBallSpeed() {

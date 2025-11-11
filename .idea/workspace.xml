@@ -5,34 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="- Singleton Pattern &#10;- SpamBrick">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/sound_control/AudioManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/sound_control/MusicManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/sound_control/SoundEffectManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/sound_control/SoundVari.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-23.04.05.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-23.17.13.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-23.19.12.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-23.23.20.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-23.25.33.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-23.28.09.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-23.28.26.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-23.29.00.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-23.29.14.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-23.29.36.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ScoreControl/Score_control.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ScoreControl/Score_control.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-20.12.19.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-20.18.18.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-20.20.27.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-20.23.39.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-20.25.58.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-20.31.53.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-20.35.18.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-20.35.26.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-20.35.48.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-20.36.12.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallVari.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/PowerUpHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/PowerUpHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/powerup/PowerUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/powerup/PowerUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/Launch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Launch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/PauseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/PauseMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/sounds/scoreup.mp3" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

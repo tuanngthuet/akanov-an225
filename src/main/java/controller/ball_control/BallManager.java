@@ -12,6 +12,11 @@ import java.util.List;
 
 public class BallManager extends Entity implements InitVari, PaddleVari, BallVari {
     private List<Ball> balls = new ArrayList<>();
+    private static BallManager instance;
+
+    public BallManager() {
+        instance = this;
+    }
 
     public Ball spawn_InitBall() {
         Ball ball = new Ball(BallVari.DEFAULT_DirectionX, BallVari.DEFAULT_DirectionY, Ball.BallType.NORMAL);
@@ -23,6 +28,10 @@ public class BallManager extends Entity implements InitVari, PaddleVari, BallVar
 
     public List<Ball> getBalls() {
         return balls;
+    }
+
+    public static BallManager getInstance() {
+        return instance;
     }
 
     public void spawnExtraBall() {
@@ -61,6 +70,20 @@ public class BallManager extends Entity implements InitVari, PaddleVari, BallVar
         double len = Math.sqrt(ball.getDirectionX() * ball.getDirectionX() + ball.getDirectionY() * ball.getDirectionY());
         if (len != 0) {
             ball.setDirection(ball.getDirectionX() / len, ball.getDirectionY() / len);
+        }
+    }
+
+    public static void handleBall_OutScreen(Ball ball, LifeManager lifeManager, Entity paddle) {
+        BallManager manager = getInstance();
+
+        if(manager == null) return;
+        manager.getBalls().remove(ball);
+        if(manager.getBalls().isEmpty()) {
+            lifeManager.loseHeart();
+
+            Ball newBall = manager.spawn_InitBall();
+            newBall.setPosition(paddle.getX() + BASIC_PAD_WIDTH / 2, paddle.getY() - BALL_RADIUS * 2);
+
         }
     }
 }

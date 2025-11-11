@@ -10,8 +10,6 @@ import static controller.InitVari.SCREEN_HEIGHT;
 public interface BallVari {
     double BALL_RADIUS = 12;
     double MAX_ANGLE = 60;
-    double BALL_HITBOX = 36;
-
     double DEFAULT_DirectionX = 1;
     double DEFAULT_DirectionY = -1;
     double SPAWN_BALL_GAP = 10;

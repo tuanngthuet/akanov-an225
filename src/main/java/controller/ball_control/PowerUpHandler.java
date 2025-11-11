@@ -4,6 +4,9 @@ import controller.powerup.PowerUp;
 import controller.paddle_control.*;
 import view.Launch;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PowerUpHandler implements BallVari {
 
     private BallManager ballManager;
@@ -19,7 +22,9 @@ public class PowerUpHandler implements BallVari {
 
     public void Pick_Up(PowerUp.PowerType type) {
         switch (type) {
-            case MULTIBALL -> ballManager.spawnExtraBall();
+            case MULTIBALL -> {
+                ballManager.spawnExtraBall();
+            }
             case SPEEDUPBALL -> {
                 for (Ball ball : ballManager.getBalls()) {
                     if(prev_speed != POWER_UP_SPEED) {
