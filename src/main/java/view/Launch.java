@@ -2,12 +2,15 @@ package view;
 
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
+import com.almasb.fxgl.app.scene.GameView;
 import com.almasb.fxgl.dsl.FXGL;
 import controller.InitVari;
 import controller.ScoreControl.Score_control;
 import controller.ball_control.*;
 import controller.brick_control.BrickManager;
 import controller.paddle_control.*;
+import controller.sound_control.AudioManager;
+import controller.sound_control.SoundVari;
 import controller.user.User;
 import javafx.scene.input.KeyCode;
 
@@ -24,7 +27,6 @@ public class Launch extends GameApplication implements InitVari {
 
     public static Ball ball;
     public static Paddle paddle;
-    public BrickManager bricks;
     public LifeManager lifeManager;
     public static PowerUpHandler powerHandler;
     public BallManager ballManager;
@@ -38,8 +40,10 @@ public class Launch extends GameApplication implements InitVari {
 
     @Override
     protected void initGame() {
+        getGameScene().addGameView(new GameView(BACKGROUND, -1000));
 
-        getGameScene().addGameView(BACKGROUND);
+        AudioManager.MUSIC.setVolume(SoundVari.DEFAULT_VOLUME);
+        AudioManager.MUSIC.playSound(SoundVari.THEME_SOUND,true);
 
         lifeManager = new LifeManager();
         lifeManager.init();
@@ -57,26 +61,22 @@ public class Launch extends GameApplication implements InitVari {
         ball = ballManager.spawn_InitBall();
         ball.startFalling();
 
-        bricks = BrickManager.getInstance();
-        bricks.spawnBrick();
+        BrickManager.getInstance().getBrickList().clear();
+        BrickManager.getInstance().spawnBrick(scoreControl);
     }
 
     @Override
     protected void onUpdate(double tpf) {
         for (Ball b : ballManager.getBalls()) {
-            b.update(tpf, paddle, bricks, lifeManager, scoreControl);
+            b.update(tpf, paddle, BrickManager.getInstance(), lifeManager, scoreControl);
             b.IncreaseBallSpeed();
-
         }
         paddle.update();
-
     }
 
     @Override
     protected void initInput() {
         onKey(KeyCode.RIGHT, () -> paddle.moveRight());
         onKey(KeyCode.LEFT, () -> paddle.moveLeft());
-        onKey(KeyCode.D, () -> bricks.clearAll());
-        onKey(KeyCode.R, () -> bricks.spawnBrick());
     }
 }

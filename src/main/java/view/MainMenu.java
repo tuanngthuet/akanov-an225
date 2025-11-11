@@ -141,8 +141,7 @@ public class MainMenu extends FXGLMenu implements InitVari {
             String user = usernameField.getText();
             String pass = passwordField.getText();
 
-            connector = new SQL_connector();
-
+            boolean login_status = false;
             login_status = connector.authenticator(user, pass);
 
             if (login_status) {
