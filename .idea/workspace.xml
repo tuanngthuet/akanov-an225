@@ -4,32 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickSpawner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickSpawnerFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/CircleLayout.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/RectangleLayout.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/TriangleLayout.java" afterDir="false" />
+    <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="- Singleton Pattern &#10;- SpamBrick">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-13.02.12.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-13.03.13.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-13.04.45.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-13.04.51.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-13.06.32.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-13.07.24.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-13.07.47.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-13.10.42.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-13.11.51.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-31-Oct-2025-13.13.03.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/LifeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/LifeManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/PowerUpHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/PowerUpHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/Brick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/Brick.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickVari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-18.48.02.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-18.48.55.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-18.50.31.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-18.51.59.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-18.55.11.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-18.55.59.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-18.56.08.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-18.56.46.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-22-Oct-2025-18.57.21.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-25-Oct-2025-15.39.56.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ScoreControl/Score_control.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ScoreControl/Score_control.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/Launch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Launch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,15 +29,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="tuan" />
+        <entry key="$PROJECT_DIR$" value="tuyen" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -78,9 +68,13 @@
     "Application.GameRun.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "tuan",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "editor.preferences.completion"
   }
 }]]></component>
@@ -103,6 +97,8 @@
         <item itemvalue="Application.GameRun" />
         <item itemvalue="Application.GameRun" />
         <item itemvalue="Application.GameRun" />
+        <item itemvalue="Application.GameRun" />
+        <item itemvalue="Application.GameRun" />
       </list>
     </recent_temporary>
   </component>
@@ -114,7 +110,29 @@
       <option name="presentableId" value="Default" />
       <updated>1761554734846</updated>
     </task>
+    <task id="LOCAL-00001" summary="Add basic score function (without load and fetch data):&#10;+Create new package: ScoreControl&#10;+Edit Ball class (edit update function with new input to handle score change)&#10;+Score can be init in Launch (set init value)">
+      <option name="closed" value="true" />
+      <created>1762111064693</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1762111064693</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Edit gitignore (add .idea)">
+      <option name="closed" value="true" />
+      <created>1762111111687</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1762111111687</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add basic score function (without load and fetch data):&#10;+Create new package: ScoreControl&#10;+Edit Ball class (edit update function with new input to handle score change)&#10;+Score can be init in Launch (set init value)" />
+    <MESSAGE value="Edit gitignore (add .idea)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edit gitignore (add .idea)" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

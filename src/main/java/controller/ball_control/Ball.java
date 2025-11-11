@@ -4,6 +4,7 @@ import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
 import controller.InitVari;
+import controller.ScoreControl.Score_control;
 import controller.brick_control.Brick;
 import controller.brick_control.BrickManager;
 import controller.brick_control.BrickVari;
@@ -12,13 +13,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import com.almasb.fxgl.entity.components.BoundingBoxComponent;
 import com.almasb.fxgl.entity.components.CollidableComponent;
+import view.Launch;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Ball extends Entity implements InitVari, BrickVari, BallVari, PaddleVari{
     public enum BallType {
-        NORMAL, HARDBALL, SPEEDUPBALL, MULTIBALL;
+        NORMAL, HARDBALL, SPEEDUPBALL, MULTIBALL, EXTRALIFE;
     }
 
     private boolean isHardBall = false;
@@ -63,9 +65,6 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
     public double getDirectionY() {
         return directionY;
     }
-    public double getSpeed() {
-        return speed;
-    }
 
     public void setDirection(double dirX, double dirY) {
         double len = Math.sqrt(dirX * dirX + dirY * dirY);
@@ -103,7 +102,7 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
         directionY = -Math.cos(bounceAngle);
     }
 
-    public void update(double tpf, Entity paddle, BrickManager bricks, LifeManager lifeManager) {
+    public void update(double tpf, Entity paddle, BrickManager bricks, LifeManager lifeManager, Score_control current_score) {
         double dx = directionX * speed * tpf * ADJUST_BALL_SPEED;
         double dy = directionY * speed * tpf * ADJUST_BALL_SPEED;
         this.translate(dx, dy);
@@ -128,6 +127,10 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
                 toRemove.add(brick);
                 if(!isHardBall) {
                     adjustDirectionAfterBrickHit(brick);
+                    current_score.update_score(1);
+                }
+                else {
+                    current_score.update_score(5);
                 }
             }
         }
@@ -137,7 +140,10 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
         }
 
         if (getY() > SCREEN_HEIGHT) {
-            BallManager.handleBall_OutScreen(this,lifeManager,paddle);
+            setPosition(paddle.getX() + BASIC_PAD_WIDTH / 2, paddle.getY() - BALL_RADIUS * 2);
+            if(lifeManager != null) {
+                lifeManager.loseHeart();
+            }
             directionY = 1;
         }
     }
