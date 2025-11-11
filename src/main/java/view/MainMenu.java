@@ -239,6 +239,7 @@ public class MainMenu extends FXGLMenu implements InitVari {
             return;
         }
 
+        User.sortSessionsByScore();
         VBox sessionBox = new VBox(10);
         sessionBox.setAlignment(Pos.CENTER);
 
@@ -250,7 +251,7 @@ public class MainMenu extends FXGLMenu implements InitVari {
             int level = User.user_level_by_sessions.get(index);
             String lives = User.user_lives_left_by_sessions.get(index);
 
-            String text = String.format("Session %s | Score: %d | Level: %d | Lives: %s",
+            String text = String.format("Session %s \n Score: %d | Level: %d | Lives: %s",
                     sessionId, score, level, lives);
 
             Node btn = createActionButton(text, () -> {
@@ -262,7 +263,7 @@ public class MainMenu extends FXGLMenu implements InitVari {
                 } else {
                     FXGL.getDialogService().showMessageBox("This session has no lives left!");
                 }
-            }, 500, 50);
+            }, 570, 50);
 
             sessionBox.getChildren().add(btn);
         }

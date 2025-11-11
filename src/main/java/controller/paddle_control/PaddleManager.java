@@ -19,7 +19,6 @@ public class PaddleManager implements PaddleVari {
     public static void applyPaddlePowerUp(PaddleVari.PaddleType powerUpType, int duration) {
         if (currentPaddle == null) return;
 
-        // Áp dụng hiệu ứng power-up
         switch (powerUpType) {
             case BUFF -> {
                 currentPaddle.setType(PaddleType.BUFF);
