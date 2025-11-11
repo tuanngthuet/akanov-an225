@@ -2,6 +2,7 @@ package view;
 
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
+import com.almasb.fxgl.dsl.FXGL;
 import controller.InitVari;
 import controller.user.User;
 import javafx.geometry.Pos;
@@ -20,7 +21,8 @@ import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import model.SQL_connector;
-
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 
@@ -31,9 +33,21 @@ public class MainMenu extends FXGLMenu implements InitVari {
     private Text title;
     private SQL_connector connector = new SQL_connector();
     private ArrayList<Integer> session_list = new ArrayList<>();
+    private ImageView bgImageView;
+    private Image bgLogin;
+    private Image bgWelcome;
 
     public MainMenu() {
         super(MenuType.MAIN_MENU);
+
+        bgLogin = ((ImageView) LOGIN_BACKGROUND.getNode()).getImage();
+        bgWelcome = ((ImageView) WELCOME_BACKGROUND.getNode()).getImage();
+
+        bgImageView = new ImageView(bgLogin);
+        bgImageView.setFitWidth(FXGL.getAppWidth());
+        bgImageView.setFitHeight(FXGL.getAppHeight());
+        bgImageView.setPreserveRatio(false);
+        bgImageView.setSmooth(true);
 
         title = new Text(getSettings().getTitle());
         title.setFont(TITLE_FONT);
@@ -54,26 +68,26 @@ public class MainMenu extends FXGLMenu implements InitVari {
         title.setLayoutX((getAppWidth() - title.getLayoutBounds().getWidth()) / 2);
         title.setLayoutY(200);
 
-        getContentRoot().getChildren().addAll(title, createLoginBox());
+        getContentRoot().getChildren().addAll(bgImageView, title, createLoginBox());
     }
-
 
     private Node createBody() {
         int CurrentY = 270;
         Node btn1 = createActionButton("NEW GAME", this::fireNewGame);
-        Node btn2 = createActionButton("LOAD", this::fireNewGame);
-        Node btn3 = createActionButton("EXIT", this::fireExit);
+        Node btn2 = createActionButton("RELOAD FROM LASTEST SESSION", this::loadLatestSession);
+        Node btn3 = createActionButton("VIEW SESSION", this::showSessionList);
+        Node btn4 = createActionButton("EXIT", this::fireExit);
         Node logout_btn = createActionButton("LOG OUT", () -> {
             getContentRoot().getChildren().clear();
-
-            getContentRoot().getChildren().addAll(title, createLoginBox());
+            bgImageView.setImage(bgLogin);
+            getContentRoot().getChildren().addAll(bgImageView, title, createLoginBox());
         });
 
-        Group group = new Group(btn1, btn2, btn3, logout_btn);
+        Group group = new Group(btn1, btn2, btn3, btn4, logout_btn);
 
         for (Node n : group.getChildren()) {
             Rectangle bg = (Rectangle) ((StackPane) n).getChildren().getFirst();
-            n.setLayoutX((InitVari.SCREEN_WIDTH - bg.getWidth()) / 2);
+            n.setLayoutX((InitVari.SCREEN_WIDTH - bg.getWidth()) / 2 + 190);
             n.setLayoutY(CurrentY);
             CurrentY += (int) (1.75 * bg.getHeight());
         }
@@ -126,7 +140,8 @@ public class MainMenu extends FXGLMenu implements InitVari {
         Node guest_play = createActionButton("GUEST", () -> {
             getContentRoot().getChildren().clear();
 
-            getContentRoot().getChildren().addAll(title, createBody());
+            bgImageView.setImage(bgWelcome);
+            getContentRoot().getChildren().addAll(bgImageView, title, createBody());
         });
         guest_play.setTranslateX(SCREEN_WIDTH / 2 - 250 / 2);
         guest_play.setTranslateY(SCREEN_HEIGHT / 2);
@@ -135,11 +150,13 @@ public class MainMenu extends FXGLMenu implements InitVari {
             String user = usernameField.getText();
             String pass = passwordField.getText();
 
-            boolean login_status = false;
-            login_status = connector.authenticator(user, pass);
+            boolean login_status = connector.authenticator(user, pass);
 
             if (login_status) {
                 getContentRoot().getChildren().clear();
+
+                bgImageView.setImage(bgWelcome);
+                getContentRoot().getChildren().addAll(bgImageView, title, createBody());
 
                 User.user_name = connector.getUsername();
                 User.user_session = connector.getUserSession();
@@ -148,10 +165,7 @@ public class MainMenu extends FXGLMenu implements InitVari {
                 User.user_lives_left_by_sessions = connector.getUserLivesLeftBySessions();
 
                 User.printOutUserInfo();
-
                 connector.closeSQLConnection();
-
-                getContentRoot().getChildren().addAll(title, createBody());
             } else {
                 if (!getContentRoot().getChildren().contains(wrong_pass)) {
                     getContentRoot().getChildren().add(wrong_pass);
@@ -161,7 +175,6 @@ public class MainMenu extends FXGLMenu implements InitVari {
 
         loginBtn.setTranslateX(SCREEN_WIDTH / 2 - 250 / 2);
         loginBtn.setTranslateY(SCREEN_HEIGHT / 2);
-
 
         VBox vbox = new VBox(10, usernameField, passwordField, loginBtn, guest_play);
         vbox.setAlignment(Pos.CENTER);
@@ -190,6 +203,64 @@ public class MainMenu extends FXGLMenu implements InitVari {
         btn.setOnMouseClicked(e -> action.run());
 
         return btn;
+    }
+
+    private void loadLatestSession() {
+        if (User.user_session.isEmpty()) {
+            FXGL.getDialogService().showMessageBox("No session found!");
+            return;
+        }
+
+        User.selectLatestSession();
+        int lastIndex = User.user_session.size() - 1;
+        String livesLeft = User.user_lives_left_by_sessions.get(lastIndex);
+
+        if (!User.canContinueSession(livesLeft)) {
+            FXGL.getDialogService().showMessageBox("The latest session has no remaining lives!");
+            return;
+        }
+
+        FXGL.getDialogService().showMessageBox("Loading session: " + User.current_session, () -> {
+            fireNewGame();
+        });
+    }
+
+    private void showSessionList() {
+        if (User.user_session.isEmpty()) {
+            FXGL.getDialogService().showMessageBox("No saved sessions available!");
+            return;
+        }
+
+        VBox sessionBox = new VBox(10);
+        sessionBox.setAlignment(Pos.CENTER);
+
+        for (int i = 0; i < User.user_session.size(); i++) {
+            final int index = i;
+
+            String sessionId = User.user_session.get(index);
+            int score = User.user_init_score_by_session.get(index);
+            int level = User.user_level_by_sessions.get(index);
+            String lives = User.user_lives_left_by_sessions.get(index);
+
+            String text = String.format("Session %s | Score: %d | Level: %d | Lives: %s",
+                    sessionId, score, level, lives);
+
+            Node btn = createActionButton(text, () -> {
+                if (User.canContinueSession(lives)) {
+                    User.selectSession(index);
+                    FXGL.getDialogService().showMessageBox("Loading session: " + sessionId, () -> {
+                        fireNewGame();
+                    });
+                } else {
+                    FXGL.getDialogService().showMessageBox("This session has no lives left!");
+                }
+            });
+
+            sessionBox.getChildren().add(btn);
+        }
+
+
+        FXGL.getDialogService().showBox("Select Session", sessionBox);
     }
 
 

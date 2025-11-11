@@ -29,6 +29,16 @@ public interface InitVari {
             -1000
     );
 
+    GameView LOGIN_BACKGROUND = new GameView(
+            new ImageView( new Image(Objects.requireNonNull(InitVari.class.getResource("/assets/textures/background/bglogin.png")).toExternalForm())), // Đã xóa 1 dấu ')' thừa
+            -1000
+    );
+
+    GameView WELCOME_BACKGROUND = new GameView(
+            new ImageView( new Image(Objects.requireNonNull(InitVari.class.getResource("/assets/textures/background/bgwelcome.png")).toExternalForm())), // Đã xóa 1 dấu ')' thừa
+            -1000
+    );
+
     Font TITLE_FONT =
             Font.loadFont(Objects.requireNonNull(InitVari.class
                     .getResource("/assets/fonts/font.ttf")).toExternalForm(), 60);
