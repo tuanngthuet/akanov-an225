@@ -81,7 +81,7 @@ public class PauseMenu extends FXGLMenu implements InitVari {
         bgBlur.setLayoutX(0);
         bgBlur.setLayoutY(0);
 
-        getContentRoot().getChildren().addFirst(bgBlur); // luôn dưới menu
+        getContentRoot().getChildren().addFirst(bgBlur);
 
         animIndex = 0;
 

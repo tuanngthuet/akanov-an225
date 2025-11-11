@@ -24,7 +24,6 @@ public class Launch extends GameApplication implements InitVari {
 
     public static Ball ball;
     public static Paddle paddle;
-    public BrickManager bricks;
     public LifeManager lifeManager;
     public static PowerUpHandler powerHandler;
     public BallManager ballManager;
@@ -38,7 +37,6 @@ public class Launch extends GameApplication implements InitVari {
 
     @Override
     protected void initGame() {
-
         getGameScene().addGameView(BACKGROUND);
 
         lifeManager = new LifeManager();
@@ -57,26 +55,22 @@ public class Launch extends GameApplication implements InitVari {
         ball = ballManager.spawn_InitBall();
         ball.startFalling();
 
-        bricks = BrickManager.getInstance();
-        bricks.spawnBrick();
+        BrickManager.getInstance().getBrickList().clear();
+        BrickManager.getInstance().spawnBrick(scoreControl);
     }
 
     @Override
     protected void onUpdate(double tpf) {
         for (Ball b : ballManager.getBalls()) {
-            b.update(tpf, paddle, bricks, lifeManager, scoreControl);
+            b.update(tpf, paddle, BrickManager.getInstance(), lifeManager, scoreControl);
             b.IncreaseBallSpeed();
-
         }
         paddle.update();
-
     }
 
     @Override
     protected void initInput() {
         onKey(KeyCode.RIGHT, () -> paddle.moveRight());
         onKey(KeyCode.LEFT, () -> paddle.moveLeft());
-        onKey(KeyCode.D, () -> bricks.clearAll());
-        onKey(KeyCode.R, () -> bricks.spawnBrick());
     }
 }
