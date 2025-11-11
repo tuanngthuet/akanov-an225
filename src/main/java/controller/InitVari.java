@@ -5,17 +5,16 @@ import com.almasb.fxgl.dsl.FXGL;
 import controller.brick_control.BrickVari;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.AudioClip;
 import javafx.scene.text.Font;
 
 import java.util.Objects;
 
 public interface InitVari {
-    /**
-     * Set up Screen size variables
-     */
+
     int SCREEN_HEIGHT = 720;
     int SCREEN_WIDTH = 960;
-    //  Define Game name: version 0.1
+
     String GAME_NAME = "Akanov-an225";
     String VERSION = "0.2";
 
@@ -36,4 +35,11 @@ public interface InitVari {
     Font TEXT_FONT =
             Font.loadFont(Objects.requireNonNull(InitVari.class
                     .getResource("/assets/fonts/font.ttf")).toExternalForm(), 20);
+    Font SCORE_TEXT_FONT =
+            Font.loadFont(Objects.requireNonNull(InitVari.class
+                    .getResource("/assets/fonts/score_text_font.ttf")).toExternalForm(), 40);
+    AudioClip one_score_up_sound = new AudioClip(
+            Objects.requireNonNull(InitVari.class.getResource("/assets/sounds/one_score_up.wav"))
+                    .toExternalForm()
+    );
 }

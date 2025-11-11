@@ -74,6 +74,9 @@ public class PowerUp extends Entity implements PowerUpVari, BallVari {
                     case HARDBALL -> "SUPER BALL !!!";
                     case SPEEDUPBALL -> "SPEED UP !!!";
                     case EXTRALIFE -> "+1 LIFE";
+                    case BUFF -> "BUFF";
+                    case NERF -> "NERF";
+                    case FROZEN -> "FROZEN";
                 }
         );
         text.setFill(Color.web("#DAA520")); // Goldenrod

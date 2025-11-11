@@ -1,6 +1,8 @@
 package controller.brick_control;
 
 import com.almasb.fxgl.dsl.FXGL;
+import controller.InitVari;
+import controller.ball_control.PowerUpHandler;
 import controller.powerup.PowerUp;
 import javafx.scene.image.ImageView;
 import view.Launch;
