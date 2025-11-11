@@ -2,10 +2,13 @@ package view;
 
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
+import com.almasb.fxgl.dsl.FXGL;
 import controller.InitVari;
+import controller.ScoreControl.Score_control;
 import controller.ball_control.*;
 import controller.brick_control.BrickManager;
 import controller.paddle_control.*;
+import controller.user.User;
 import javafx.scene.input.KeyCode;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
@@ -25,6 +28,8 @@ public class Launch extends GameApplication implements InitVari {
     public LifeManager lifeManager;
     public static PowerUpHandler powerHandler;
     public BallManager ballManager;
+    public Score_control scoreControl;
+
 
     @Override
     public void initSettings(GameSettings settings) {
@@ -33,10 +38,14 @@ public class Launch extends GameApplication implements InitVari {
 
     @Override
     protected void initGame() {
+
         getGameScene().addGameView(BACKGROUND);
 
         lifeManager = new LifeManager();
         lifeManager.init();
+
+        scoreControl = new Score_control(0);
+        scoreControl.initScore();
 
         ballManager = new BallManager();
 
@@ -49,16 +58,18 @@ public class Launch extends GameApplication implements InitVari {
         ball.startFalling();
 
         bricks = BrickManager.getInstance();
-        bricks.spamBrick(4);
+        bricks.spawnBrick();
     }
 
     @Override
     protected void onUpdate(double tpf) {
         for (Ball b : ballManager.getBalls()) {
-            b.update(tpf, paddle, bricks, lifeManager);
+            b.update(tpf, paddle, bricks, lifeManager, scoreControl);
             b.IncreaseBallSpeed();
+
         }
         paddle.update();
+
     }
 
     @Override
@@ -66,6 +77,6 @@ public class Launch extends GameApplication implements InitVari {
         onKey(KeyCode.RIGHT, () -> paddle.moveRight());
         onKey(KeyCode.LEFT, () -> paddle.moveLeft());
         onKey(KeyCode.D, () -> bricks.clearAll());
-        onKey(KeyCode.R, () -> bricks.spamBrick(4));
+        onKey(KeyCode.R, () -> bricks.spawnBrick());
     }
 }

@@ -5,8 +5,7 @@ import javafx.scene.image.Image;
 
 import java.util.Objects;
 
-import static controller.InitVari.SCREEN_HEIGHT;
-import static controller.InitVari.SCREEN_WIDTH;
+import static controller.InitVari.*;
 
 public interface BallVari {
     double BALL_RADIUS = 12;

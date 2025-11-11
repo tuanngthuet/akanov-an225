@@ -4,26 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/LifeManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/PowerUpHandler.java" afterDir="false" />
+    <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="Merge code">
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/GameOver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-18.43.24.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-23.12.22.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-23.16.50.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-23.18.59.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-23.35.22.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-29-Oct-2025-23.35.24.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallVari.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/paddle_control/PaddleVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/paddle_control/PaddleVari.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/powerup/PowerUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/powerup/PowerUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/powerup/PowerUpVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/powerup/PowerUpVari.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Launch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Launch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameOverMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/GeneralInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GeneralInit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +58,7 @@
     &quot;Application.GameRun.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;qanh&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;tuan&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;
@@ -81,7 +67,7 @@
   <component name="RunManager">
     <configuration name="GameRun" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.GameRun" />
-      <module name="demo" />
+      <module name="demo1" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="view.*" />
@@ -108,7 +94,20 @@
       <option name="presentableId" value="Default" />
       <updated>1761554734846</updated>
     </task>
+    <task id="LOCAL-00001" summary="Merge code">
+      <option name="closed" value="true" />
+      <created>1762826790763</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1762826790763</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Merge code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge code" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
