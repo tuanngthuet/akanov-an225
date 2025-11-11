@@ -330,7 +330,7 @@ public class MainMenu extends FXGLMenu implements InitVari {
 
     private Node bgafter() {
         title.setFont(SMALL_TITLE);
-        title.setLayoutX(230);
+        title.setLayoutX(185);
         title.setLayoutY(110);
         try {
             ImageView bg = new ImageView(
