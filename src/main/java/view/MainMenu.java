@@ -2,6 +2,7 @@ package view;
 
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
+import com.almasb.fxgl.dsl.FXGL;
 import controller.InitVari;
 import controller.sound_control.AudioManager;
 import controller.user.User;
@@ -37,7 +38,6 @@ import static javafx.beans.binding.Bindings.when;
 public class MainMenu extends FXGLMenu implements InitVari {
     private Text title;
     private SQL_connector connector = new SQL_connector();
-    private ArrayList<Integer> session_list = new ArrayList<>();
 
     public MainMenu() {
         super(MenuType.MAIN_MENU);
@@ -59,39 +59,84 @@ public class MainMenu extends FXGLMenu implements InitVari {
         ds.setColor(Color.color(0, 0, 0, 0.7));
         title.setEffect(ds);
 
-        title.setLayoutX((getAppWidth() - title.getLayoutBounds().getWidth()) / 2);
-        title.setLayoutY(230);
-
         getContentRoot().getChildren().addFirst(background());
         getContentRoot().getChildren().addAll(title, createLoginBox());
     }
 
-
     private Node createBody() {
-        int CurrentY = 300;
+        int CurrentY = 240;
         Node btn1 = createActionButton("NEW GAME", this::fireNewGame);
-        Node btn2 = createActionButton("EXIT", this::fireExit);
+        Node btn2 = createActionButton("LOAD LASTEST SESSION", this::loadLatestSession);
+        Node btn3 = createActionButton("VIEW SESSION", this::showSessionList);
+        Node btn4 = createActionButton("EXIT", this::fireExit);
         Node logout_btn = createActionButton("LOG OUT", () -> {
             getContentRoot().getChildren().clear();
-            getContentRoot().getChildren().addAll(background());
-            getContentRoot().getChildren().addAll(title, createLoginBox());
-        });
-        Node volume_btn = createActionButton("SETTINGS", () -> {
-            getContentRoot().getChildren().clear();
-            getContentRoot().getChildren().addAll(background());
-            getContentRoot().getChildren().addAll(title, createVolumeBox());
+            title.setText(getSettings().getTitle());
+            getContentRoot().getChildren().addAll(background(), title, createLoginBox());
         });
 
-
-        Group group = new Group(btn1, volume_btn, btn2, logout_btn);
+        Group group = new Group(btn1, btn2, btn3, btn4, logout_btn);
 
         for (Node n : group.getChildren()) {
             Rectangle bg = (Rectangle) ((StackPane) n).getChildren().getFirst();
-            n.setLayoutX((InitVari.SCREEN_WIDTH - bg.getWidth()) / 2);
+            n.setLayoutX((InitVari.SCREEN_WIDTH - bg.getWidth()) / 2 + 175);
             n.setLayoutY(CurrentY);
-            CurrentY += (int) (1.5 * bg.getHeight());
+            CurrentY += (int) (1.75 * bg.getHeight());
         }
         return group;
+    }
+
+    private void showSessionList() {
+        if (User.user_session.isEmpty()) {
+            FXGL.getDialogService().showMessageBox("No saved sessions available!");
+            return;
+        }
+
+        User.sortSessionsByScore();
+        VBox sessionBox = new VBox(10);
+        sessionBox.setAlignment(Pos.CENTER);
+
+        for (int i = 0; i < User.user_session.size(); i++) {
+            final int index = i;
+
+            String sessionId = User.user_session.get(index);
+            int score = User.user_init_score_by_session.get(index);
+            int level = User.user_level_by_sessions.get(index);
+            String lives = User.user_lives_left_by_sessions.get(index);
+
+            String text = String.format("Session %s \n Score: %d | Level: %d | Lives: %s",
+                    sessionId, score, level, lives);
+
+            Node btn = createActionButton(text, () -> {
+                if (User.canContinueSession(lives)) {
+                    User.selectSession(index);
+                    FXGL.getDialogService().showMessageBox("Loading session: " + sessionId, this::fireNewGame);
+                } else {
+                    FXGL.getDialogService().showMessageBox("This session has no lives left!");
+                }
+            }, 570, 50);
+
+            sessionBox.getChildren().add(btn);
+        }
+        FXGL.getDialogService().showBox("Select Session", sessionBox);
+    }
+
+    private void loadLatestSession() {
+        if (User.user_session.isEmpty()) {
+            FXGL.getDialogService().showMessageBox("No session found!");
+            return;
+        }
+
+        User.selectLatestSession();
+        int lastIndex = User.user_session.size() - 1;
+        String livesLeft = User.user_lives_left_by_sessions.get(lastIndex);
+
+        if (!User.canContinueSession(livesLeft)) {
+            FXGL.getDialogService().showMessageBox("The latest session has no remaining lives!");
+            return;
+        }
+
+        FXGL.getDialogService().showMessageBox("Loading session: " + User.current_session, this::fireNewGame);
     }
 
     private Node createLoginBox() {
@@ -141,7 +186,8 @@ public class MainMenu extends FXGLMenu implements InitVari {
 
         Node guest_play = createActionButton("GUEST", () -> {
             getContentRoot().getChildren().clear();
-            getContentRoot().getChildren().addAll(background());
+            title.setText("Hello Guest!");
+            getContentRoot().getChildren().addAll(bgafter());
             getContentRoot().getChildren().addAll(title, createBody());
         });
         guest_play.setTranslateX(SCREEN_WIDTH / 2 - 250 / 2);
@@ -167,6 +213,7 @@ public class MainMenu extends FXGLMenu implements InitVari {
 
                 connector.closeSQLConnection();
 
+                title.setText("Hello " + User.user_name + "!");
                 getContentRoot().getChildren().addAll(title, createBody());
             } else {
                 if (!getContentRoot().getChildren().contains(wrong_pass)) {
@@ -197,6 +244,8 @@ public class MainMenu extends FXGLMenu implements InitVari {
         text.setFill(Color.WHITE);
         text.setFont(TEXT_FONT);
 
+        if (name.equals("LOAD LASTEST SESSION")) text.setFont(SMALL_TEXT_FONT);
+
         var btn = new StackPane(bg, text);
         btn.setPickOnBounds(false);
         btn.setAlignment(Pos.CENTER);
@@ -226,57 +275,67 @@ public class MainMenu extends FXGLMenu implements InitVari {
         return btn;
     }
 
-    private Node createVolumeBox() {
-        Text musicText = new Text("MUSIC VOLUME");
-        musicText.setFont(TEXT_FONT);
-        musicText.setFill(Color.MAGENTA);
-        musicText.setEffect(new DropShadow(4, Color.MAGENTA));
+    private Node createActionButton(String name, Runnable action, double width, double height) {
+        Rectangle bg = new Rectangle(width, height);
+        bg.setArcWidth(15);
+        bg.setArcHeight(15);
+        bg.setFill(Color.web("#2b1b3f"));
 
-        Slider musicslider  = new Slider(0, 1, AudioManager.MUSIC.getVolume());
-        musicslider.setShowTickLabels(true);
-        musicslider.setShowTickMarks(true);
-        musicslider.setMajorTickUnit(0.25);
-        musicslider.setBlockIncrement(0.1);
-        musicslider.setPrefWidth(300);
+        var text = new Text(name);
+        text.setFill(Color.WHITE);
+        text.setFont(TEXT_FONT);
 
-        musicslider.valueProperty().addListener((obs, oldVal, newVal) -> {
-            float v = newVal.floatValue();
-            AudioManager.MUSIC.setVolume(v);
+        var btn = new StackPane(bg, text);
+
+        DropShadow glow = new DropShadow();
+        glow.setColor(Color.web("#ff4fd8"));
+        glow.setRadius(2);
+        glow.setSpread(0.4);
+
+        btn.setOnMouseEntered(e -> {
+            glow.setRadius(12);
+            bg.setFill(Color.web("#ff4fd8"));
+            text.setFill(Color.web("#ffffff"));
         });
 
-        Text sfxText = new Text("SFX VOLUME");
-        sfxText.setFill(Color.MAGENTA);
-        sfxText.setFont(TEXT_FONT);
-        sfxText.setEffect(new DropShadow(4, Color.MAGENTA));
-
-        Slider sfxSlider = new Slider(0, 1, AudioManager.SFX.getVolume());
-        sfxSlider.setShowTickLabels(true);
-        sfxSlider.setShowTickMarks(true);
-        sfxSlider.setMajorTickUnit(0.25);
-        sfxSlider.setBlockIncrement(0.1);
-        sfxSlider.setPrefWidth(300);
-
-        Node back_btn = createActionButton("BACK", () -> {
-            getContentRoot().getChildren().clear();
-            getContentRoot().getChildren().addAll(background());
-            getContentRoot().getChildren().addAll(title,createBody());
+        btn.setOnMouseExited(e -> {
+            glow.setRadius(0);
+            bg.setFill(Color.web("#2b1b3f"));
+            text.setFill(Color.WHITE);
         });
 
-        VBox vbox = new VBox();
-        vbox.setAlignment(Pos.CENTER);
-        vbox.getChildren().addAll(musicText, musicslider, sfxText, sfxSlider, back_btn);
-        vbox.setSpacing(15);
-        vbox.setLayoutX((SCREEN_WIDTH - 300 ) / 2.0);
-        vbox.setLayoutY(SCREEN_HEIGHT / 2.0 - 50);
+        btn.setAlignment(Pos.CENTER);
+        btn.setOnMouseClicked(e -> action.run());
 
-        return vbox;
+        return btn;
     }
 
     private Node background() {
+        title.setFont(TITLE_FONT);
+        title.setLayoutX((getAppWidth() - title.getLayoutBounds().getWidth()) / 2);
+        title.setLayoutY(230);
         try {
             ImageView bg = new ImageView(
                     new Image(
                             InitVari.class.getResource("/assets/textures/background/background.png").toExternalForm()
+                    )
+            );
+            return bg;
+        } catch (Exception e) {
+            System.err.println("Error loading background image: " + e.getMessage());
+            Rectangle fallback = new Rectangle(SCREEN_WIDTH, SCREEN_HEIGHT, Color.BLACK);
+            return fallback;
+        }
+    }
+
+    private Node bgafter() {
+        title.setFont(SMALL_TITLE);
+        title.setLayoutX(230);
+        title.setLayoutY(110);
+        try {
+            ImageView bg = new ImageView(
+                    new Image(
+                            InitVari.class.getResource("/assets/textures/background/bg2.png").toExternalForm()
                     )
             );
             return bg;
