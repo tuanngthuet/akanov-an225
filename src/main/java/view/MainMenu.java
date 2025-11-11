@@ -28,10 +28,10 @@ import static com.almasb.fxgl.dsl.FXGL.getSettings;
 import static javafx.beans.binding.Bindings.when;
 
 public class MainMenu extends FXGLMenu implements InitVari {
-    private int CurrentY = 200;
     private Text title;
     private SQL_connector connector = new SQL_connector();
     private ArrayList<Integer> session_list = new ArrayList<>();
+
     public MainMenu() {
         super(MenuType.MAIN_MENU);
 
@@ -52,28 +52,32 @@ public class MainMenu extends FXGLMenu implements InitVari {
         title.setEffect(ds);
 
         title.setLayoutX((getAppWidth() - title.getLayoutBounds().getWidth()) / 2);
-        title.setLayoutY(CurrentY);
-
-        CurrentY += 70;
+        title.setLayoutY(200);
 
         getContentRoot().getChildren().addAll(title, createLoginBox());
     }
 
+
     private Node createBody() {
+        int CurrentY = 270;
         Node btn1 = createActionButton("NEW GAME", this::fireNewGame);
         Node btn2 = createActionButton("LOAD", this::fireNewGame);
         Node btn3 = createActionButton("EXIT", this::fireExit);
+        Node logout_btn = createActionButton("LOG OUT", () -> {
+            getContentRoot().getChildren().clear();
 
-        Group  btn_group = new Group(btn1, btn2, btn3);
+            getContentRoot().getChildren().addAll(title, createLoginBox());
+        });
 
-        for (Node n : btn_group.getChildren()) {
+        Group group = new Group(btn1, btn2, btn3, logout_btn);
+
+        for (Node n : group.getChildren()) {
             Rectangle bg = (Rectangle) ((StackPane) n).getChildren().getFirst();
             n.setLayoutX((InitVari.SCREEN_WIDTH - bg.getWidth()) / 2);
             n.setLayoutY(CurrentY);
             CurrentY += (int) (1.75 * bg.getHeight());
         }
-
-        return btn_group;
+        return group;
     }
 
     private Node createLoginBox() {
@@ -187,5 +191,6 @@ public class MainMenu extends FXGLMenu implements InitVari {
 
         return btn;
     }
+
 
 }

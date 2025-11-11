@@ -58,7 +58,7 @@ public class Launch extends GameApplication implements InitVari {
         ball.startFalling();
 
         bricks = BrickManager.getInstance();
-        bricks.spamBrick(4);
+        bricks.spawnBrick();
     }
 
     @Override
@@ -77,6 +77,6 @@ public class Launch extends GameApplication implements InitVari {
         onKey(KeyCode.RIGHT, () -> paddle.moveRight());
         onKey(KeyCode.LEFT, () -> paddle.moveLeft());
         onKey(KeyCode.D, () -> bricks.clearAll());
-        onKey(KeyCode.R, () -> bricks.spamBrick(4));
+        onKey(KeyCode.R, () -> bricks.spawnBrick());
     }
 }
