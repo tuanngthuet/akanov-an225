@@ -6,8 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="Merge code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-18.29.01.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-18.29.25.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-18.30.45.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-18.32.27.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-19.35.11.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-19.35.55.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-19.36.39.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-20.07.25.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-20.21.10.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-20.22.08.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/Launch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Launch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,6 +73,9 @@
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/akk/akanov-an225",
     "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "editor.preferences.completion",
     "to.speed.mode.migration.done": "true"
   }

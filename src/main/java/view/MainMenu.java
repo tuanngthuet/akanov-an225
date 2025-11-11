@@ -49,7 +49,7 @@ public class MainMenu extends FXGLMenu implements InitVari {
         bgImageView.setPreserveRatio(false);
         bgImageView.setSmooth(true);
 
-        title = new Text(getSettings().getTitle());
+        title = new Text("");
         title.setFont(TITLE_FONT);
 
         LinearGradient gradient = new LinearGradient(
@@ -65,8 +65,8 @@ public class MainMenu extends FXGLMenu implements InitVari {
         ds.setColor(Color.color(0, 0, 0, 0.7));
         title.setEffect(ds);
 
-        title.setLayoutX((getAppWidth() - title.getLayoutBounds().getWidth()) / 2);
-        title.setLayoutY(200);
+        title.setLayoutX((getAppWidth() - title.getLayoutBounds().getWidth()) / 2 - 380);
+        title.setLayoutY(160);
 
         getContentRoot().getChildren().addAll(bgImageView, title, createLoginBox());
     }
@@ -74,12 +74,13 @@ public class MainMenu extends FXGLMenu implements InitVari {
     private Node createBody() {
         int CurrentY = 270;
         Node btn1 = createActionButton("NEW GAME", this::fireNewGame);
-        Node btn2 = createActionButton("RELOAD FROM LASTEST SESSION", this::loadLatestSession);
+        Node btn2 = createActionButton("RELOAD LASTEST SESSION", this::loadLatestSession);
         Node btn3 = createActionButton("VIEW SESSION", this::showSessionList);
         Node btn4 = createActionButton("EXIT", this::fireExit);
         Node logout_btn = createActionButton("LOG OUT", () -> {
             getContentRoot().getChildren().clear();
             bgImageView.setImage(bgLogin);
+            title.setText("Hello");
             getContentRoot().getChildren().addAll(bgImageView, title, createLoginBox());
         });
 
@@ -139,7 +140,7 @@ public class MainMenu extends FXGLMenu implements InitVari {
 
         Node guest_play = createActionButton("GUEST", () -> {
             getContentRoot().getChildren().clear();
-
+            title.setText("Hello Guest");
             bgImageView.setImage(bgWelcome);
             getContentRoot().getChildren().addAll(bgImageView, title, createBody());
         });
@@ -154,7 +155,8 @@ public class MainMenu extends FXGLMenu implements InitVari {
 
             if (login_status) {
                 getContentRoot().getChildren().clear();
-
+                User.user_name = user;
+                title.setText("Hello " + User.user_name);
                 bgImageView.setImage(bgWelcome);
                 getContentRoot().getChildren().addAll(bgImageView, title, createBody());
 
@@ -185,7 +187,13 @@ public class MainMenu extends FXGLMenu implements InitVari {
     }
 
     private Node createActionButton(String name, Runnable action) {
-        var bg = new Rectangle(200, 50);
+        return createActionButton(name, action, 300, 50);
+    }
+
+    private Node createActionButton(String name, Runnable action, double width, double height) {
+        Rectangle bg = new Rectangle(width, height);
+        bg.setArcWidth(20);
+        bg.setArcHeight(20);
         bg.setEffect(new BoxBlur());
 
         var text = new Text(name);
@@ -254,7 +262,7 @@ public class MainMenu extends FXGLMenu implements InitVari {
                 } else {
                     FXGL.getDialogService().showMessageBox("This session has no lives left!");
                 }
-            });
+            }, 500, 50);
 
             sessionBox.getChildren().add(btn);
         }
