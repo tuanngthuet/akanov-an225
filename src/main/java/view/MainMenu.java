@@ -3,11 +3,13 @@ package view;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
 import controller.InitVari;
+import controller.sound_control.AudioManager;
 import controller.user.User;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.DropShadow;
@@ -62,6 +64,8 @@ public class MainMenu extends FXGLMenu implements InitVari {
     }
 
     private Node createBody() {
+        CurrentY = 250;
+
         Node btn1 = createActionButton("NEW GAME", this::fireNewGame);
         Node btn2 = createActionButton("LOAD", this::fireNewGame);
         Node btn3 = createActionButton("EXIT", this::fireExit);
@@ -70,8 +74,13 @@ public class MainMenu extends FXGLMenu implements InitVari {
 
             getContentRoot().getChildren().addAll(title, createLoginBox());
         });
+        Node volume_btn = createActionButton("SETTINGS", () -> {
+            getContentRoot().getChildren().clear();
+            getContentRoot().getChildren().addAll(title, createVolumeBox());
+        });
 
-        Group group = new Group(btn1, btn2, btn3);
+
+        Group group = new Group(btn1, btn2, volume_btn, btn3);
 
         for (Node n : group.getChildren()) {
             Rectangle bg = (Rectangle) ((StackPane) n).getChildren().getFirst();
@@ -195,5 +204,45 @@ public class MainMenu extends FXGLMenu implements InitVari {
         return btn;
     }
 
+    private Node createVolumeBox() {
+        Text musicText = new Text("MUSIC VOLUME");
+        musicText.setFont(TEXT_FONT);
+        musicText.setEffect(new DropShadow(3, Color.BLACK));
 
+        Slider musicslider  = new Slider(0, 1, AudioManager.MUSIC.getVolume());
+        musicslider.setShowTickLabels(true);
+        musicslider.setShowTickMarks(true);
+        musicslider.setMajorTickUnit(0.25);
+        musicslider.setBlockIncrement(0.1);
+        musicslider.setPrefWidth(300);
+
+        musicslider.valueProperty().addListener((obs, oldVal, newVal) -> {
+            float v = newVal.floatValue();
+            AudioManager.MUSIC.setVolume(v);
+        });
+
+        Text sfxText = new Text("SFX VOLUME");
+        sfxText.setFont(TEXT_FONT);
+        sfxText.setEffect(new DropShadow(3, Color.BLACK));
+
+        Slider sfxSlider = new Slider(0, 1, AudioManager.SFX.getVolume());
+        sfxSlider.setShowTickLabels(true);
+        sfxSlider.setShowTickMarks(true);
+        sfxSlider.setMajorTickUnit(0.25);
+        sfxSlider.setBlockIncrement(0.1);
+        sfxSlider.setPrefWidth(300);
+
+        Node back_btn = createActionButton("BACK", () -> {
+            getContentRoot().getChildren().clear();
+            getContentRoot().getChildren().addAll(title,createBody());
+        });
+
+        VBox vbox = new VBox();
+        vbox.setAlignment(Pos.CENTER);
+        vbox.getChildren().addAll(musicText, musicslider, sfxText, sfxSlider, back_btn);
+        vbox.setLayoutX((SCREEN_WIDTH - 300 ) / 2.0);
+        vbox.setLayoutY(SCREEN_HEIGHT / 2.0 - 50);
+
+        return vbox;
+    }
 }

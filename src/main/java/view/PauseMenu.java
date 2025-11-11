@@ -4,15 +4,19 @@ import com.almasb.fxgl.animation.Interpolators;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
 import controller.InitVari;
+import controller.sound_control.AudioManager;
+import controller.sound_control.MusicManager;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.CacheHint;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.control.Slider;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
@@ -31,6 +35,9 @@ import static javafx.beans.binding.Bindings.when;
 public class PauseMenu extends FXGLMenu implements InitVari {
     private ImageView bgBlur;
     private int CurrentY = 200;
+    private Text title;
+    private Node body;
+    private Node volumebox;
 
     private final List<Node> buttons = new ArrayList<>();
 
@@ -39,7 +46,7 @@ public class PauseMenu extends FXGLMenu implements InitVari {
     public PauseMenu() {
         super(MenuType.GAME_MENU);
 
-        Text title = new Text(getSettings().getTitle());
+        title = new Text(getSettings().getTitle());
         title.setFont(TITLE_FONT);
 
         LinearGradient gradient = new LinearGradient(
@@ -60,9 +67,11 @@ public class PauseMenu extends FXGLMenu implements InitVari {
 
         CurrentY += 70;
 
-        var body = createBody();
+        this.body = createBody();
+        this.volumebox = VolumeSettings();
+        volumebox.setVisible(false);
 
-        getContentRoot().getChildren().addAll(title, body);
+        getContentRoot().getChildren().addAll(title, body, volumebox);
     }
 
     @Override
@@ -106,12 +115,18 @@ public class PauseMenu extends FXGLMenu implements InitVari {
     }
 
     private Node createBody() {
+        CurrentY = 250;
+
         Node btnContinue = createActionButton("CONTINUE", this::fireContinue);
         Node btn1 = createActionButton("NEW GAME", this::fireNewGame);
         Node btn2 = createActionButton("SAVE", this::fireSave);
+        Node volume_btn = createActionButton("VOLUME OPTION", () -> {
+            body.setVisible(false);
+            volumebox.setVisible(true);
+        });
         Node btn3 = createActionButton("EXIT", this::fireExitToMainMenu);
 
-        Group group = new Group(btnContinue, btn1, btn2, btn3);
+        Group group = new Group(btnContinue, btn1, btn2, volume_btn, btn3);
 
         for (Node n : group.getChildren()) {
             Rectangle bg = (Rectangle)((StackPane)n).getChildren().getFirst();
@@ -151,6 +166,75 @@ public class PauseMenu extends FXGLMenu implements InitVari {
         btn.setClip(clip);
         btn.setCache(true);
         btn.setCacheHint(CacheHint.SPEED);
+
+        return btn;
+    }
+
+    private Node VolumeSettings() {
+        Text musicText = new Text("MUSIC VOLUME");
+        musicText.setFont(TEXT_FONT);
+        musicText.setEffect(new DropShadow(3, Color.BLACK));
+//        musicText.setFill(Color.YELLOW);
+
+        Slider musicSlider = new Slider(0, 1, AudioManager.MUSIC.getVolume());
+        styleSlider(musicSlider);
+
+        musicSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
+            float v = newVal.floatValue();
+            AudioManager.MUSIC.setVolume(v);
+        });
+
+        Text sfxText = new Text("SFX VOLUME");
+        sfxText.setFont(TEXT_FONT);
+        sfxText.setEffect(new DropShadow(3, Color.BLACK));
+//        musicText.setFill(Color.YELLOW);
+
+        Slider sfxSlider = new Slider(0, 1, AudioManager.SFX.getVolume());
+        styleSlider(sfxSlider);
+
+        sfxSlider.valueProperty().addListener((obs, oldVal, newVal) -> {
+            float v = newVal.floatValue();
+            AudioManager.SFX.setVolume(v);
+        });
+
+        Node back_btn = createBackButton("BACK", () -> {
+            body.setVisible(true);
+            volumebox.setVisible(false);
+        });
+
+        VBox vbox = new VBox(20, musicText, musicSlider, sfxText, sfxSlider, back_btn);
+        vbox.setAlignment(Pos.CENTER);
+        vbox.setLayoutX((SCREEN_WIDTH - 300 ) / 2.0);
+        vbox.setLayoutY(250);
+
+        return vbox;
+    }
+    private void styleSlider(Slider slider) {
+        slider.setShowTickLabels(true);
+        slider.setShowTickMarks(true);
+        slider.setMajorTickUnit(0.25);
+        slider.setBlockIncrement(0.1);
+        slider.setPrefWidth(300);
+    }
+
+    private Node createBackButton(String name, Runnable action) {
+        var bg = new Rectangle(200, 50);
+        bg.setEffect(new BoxBlur());
+
+        var text = new Text(name);
+        text.setFill(Color.BLACK);
+        text.setFont(TEXT_FONT);
+
+        var btn = new StackPane(bg, text);
+
+        bg.fillProperty().bind(when(btn.hoverProperty())
+                .then(Color.LIGHTGREEN)
+                .otherwise(Color.DARKGRAY)
+        );
+
+
+        btn.setAlignment(Pos.CENTER);
+        btn.setOnMouseClicked(e -> action.run());
 
         return btn;
     }

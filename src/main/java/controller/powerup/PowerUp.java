@@ -10,6 +10,8 @@ import com.almasb.fxgl.physics.HitBox;
 import controller.ball_control.BallVari;
 import controller.ball_control.Ball;
 import controller.ball_control.PowerUpHandler;
+import controller.sound_control.AudioManager;
+import controller.sound_control.SoundVari;
 import javafx.animation.FadeTransition;
 import javafx.animation.SequentialTransition;
 import javafx.geometry.Point2D;
@@ -106,6 +108,7 @@ class PhysicComponent extends Component implements PowerUpVari{
                         return;
                     PowerUp.textAnimation(power);
                     power.activated();
+                    AudioManager.SFX.playSound(SoundVari.SOUND_POWER_UP);
                     power.removeFromWorld();
                 }
             });

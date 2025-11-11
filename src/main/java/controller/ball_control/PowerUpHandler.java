@@ -9,6 +9,7 @@ public class PowerUpHandler implements BallVari {
     private BallManager ballManager;
     private LifeManager lifeManager;
     private Paddle paddle;
+    public static double prev_speed = 0;
 
     public PowerUpHandler(BallManager ballManager, LifeManager lifeManager, Paddle paddle) {
         this.ballManager = ballManager;
@@ -21,6 +22,9 @@ public class PowerUpHandler implements BallVari {
             case MULTIBALL -> ballManager.spawnExtraBall();
             case SPEEDUPBALL -> {
                 for (Ball ball : ballManager.getBalls()) {
+                    if(prev_speed != POWER_UP_SPEED) {
+                        prev_speed = ball.getSpeed();
+                    }
                     ball.setSpeed(POWER_UP_SPEED);
                     ball.setType(Ball.BallType.SPEEDUPBALL);
                 }
@@ -40,7 +44,7 @@ public class PowerUpHandler implements BallVari {
             case FROZEN -> PaddleManager.applyPaddlePowerUp(PaddleVari.PaddleType.FROZEN, 1);
         }
         for (Ball ball : ballManager.getBalls()) {
-            ballManager.reset_ToNormal(Launch.ball);
+            ballManager.reset_ToNormal(ball);
         }
     }
 }

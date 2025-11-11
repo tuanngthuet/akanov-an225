@@ -6,11 +6,10 @@ import javafx.scene.image.Image;
 import java.util.Objects;
 
 import static controller.InitVari.SCREEN_HEIGHT;
-import static controller.InitVari.SCREEN_WIDTH;
 
 public interface BallVari {
-    double BALL_RADIUS = 18;
-    double MAX_ANGLE = 70;
+    double BALL_RADIUS = 12;
+    double MAX_ANGLE = 60;
     double BALL_HITBOX = 36;
 
     double DEFAULT_DirectionX = 1;

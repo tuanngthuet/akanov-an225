@@ -13,7 +13,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import com.almasb.fxgl.entity.components.BoundingBoxComponent;
 import com.almasb.fxgl.entity.components.CollidableComponent;
-import view.Launch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +69,10 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
         double len = Math.sqrt(dirX * dirX + dirY * dirY);
         this.directionX = dirX / len;
         this.directionY = dirY / len;
+    }
+
+    public double getSpeed() {
+        return speed;
     }
 
     public Image getImageByType(BallType type) {
@@ -140,7 +143,7 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
         }
 
         if (getY() > SCREEN_HEIGHT) {
-            setPosition(paddle.getX() + BASIC_PAD_WIDTH / 2, paddle.getY() - BALL_RADIUS * 2);
+            setPosition(paddle.getX() + (float) BASIC_PAD_WIDTH / 2, paddle.getY() - BALL_RADIUS * 2);
             if(lifeManager != null) {
                 lifeManager.loseHeart();
             }

@@ -8,6 +8,8 @@ import controller.ScoreControl.Score_control;
 import controller.ball_control.*;
 import controller.brick_control.BrickManager;
 import controller.paddle_control.*;
+import controller.sound_control.AudioManager;
+import controller.sound_control.SoundVari;
 import controller.user.User;
 import javafx.scene.input.KeyCode;
 
@@ -41,6 +43,9 @@ public class Launch extends GameApplication implements InitVari {
 
         getGameScene().addGameView(BACKGROUND);
 
+        AudioManager.MUSIC.setVolume(SoundVari.DEFAULT_VOLUME);
+        AudioManager.MUSIC.playSound(SoundVari.THEME_SOUND,true);
+
         lifeManager = new LifeManager();
         lifeManager.init();
 
@@ -58,7 +63,7 @@ public class Launch extends GameApplication implements InitVari {
         ball.startFalling();
 
         bricks = BrickManager.getInstance();
-        bricks.spamBrick(4);
+        bricks.spawnBrick();
     }
 
     @Override
@@ -77,6 +82,6 @@ public class Launch extends GameApplication implements InitVari {
         onKey(KeyCode.RIGHT, () -> paddle.moveRight());
         onKey(KeyCode.LEFT, () -> paddle.moveLeft());
         onKey(KeyCode.D, () -> bricks.clearAll());
-        onKey(KeyCode.R, () -> bricks.spamBrick(4));
+        onKey(KeyCode.R, () -> bricks.spawnBrick());
     }
 }
