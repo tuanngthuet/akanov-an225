@@ -51,27 +51,28 @@ public class GameOver extends FXGLMenu implements InitVari {
         Text title = new Text("Game Over !!!");
         title.setFont(TITLE_FONT);
 
-        LinearGradient gradient = new LinearGradient(
-                0, 0, 1, 1, true, CycleMethod.NO_CYCLE,
-                new Stop(0, Color.RED),
-                new Stop(1, Color.YELLOW)
+        LinearGradient verticalGradient = new LinearGradient(
+                0, 0, 0, 1, true, CycleMethod.NO_CYCLE,
+                new Stop(0, Color.MAGENTA),
+                new Stop(1, Color.CYAN)
         );
-        title.setFill(gradient);
+        title.setFill(verticalGradient);
 
         DropShadow ds = new DropShadow();
+        ds.setRadius(10);
         ds.setOffsetX(2);
         ds.setOffsetY(2);
         ds.setColor(Color.color(0, 0, 0, 0.7));
         title.setEffect(ds);
 
         title.setLayoutX((getAppWidth() - title.getLayoutBounds().getWidth()) / 2);
-        title.setLayoutY(200);
+        title.setLayoutY(230);
 
         Node btn1 = createActionButton("NEW GAME", this::fireNewGame);
         Node btn2 = createActionButton("EXIT", this::fireExitToMainMenu);
         Group group = new Group(btn1, btn2);
 
-        int CurrentY = 300;
+        int CurrentY = 350;
         for (Node n : group.getChildren()) {
             Rectangle bg = (Rectangle) ((StackPane) n).getChildren().getFirst();
             n.setLayoutX((InitVari.SCREEN_WIDTH - bg.getWidth()) / 2);
@@ -84,20 +85,37 @@ public class GameOver extends FXGLMenu implements InitVari {
 
     private Node createActionButton(String name, Runnable action) {
         var bg = new Rectangle(200, 50);
-        bg.setEffect(new BoxBlur());
+        bg.setArcWidth(15);
+        bg.setArcHeight(15);
+        bg.setFill(Color.web("#2b1b3f"));
 
         var text = new Text(name);
-        text.setFill(Color.BLACK);
+        text.setFill(Color.WHITE);
         text.setFont(TEXT_FONT);
 
         var btn = new StackPane(bg, text);
-
-        bg.fillProperty().bind(when(btn.hoverProperty())
-                .then(Color.LIGHTGREEN)
-                .otherwise(Color.DARKGRAY)
-        );
-
+        btn.setPickOnBounds(false);
         btn.setAlignment(Pos.CENTER);
+
+        DropShadow glow = new DropShadow();
+        glow.setColor(Color.web("#ff4fd8"));
+        glow.setRadius(0);
+        glow.setSpread(0.4);
+
+        bg.setEffect(glow);
+
+        btn.setOnMouseEntered(e -> {
+            glow.setRadius(12);
+            bg.setFill(Color.web("#ff4fd8"));
+            text.setFill(Color.web("#ffffff"));
+        });
+
+        btn.setOnMouseExited(e -> {
+            glow.setRadius(0);
+            bg.setFill(Color.web("#2b1b3f"));
+            text.setFill(Color.WHITE);
+        });
+
         btn.setOnMouseClicked(e -> action.run());
 
         return btn;
