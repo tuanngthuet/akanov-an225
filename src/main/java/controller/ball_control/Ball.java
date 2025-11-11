@@ -127,10 +127,11 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
                 toRemove.add(brick);
                 if(!isHardBall) {
                     adjustDirectionAfterBrickHit(brick);
-                    current_score.update_score(1);
                 }
-                else {
-                    current_score.update_score(5);
+                switch (brick.getBrickType()) {
+                    case POWERUP -> current_score.update_score(10);
+                    case NORMAL -> current_score.update_score(5);
+                    case HARD -> current_score.update_score(1);
                 }
             }
         }

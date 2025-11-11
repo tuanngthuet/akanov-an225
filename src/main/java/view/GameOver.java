@@ -9,6 +9,8 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
@@ -17,20 +19,35 @@ import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
+import static com.almasb.fxgl.dsl.FXGL.getGameScene;
 import static javafx.beans.binding.Bindings.when;
 
 public class GameOver extends FXGLMenu implements InitVari {
-    private int CurrentY = 200;
-    public GameOver(MenuType type) {
-        super(type);
+    public GameOver() {
+        super(MenuType.GAME_MENU);
+        getContentRoot().getChildren().addAll(createBody());
     }
 
-    public static void showGameOver() {
+    public static void showGameOverMenu() {
         FXGL.getGameController().pauseEngine();
-
+        FXGL.getSceneService().pushSubScene(new GameOver());
+        FXGL.getGameController().resumeEngine();
     }
 
     private Node createBody() {
+        WritableImage snapshot = new WritableImage(getAppWidth(), getAppHeight());
+        getGameScene().getRoot().snapshot(null, snapshot);
+        ImageView bgBlur = new ImageView(snapshot);
+        bgBlur.setFitWidth(getAppWidth());
+        bgBlur.setFitHeight(getAppHeight());
+        bgBlur.setEffect(new BoxBlur(10, 10, 7));
+        bgBlur.setPreserveRatio(false);
+        bgBlur.setSmooth(true);
+        bgBlur.setLayoutX(0);
+        bgBlur.setLayoutY(0);
+
+        getContentRoot().getChildren().addFirst(bgBlur);
+
         Text title = new Text("Game Over !!!");
         title.setFont(TITLE_FONT);
 
@@ -48,18 +65,20 @@ public class GameOver extends FXGLMenu implements InitVari {
         title.setEffect(ds);
 
         title.setLayoutX((getAppWidth() - title.getLayoutBounds().getWidth()) / 2);
-        title.setLayoutY(CurrentY);
+        title.setLayoutY(200);
 
         Node btn1 = createActionButton("NEW GAME", this::fireNewGame);
-        Node btn2 = createActionButton("EXIT", this::fireExit);
+        Node btn2 = createActionButton("EXIT", this::fireExitToMainMenu);
         Group group = new Group(btn1, btn2);
 
+        int CurrentY = 300;
         for (Node n : group.getChildren()) {
             Rectangle bg = (Rectangle) ((StackPane) n).getChildren().getFirst();
             n.setLayoutX((InitVari.SCREEN_WIDTH - bg.getWidth()) / 2);
             n.setLayoutY(CurrentY);
             CurrentY += (int) (1.75 * bg.getHeight());
         }
+        group.getChildren().add(title);
         return group;
     }
 

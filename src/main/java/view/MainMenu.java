@@ -61,15 +61,14 @@ public class MainMenu extends FXGLMenu implements InitVari {
     private Node createBody() {
         int CurrentY = 270;
         Node btn1 = createActionButton("NEW GAME", this::fireNewGame);
-        Node btn2 = createActionButton("LOAD", this::fireNewGame);
-        Node btn3 = createActionButton("EXIT", this::fireExit);
+        Node btn2 = createActionButton("EXIT", this::fireExit);
         Node logout_btn = createActionButton("LOG OUT", () -> {
             getContentRoot().getChildren().clear();
 
             getContentRoot().getChildren().addAll(title, createLoginBox());
         });
 
-        Group group = new Group(btn1, btn2, btn3, logout_btn);
+        Group group = new Group(btn1, btn2, logout_btn);
 
         for (Node n : group.getChildren()) {
             Rectangle bg = (Rectangle) ((StackPane) n).getChildren().getFirst();
@@ -191,6 +190,4 @@ public class MainMenu extends FXGLMenu implements InitVari {
 
         return btn;
     }
-
-
 }
