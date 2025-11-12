@@ -4,11 +4,14 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.app.scene.GameView;
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.physics.CollisionHandler;
 import controller.InitVari;
 import controller.ScoreControl.Score_control;
 import controller.ball_control.*;
 import controller.brick_control.BrickManager;
 import controller.paddle_control.*;
+import controller.powerup.PowerUp;
 import controller.sound_control.AudioManager;
 import controller.sound_control.SoundVari;
 import controller.user.User;
@@ -45,10 +48,10 @@ public class Launch extends GameApplication implements InitVari {
         AudioManager.MUSIC.setVolume(SoundVari.DEFAULT_VOLUME);
         AudioManager.MUSIC.playSound(SoundVari.THEME_SOUND,true);
 
-        lifeManager = new LifeManager();
+        lifeManager = new LifeManager(User.user_init_lives);
         lifeManager.init();
 
-        scoreControl = new Score_control(0);
+        scoreControl = new Score_control(User.user_init_score);
         scoreControl.initScore();
 
         ballManager = new BallManager();
@@ -63,6 +66,26 @@ public class Launch extends GameApplication implements InitVari {
 
         BrickManager.getInstance().getBrickList().clear();
         BrickManager.getInstance().spawnBrick(scoreControl);
+
+
+    }
+
+    @Override
+    protected void initPhysics() {
+        getPhysicsWorld().addCollisionHandler(new CollisionHandler(
+                Launch.EntityType.POWERUP, Launch.EntityType.PADDLE) {
+            @Override
+            protected void onCollisionBegin(Entity pow, Entity paddle) {
+                PowerUp power = (PowerUp) pow;
+                if (!power.isActive())
+                    return;
+
+                PowerUp.textAnimation(power);
+                power.activated();
+                AudioManager.SFX.playSound(SoundVari.SOUND_POWER_UP);
+                power.removeFromWorld();
+            }
+        });
     }
 
     @Override
@@ -70,6 +93,11 @@ public class Launch extends GameApplication implements InitVari {
         for (Ball b : ballManager.getBalls()) {
             b.update(tpf, paddle, BrickManager.getInstance(), lifeManager, scoreControl);
             b.IncreaseBallSpeed();
+
+            User.user_update_score = scoreControl.getCurrent_score_int();
+            User.user_update_lives = lifeManager.getHeart();
+
+//            System.out.println(User.user_update_score + "   " + User.user_update_lives);
         }
         paddle.update();
     }

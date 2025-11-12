@@ -100,31 +100,52 @@ public class SQL_connector implements SQL_InitVari {
             } else {
                 login_flag = this.login(username, password);
                 this.user_info_query();
-
             }
         } catch (SQLException sqlException) {
             System.out.println(sqlException);
             System.out.println("INVALID LOGIN FUNCTION, PLEASE PLAY AS GUEST!");
+            user_id = "guest";
+            username = "guest";
         }
         return login_flag;
     }
 
-    public void createNewSession(String start_time, String end_time) throws SQLException{
-        String query = "INSERT INTO game_sessions VALUES (?, ?, ?, ?, ?, 0, 3, 1)";
+    public void createNewSession(String start_time, String end_time, int saved_score, int lives) throws SQLException{
+        String query = "INSERT INTO game_sessions VALUES (?, ?, ?, ?, ?, ?, ?, 1)";
         PreparedStatement preparedStatement = current_connection.prepareStatement(query);
 
-        preparedStatement.setString(1, Integer.toString(user_score_by_sessions.size() + 1));
+        if (start_time == null){
+            start_time = "2025-11-12 09:05:10";
+        }
+
+        preparedStatement.setString(1, Integer.toString(user_score_by_sessions.size()));
         preparedStatement.setString(2, user_id);
         preparedStatement.setString(3, "1");
         preparedStatement.setString(4, start_time);
         preparedStatement.setString(5, end_time);
+        preparedStatement.setString(6, String.valueOf(lives));
+        preparedStatement.setString(7, String.valueOf(saved_score));
+
+        System.out.println(saved_score + "    " + lives);
+
+        user_start_time_by_sessions.add(start_time);
+        user_end_time_by_sessions.add(end_time);
+        user_level_by_sessions.add(1);
+        user_lives_left_by_sessions.add(String.valueOf(lives));
+        user_score_by_sessions.add(saved_score);
+
+        System.out.println(preparedStatement);
+
+        int rowsAffected = preparedStatement.executeUpdate();
+        System.out.println("Đã thêm " + rowsAffected + " dòng!");
+
     }
 
     public ArrayList<String> getUserSession(){
         ArrayList<String> concatList = new ArrayList<>();
 
         for (int i = 0; i < user_start_time_by_sessions.size(); ++i){
-            concatList.add(user_start_time_by_sessions.get(i).concat(" - ").concat(user_end_time_by_sessions.get(i)));
+            concatList.add(String.valueOf(i));
         }
 
         return concatList;

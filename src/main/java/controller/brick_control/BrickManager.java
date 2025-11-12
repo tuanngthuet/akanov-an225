@@ -33,7 +33,6 @@ public class BrickManager implements BrickVari{
     }
 
     public void removeBrick(Brick brick) {
-        System.out.println("y");
         if (brick.getBrickType() == HARD) {
             brick.getViewComponent().removeChild(brick.getViewComponent().getChild(1, ImageView.class));
             brick.setType(NORMAL);

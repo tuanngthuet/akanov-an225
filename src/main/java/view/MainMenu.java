@@ -29,6 +29,9 @@ import javafx.scene.text.Text;
 import model.SQL_connector;
 
 
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -37,7 +40,9 @@ import static javafx.beans.binding.Bindings.when;
 
 public class MainMenu extends FXGLMenu implements InitVari {
     private Text title;
-    private SQL_connector connector = new SQL_connector();
+    public static SQL_connector connector;
+    public static boolean login_status = false;
+    private ArrayList<Integer> session_list = new ArrayList<>();
 
     public MainMenu() {
         super(MenuType.MAIN_MENU);
@@ -70,9 +75,13 @@ public class MainMenu extends FXGLMenu implements InitVari {
         Node btn3 = createActionButton("VIEW SESSION", this::showSessionList);
         Node btn4 = createActionButton("EXIT", this::fireExit);
         Node logout_btn = createActionButton("LOG OUT", () -> {
+            login_status = false;
+            User.usr_logout();
+            connector = null;
+
             getContentRoot().getChildren().clear();
             title.setText(getSettings().getTitle());
-            getContentRoot().getChildren().addAll(background(), title, createLoginBox());
+            getContentRoot().getChildren().addAll(background() ,title, createLoginBox());
         });
 
         Group group = new Group(btn1, btn2, btn3, btn4, logout_btn);
@@ -85,6 +94,7 @@ public class MainMenu extends FXGLMenu implements InitVari {
         }
         return group;
     }
+
 
     private void showSessionList() {
         if (User.user_session.isEmpty()) {
@@ -104,12 +114,17 @@ public class MainMenu extends FXGLMenu implements InitVari {
             int level = User.user_level_by_sessions.get(index);
             String lives = User.user_lives_left_by_sessions.get(index);
 
-            String text = String.format("Session %s \n Score: %d | Level: %d | Lives: %s",
+
+            String text = String.format("Session %s \n Lives: %d | Level: %d | Score: %s",
                     sessionId, score, level, lives);
 
             Node btn = createActionButton(text, () -> {
                 if (User.canContinueSession(lives)) {
                     User.selectSession(index);
+
+                    User.user_init_score = Integer.parseInt(User.user_lives_left_by_sessions.get(index));
+                    User.user_init_lives = User.user_init_score_by_session.get(index);
+
                     FXGL.getDialogService().showMessageBox("Loading session: " + sessionId, this::fireNewGame);
                 } else {
                     FXGL.getDialogService().showMessageBox("This session has no lives left!");
@@ -131,6 +146,8 @@ public class MainMenu extends FXGLMenu implements InitVari {
         int lastIndex = User.user_session.size() - 1;
         String livesLeft = User.user_lives_left_by_sessions.get(lastIndex);
 
+
+
         if (!User.canContinueSession(livesLeft)) {
             FXGL.getDialogService().showMessageBox("The latest session has no remaining lives!");
             return;
@@ -148,15 +165,15 @@ public class MainMenu extends FXGLMenu implements InitVari {
         usernameField.setTranslateY(SCREEN_HEIGHT / 2 - 40);
 
         usernameField.setStyle("""
-        -fx-background-color: rgba(30, 30, 60, 0.6);
-        -fx-border-color: #ff77ff; 
-        -fx-border-width: 2;
-        -fx-border-radius: 10;
-        -fx-background-radius: 10;
-        -fx-font-size: 16px;
-        -fx-text-fill: #e0e0ff; 
-        -fx-prompt-text-fill: #aa88ff; 
-        """);
+                -fx-background-color: rgba(30, 30, 60, 0.6);
+                -fx-border-color: #ff77ff; 
+                -fx-border-width: 2;
+                -fx-border-radius: 10;
+                -fx-background-radius: 10;
+                -fx-font-size: 16px;
+                -fx-text-fill: #e0e0ff; 
+                -fx-prompt-text-fill: #aa88ff; 
+                """);
 
         PasswordField passwordField = new PasswordField();
         passwordField.setPromptText("Password");
@@ -174,15 +191,15 @@ public class MainMenu extends FXGLMenu implements InitVari {
         blurBg.setFill(Color.rgb(30, 30, 30, 0.5));
         blurBg.setEffect(new GaussianBlur(100));
         passwordField.setStyle("""
-        -fx-background-color: rgba(30, 30, 60, 0.6);
-        -fx-border-color: #ff77ff; 
-        -fx-border-width: 2;
-        -fx-border-radius: 10;
-        -fx-background-radius: 10;
-        -fx-font-size: 16px;
-        -fx-text-fill: #e0e0ff; 
-        -fx-prompt-text-fill: #aa88ff; 
-        """);
+                -fx-background-color: rgba(30, 30, 60, 0.6);
+                -fx-border-color: #ff77ff; 
+                -fx-border-width: 2;
+                -fx-border-radius: 10;
+                -fx-background-radius: 10;
+                -fx-font-size: 16px;
+                -fx-text-fill: #e0e0ff; 
+                -fx-prompt-text-fill: #aa88ff; 
+                """);
 
         Node guest_play = createActionButton("GUEST", () -> {
             getContentRoot().getChildren().clear();
@@ -197,7 +214,7 @@ public class MainMenu extends FXGLMenu implements InitVari {
             String user = usernameField.getText();
             String pass = passwordField.getText();
 
-            boolean login_status = false;
+            connector = new SQL_connector();
             login_status = connector.authenticator(user, pass);
 
             if (login_status) {
@@ -211,10 +228,10 @@ public class MainMenu extends FXGLMenu implements InitVari {
 
                 User.printOutUserInfo();
 
-                connector.closeSQLConnection();
+//                connector.closeSQLConnection();
 
                 title.setText("Hello " + User.user_name + "!");
-                getContentRoot().getChildren().addAll(title, createBody());
+                getContentRoot().getChildren().addAll(bgafter(), title, createBody());
             } else {
                 if (!getContentRoot().getChildren().contains(wrong_pass)) {
                     getContentRoot().getChildren().add(wrong_pass);
@@ -246,6 +263,7 @@ public class MainMenu extends FXGLMenu implements InitVari {
 
         if (name.equals("LOAD LASTEST SESSION")) text.setFont(SMALL_TEXT_FONT);
 
+
         var btn = new StackPane(bg, text);
         btn.setPickOnBounds(false);
         btn.setAlignment(Pos.CENTER);
@@ -270,7 +288,20 @@ public class MainMenu extends FXGLMenu implements InitVari {
             text.setFill(Color.WHITE);
         });
 
-        btn.setOnMouseClicked(e -> action.run());
+        btn.setOnMouseClicked(e -> {
+            if (name.equals("NEW GAME") && login_status) {
+                Timestamp now = new Timestamp(System.currentTimeMillis());
+                System.out.println(now + "Time create a new game session on MainMenu!");
+                User.user_init_score = 0;
+                if (User.user_new_start != null) {
+                    User.user_new_start = now.toString();
+                } else {
+                    User.user_new_start = "2025-11-07 00:10:00";
+                }
+                System.out.println(User.user_new_start);
+            }
+            action.run();
+        });
 
         return btn;
     }
@@ -305,7 +336,14 @@ public class MainMenu extends FXGLMenu implements InitVari {
         });
 
         btn.setAlignment(Pos.CENTER);
-        btn.setOnMouseClicked(e -> action.run());
+        btn.setOnMouseClicked(e -> {
+            if (name.equals("NEW GAME") && login_status) {
+                Timestamp now = new Timestamp(System.currentTimeMillis());
+                System.out.println(now + "Time create a new game session on PauseMenu!");
+                User.user_new_start = now.toString();
+            }
+            action.run();
+        });
 
         return btn;
     }
@@ -345,5 +383,6 @@ public class MainMenu extends FXGLMenu implements InitVari {
             return fallback;
         }
     }
+
 
 }

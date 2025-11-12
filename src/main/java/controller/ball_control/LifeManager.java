@@ -18,8 +18,15 @@ public class LifeManager implements BallVari{
     private List<ImageView> hearts = new ArrayList<>();
     private HBox heartsBox = new HBox(10);
 
-    private int life = DEFAULT_LIFE;
+    private int life;
 
+    public LifeManager(int init_lives){
+        this.life = init_lives;
+    }
+
+    public int getHeart() {
+        return life;
+    }
     public void init() {
         heartsBox.setAlignment(Pos.BOTTOM_LEFT);
         heartsBox.setTranslateX(FIRST_HEART_X);

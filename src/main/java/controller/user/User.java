@@ -7,10 +7,18 @@ public abstract class User {
     public static String user_name;
     public static String current_session;
     public static ArrayList<String> user_session = new ArrayList<>();
+
     public static ArrayList<Integer> user_init_score_by_session = new ArrayList<>();
     public static ArrayList<Integer> user_level_by_sessions = new ArrayList<>();
     public static ArrayList<String> user_lives_left_by_sessions = new ArrayList<>();
     public static int user_update_score;
+    public static String user_new_start;
+    public static String user_new_end;
+    public static int user_init_score = 0;
+    public static int user_update_lives = 3;
+
+    public static int user_init_lives = 3;
+
 
     public static void printOutUserInfo() {
         if (!user_session.isEmpty()) {
@@ -26,6 +34,16 @@ public abstract class User {
         } else {
             System.out.println("NO USER SESSION INFO, PLEASE CHECK AGAIN!");
         }
+    }
+
+    public static void usr_logout(){
+        user_name = "";
+        current_session = "";
+        user_session.clear();
+
+        user_init_score_by_session.clear();;
+        user_level_by_sessions.clear();
+        user_lives_left_by_sessions.clear();
     }
 
     public static void loadUserDataFrom(SQL_connector connector) {
