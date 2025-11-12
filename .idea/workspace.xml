@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="Database bugs fixed">
+    <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="Fix front end bugs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/LifeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/LifeManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/SQL_connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/SQL_connector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Launch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Launch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/PauseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/PauseMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,12 +35,12 @@
     &quot;assignee&quot;: &quot;tuanngthuet&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/tuanngthuet/akanov-an225.git&quot;,
-    &quot;accountId&quot;: &quot;23eab361-f272-42d2-be5f-3ba08ba2150f&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/tuanngthuet/akanov-an225.git",
+    "accountId": "4721a5d6-138d-4e2a-88c1-239330ca2911"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 3
@@ -138,14 +134,23 @@
       <option name="project" value="LOCAL" />
       <updated>1762930520725</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fix front end bugs">
+      <option name="closed" value="true" />
+      <created>1762932474941</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1762932474941</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add basic score function (without load and fetch data):&#10;+Create new package: ScoreControl&#10;+Edit Ball class (edit update function with new input to handle score change)&#10;+Score can be init in Launch (set init value)" />
     <MESSAGE value="Edit gitignore (add .idea)" />
     <MESSAGE value="Database bugs fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Database bugs fixed" />
+    <MESSAGE value="Fix front end bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix front end bugs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
