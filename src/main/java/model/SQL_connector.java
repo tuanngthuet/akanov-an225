@@ -145,7 +145,7 @@ public class SQL_connector implements SQL_InitVari {
         ArrayList<String> concatList = new ArrayList<>();
 
         for (int i = 0; i < user_start_time_by_sessions.size(); ++i){
-            concatList.add(user_start_time_by_sessions.get(i).concat(" - ").concat(user_end_time_by_sessions.get(i)));
+            concatList.add(String.valueOf(i));
         }
 
         return concatList;

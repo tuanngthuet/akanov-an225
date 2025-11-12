@@ -186,9 +186,10 @@ public class PauseMenu extends FXGLMenu implements InitVari {
                 }
 
                 User.user_new_start = now.toString();
-                User.user_new_end = null;
+                User.user_new_end = "2025-11-12 12:52:26";
 
                 User.user_init_score = 0;
+                User.user_init_lives = 3;
             }
             action.run();
         });

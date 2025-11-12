@@ -48,7 +48,7 @@ public class Launch extends GameApplication implements InitVari {
         AudioManager.MUSIC.setVolume(SoundVari.DEFAULT_VOLUME);
         AudioManager.MUSIC.playSound(SoundVari.THEME_SOUND,true);
 
-        lifeManager = new LifeManager();
+        lifeManager = new LifeManager(User.user_init_lives);
         lifeManager.init();
 
         scoreControl = new Score_control(User.user_init_score);

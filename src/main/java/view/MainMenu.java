@@ -81,7 +81,7 @@ public class MainMenu extends FXGLMenu implements InitVari {
 
             getContentRoot().getChildren().clear();
             title.setText(getSettings().getTitle());
-            getContentRoot().getChildren().addAll(title, createLoginBox());
+            getContentRoot().getChildren().addAll(background() ,title, createLoginBox());
         });
 
         Group group = new Group(btn1, btn2, btn3, btn4, logout_btn);
@@ -231,7 +231,7 @@ public class MainMenu extends FXGLMenu implements InitVari {
 //                connector.closeSQLConnection();
 
                 title.setText("Hello " + User.user_name + "!");
-                getContentRoot().getChildren().addAll(title, createBody());
+                getContentRoot().getChildren().addAll(bgafter(), title, createBody());
             } else {
                 if (!getContentRoot().getChildren().contains(wrong_pass)) {
                     getContentRoot().getChildren().add(wrong_pass);
