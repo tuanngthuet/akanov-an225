@@ -1,12 +1,14 @@
 package controller.brick_control;
 
 import com.almasb.fxgl.dsl.FXGL;
+import controller.ScoreControl.Score_control;
 import controller.powerup.PowerUp;
 import javafx.scene.image.ImageView;
 import view.Launch;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameWorld;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.random;
@@ -15,7 +17,9 @@ import static controller.brick_control.BrickVari.BrickType.*;
 public class BrickManager implements BrickVari{
     //Singleton pattern
     private static BrickManager singleton;
+    private static Score_control scoreControl;
     private final List<Brick> brickList = new ArrayList<>();
+    private boolean spawning = false;
 
     public List<Brick> getBrickList() {
         return brickList;
@@ -29,6 +33,7 @@ public class BrickManager implements BrickVari{
     }
 
     public void removeBrick(Brick brick) {
+        System.out.println("y");
         if (brick.getBrickType() == HARD) {
             brick.getViewComponent().removeChild(brick.getViewComponent().getChild(1, ImageView.class));
             brick.setType(NORMAL);
@@ -40,21 +45,32 @@ public class BrickManager implements BrickVari{
         brick.breakAnimation();
         getGameWorld().removeEntity(brick);
         brickList.remove(brick);
-    }
-
-    public void clearAll() {
-        if (brickList.isEmpty()) return;
-        for (Brick brick : new ArrayList<>(brickList)) {
-            removeBrick(brick);
+        if (brickList.isEmpty()) {
+            spawnBrick(scoreControl);
         }
     }
 
     public static BrickType getRandomBrickType() {
-        double r = random(0, 100);
+        int score = scoreControl.getCurrent_score_int();
+        int r = FXGL.random(1, 100);
 
-        if (r < 80) return NORMAL; // 80% chance of Normal Brick
-        else if (r < 95) return HARD; // 15% Hard
-        else return POWERUP; // 5% PowerUp
+        int normalPercentage;
+        int hardPercentage;
+
+        if (score < 500) {
+            normalPercentage = 70;
+            hardPercentage = 15;
+        } else if (score < 1000) {
+            normalPercentage = 80;
+            hardPercentage = 15;
+        } else {
+            normalPercentage = 70;
+            hardPercentage = 25;
+        }
+
+        if (r < normalPercentage) return NORMAL;
+        else if (r < normalPercentage + hardPercentage) return HARD;
+        else return POWERUP;
     }
 
     private BrickManager() {
@@ -74,8 +90,11 @@ public class BrickManager implements BrickVari{
     //
     //áp dụng design pattern factory đề tạo ra nhiều kiểu spam khác nhau
     //
-    public void spawnBrick() {
-        BrickSpawner b = BrickSpawnerFactory.createSpawner();
+    public void spawnBrick(Score_control scoreControl) {
+        this.scoreControl = scoreControl;
+        if (!brickList.isEmpty()) return;
+        System.out.println("y");
+        BrickSpawner b = BrickSpawnerFactory.createSpawner(scoreControl);
         b.spawn(brickList);
     }
 }

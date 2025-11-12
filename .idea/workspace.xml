@@ -4,23 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="- Singleton Pattern &#10;- SpamBrick">
+    <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="Fix MainMenu + Add GameOverMenu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-20.12.19.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-20.18.18.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-20.20.27.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-20.23.39.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-20.25.58.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-20.31.53.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-20.35.18.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-20.35.26.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-20.35.48.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-20.36.12.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ScoreControl/Score_control.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ScoreControl/Score_control.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallVari.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/PowerUpHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/PowerUpHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/LifeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/LifeManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickSpawnerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickSpawnerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameOver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameOver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/GeneralInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GeneralInit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/Launch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Launch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/PauseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/PauseMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="tuyen" />
+        <entry key="$PROJECT_DIR$" value="tuan" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -64,25 +59,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.GameRun.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "qanh",
-    "kotlin-language-version-configured": "true",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "editor.preferences.completion"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.GameRun.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;tuan&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="GameRun" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.GameRun" />
-      <module name="demo" />
+      <module name="demo1" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="view.*" />
@@ -98,8 +89,6 @@
         <item itemvalue="Application.GameRun" />
         <item itemvalue="Application.GameRun" />
         <item itemvalue="Application.GameRun" />
-        <item itemvalue="Application.GameRun" />
-        <item itemvalue="Application.GameRun" />
       </list>
     </recent_temporary>
   </component>
@@ -111,29 +100,29 @@
       <option name="presentableId" value="Default" />
       <updated>1761554734846</updated>
     </task>
-    <task id="LOCAL-00001" summary="Add basic score function (without load and fetch data):&#10;+Create new package: ScoreControl&#10;+Edit Ball class (edit update function with new input to handle score change)&#10;+Score can be init in Launch (set init value)">
+    <task id="LOCAL-00001" summary="Merge code">
       <option name="closed" value="true" />
-      <created>1762111064693</created>
+      <created>1762826790763</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1762111064693</updated>
+      <updated>1762826790763</updated>
     </task>
-    <task id="LOCAL-00002" summary="Edit gitignore (add .idea)">
+    <task id="LOCAL-00002" summary="Fix MainMenu + Add GameOverMenu">
       <option name="closed" value="true" />
-      <created>1762111111687</created>
+      <created>1762829381854</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1762111111687</updated>
+      <updated>1762829381855</updated>
     </task>
     <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add basic score function (without load and fetch data):&#10;+Create new package: ScoreControl&#10;+Edit Ball class (edit update function with new input to handle score change)&#10;+Score can be init in Launch (set init value)" />
-    <MESSAGE value="Edit gitignore (add .idea)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edit gitignore (add .idea)" />
+    <MESSAGE value="Merge code" />
+    <MESSAGE value="Fix MainMenu + Add GameOverMenu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix MainMenu + Add GameOverMenu" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

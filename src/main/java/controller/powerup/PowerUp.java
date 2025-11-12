@@ -7,6 +7,7 @@ import com.almasb.fxgl.entity.components.CollidableComponent;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.CollisionHandler;
 import com.almasb.fxgl.physics.HitBox;
+import com.almasb.fxgl.physics.PhysicsWorld;
 import controller.ball_control.BallVari;
 import controller.ball_control.Ball;
 import controller.ball_control.PowerUpHandler;
@@ -93,26 +94,30 @@ public class PowerUp extends Entity implements PowerUpVari, BallVari {
     }
 }
 
-class PhysicComponent extends Component implements PowerUpVari{
-    private static boolean hasCollision = false;
+class PhysicComponent extends Component implements PowerUpVari {
+    private static PhysicsWorld lastWorld = null;
 
     @Override
     public void onAdded() {
-        if (!hasCollision) {
-            FXGL.getPhysicsWorld().addCollisionHandler(new CollisionHandler(
+        PhysicsWorld currentWorld = FXGL.getPhysicsWorld();
+
+        if (currentWorld != lastWorld) {
+            currentWorld.addCollisionHandler(new CollisionHandler(
                     Launch.EntityType.POWERUP, Launch.EntityType.PADDLE) {
                 @Override
                 protected void onCollisionBegin(Entity pow, Entity paddle) {
                     PowerUp power = (PowerUp) pow;
                     if (!power.isActive())
                         return;
+
                     PowerUp.textAnimation(power);
                     power.activated();
                     AudioManager.SFX.playSound(SoundVari.SOUND_POWER_UP);
                     power.removeFromWorld();
                 }
             });
-            hasCollision = true;
+
+            lastWorld = currentWorld;
         }
     }
 
@@ -120,8 +125,10 @@ class PhysicComponent extends Component implements PowerUpVari{
     public void onUpdate(double tpf) {
         PowerUp power = (PowerUp) entity;
         power.translateY(tpf * POWER_FALLING_SPEED);
+
         if (power.isActive() && power.getY() > FXGL.getAppHeight()) {
             power.removeFromWorld();
         }
     }
 }
+

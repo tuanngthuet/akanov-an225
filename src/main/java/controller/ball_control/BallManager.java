@@ -10,7 +10,7 @@ import view.Launch;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BallManager extends Entity implements InitVari, PaddleVari, BallVari {
+public class BallManager implements InitVari, PaddleVari, BallVari {
     private List<Ball> balls = new ArrayList<>();
     private static BallManager instance;
 

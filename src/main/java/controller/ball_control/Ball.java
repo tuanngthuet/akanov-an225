@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import com.almasb.fxgl.entity.components.BoundingBoxComponent;
 import com.almasb.fxgl.entity.components.CollidableComponent;
+import view.Launch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -130,10 +131,11 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
                 toRemove.add(brick);
                 if(!isHardBall) {
                     adjustDirectionAfterBrickHit(brick);
-                    current_score.update_score(1);
                 }
-                else {
-                    current_score.update_score(5);
+                switch (brick.getBrickType()) {
+                    case POWERUP -> current_score.update_score(10);
+                    case NORMAL -> current_score.update_score(5);
+                    case HARD -> current_score.update_score(1);
                 }
             }
         }
@@ -182,18 +184,18 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
     }
     // tham khảo Circle - Rectangle collision detection
     public boolean Check_BrickHit(Entity brick) {
-            double center_ballX = getX() + BALL_RADIUS;
-            // nearestX - the closest coordinates of BrickX to BallCenterX
-            double nearestX = Math.max(brick.getX(), Math.min(center_ballX, brick.getX() + BRICK_WIDTH));
-            double center_ballY = getY() + BALL_RADIUS;
-            // nearestY - the closest coordinates of BrickY to BallCenterY
-            double nearestY = Math.max(brick.getY(), Math.min(center_ballY, brick.getY() + BRICK_HEIGHT));
+        double center_ballX = getX() + BALL_RADIUS;
+        // nearestX - the closest coordinates of BrickX to BallCenterX
+        double nearestX = Math.max(brick.getX(), Math.min(center_ballX, brick.getX() + BRICK_WIDTH));
+        double center_ballY = getY() + BALL_RADIUS;
+        // nearestY - the closest coordinates of BrickY to BallCenterY
+        double nearestY = Math.max(brick.getY(), Math.min(center_ballY, brick.getY() + BRICK_HEIGHT));
 
-            // caculate the distance between two points
-            double deltaX = nearestX - center_ballX;
-            double deltaY = nearestY - center_ballY;
+        // caculate the distance between two points
+        double deltaX = nearestX - center_ballX;
+        double deltaY = nearestY - center_ballY;
 
-            double distance = (deltaX * deltaX) + (deltaY * deltaY);
-            return distance <= Math.pow(BALL_RADIUS, 2);
+        double distance = (deltaX * deltaX) + (deltaY * deltaY);
+        return distance <= Math.pow(BALL_RADIUS, 2);
     }
 }

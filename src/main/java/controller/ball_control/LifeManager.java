@@ -9,11 +9,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
+import view.GameOver;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LifeManager extends Entity implements BallVari{
+public class LifeManager implements BallVari{
     private List<ImageView> hearts = new ArrayList<>();
     private HBox heartsBox = new HBox(10);
 
@@ -50,7 +51,7 @@ public class LifeManager extends Entity implements BallVari{
     }
 
     public void loseHeart() {
-        if(life > 0) {
+        if(life > 1) {
             life--;
             ImageView heart = hearts.get(life);
             FadeTransition fade = new FadeTransition(Duration.seconds(0.8),heart);
@@ -60,9 +61,8 @@ public class LifeManager extends Entity implements BallVari{
             fade.play();
             heart.setVisible(false);
         }
-    }
-
-    public int getLife() {
-        return life;
+        else {
+            GameOver.showGameOverMenu();
+        }
     }
 }

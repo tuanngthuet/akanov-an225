@@ -103,4 +103,8 @@ public class Score_control implements ScoreVari {
         score_number.setText(current_score_string);
         showFloatingText("+ " + amount, SCORE_NUMBER_POS_X, SCORE_TEXT_POS_Y);
     }
+
+    public int getCurrent_score_int() {
+        return current_score_int;
+    }
 }
