@@ -3,6 +3,7 @@ package view;
 import com.almasb.fxgl.animation.Interpolators;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
+import com.almasb.fxgl.dsl.FXGL;
 import controller.InitVari;
 import controller.sound_control.AudioManager;
 import controller.sound_control.MusicManager;
@@ -13,6 +14,7 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Slider;
 import javafx.scene.effect.BoxBlur;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.StackPane;
@@ -28,6 +30,7 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 import static javafx.beans.binding.Bindings.when;
@@ -271,5 +274,21 @@ public class PauseMenu extends FXGLMenu implements InitVari {
         return btn;
     }
 
+    public ImageView createPauseButton() {
+        Image pauseImage = new Image(
+                Objects.requireNonNull(PauseMenu.class.getResource("/assets/textures/background/pausebutton.png")).toExternalForm()
+        );
+
+        ImageView pauseButton = new ImageView(pauseImage);
+
+        pauseButton.setFitWidth(50);
+        pauseButton.setFitHeight(50);
+        pauseButton.setTranslateX(10);
+        pauseButton.setTranslateY(10);
+
+        pauseButton.setOnMouseClicked(e -> FXGL.getGameController().gotoGameMenu());
+
+        return pauseButton;
+    }
 
 }

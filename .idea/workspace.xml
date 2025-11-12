@@ -4,12 +4,67 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="Merge code">
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/GameOver.java" afterDir="false" />
+    <list default="true" id="e47c669f-9ce3-4b86-a4b4-cc6f80c61ddb" name="Changes" comment="Fix MainMenu + Add GameOverMenu">
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameOverMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-23.12.21.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-11-Nov-2025-23.16.03.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-12-Nov-2025-00.12.46.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-12-Nov-2025-00.13.06.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-12-Nov-2025-00.13.23.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-12-Nov-2025-00.15.28.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-12-Nov-2025-00.17.45.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-12-Nov-2025-00.18.34.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-12-Nov-2025-00.21.39.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/FXGL-12-Nov-2025-00.22.59.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/InitVari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ScoreControl/ScoreVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ScoreControl/ScoreVari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ScoreControl/Score_control.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ScoreControl/Score_control.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/BallVari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/LifeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/LifeManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ball_control/PowerUpHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ball_control/PowerUpHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/Brick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/Brick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickSpawner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickSpawnerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickSpawnerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/BrickVari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/CircleLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/CircleLayout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/RectangleLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/RectangleLayout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/brick_control/TriangleLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/brick_control/TriangleLayout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/paddle_control/BasicPaddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/paddle_control/BasicPaddle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/paddle_control/Paddle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/paddle_control/Paddle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/paddle_control/PaddleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/paddle_control/PaddleManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/paddle_control/PaddleVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/paddle_control/PaddleVari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/powerup/PowerUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/powerup/PowerUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/powerup/PowerUpVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/powerup/PowerUpVari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/sound_control/AudioManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/sound_control/AudioManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/sound_control/MusicManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/sound_control/MusicManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/sound_control/SoundEffectManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/sound_control/SoundEffectManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/sound_control/SoundVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/sound_control/SoundVari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/SQL_InitVari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/SQL_InitVari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/SQL_connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/SQL_connector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameOver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameOver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/GameRun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GameRun.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/GeneralInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/GeneralInit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/Launch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Launch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/PauseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/PauseMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/textures/background/bglogin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/textures/background/bgwelcome.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,21 +108,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.GameRun.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;tuan&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.GameRun.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "tuyen",
+    "kotlin-language-version-configured": "true",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "editor.preferences.completion"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="GameRun" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.GameRun" />
-      <module name="demo1" />
+      <module name="demo" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="view.*" />
@@ -102,12 +157,21 @@
       <option name="project" value="LOCAL" />
       <updated>1762826790763</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fix MainMenu + Add GameOverMenu">
+      <option name="closed" value="true" />
+      <created>1762829381854</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1762829381855</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Merge code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge code" />
+    <MESSAGE value="Fix MainMenu + Add GameOverMenu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix MainMenu + Add GameOverMenu" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
