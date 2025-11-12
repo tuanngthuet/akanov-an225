@@ -24,10 +24,11 @@ public interface InitVari {
 //    int INIT_PADDLE_X = 300;
 //    int INIT_PADDLE_Y = 550;
 
-    GameView BACKGROUND = new GameView(
-            new ImageView( new Image(Objects.requireNonNull(InitVari.class.getResource("/assets/textures/background/background.png").toExternalForm()))),
-            -1000
-    );
+    ImageView BACKGROUND =
+            new ImageView( new Image(Objects.requireNonNull(InitVari.class.getResource("/assets/textures/background/background.png").toExternalForm())));
+
+    ImageView BACKGROUND2 =
+            new ImageView( new Image(Objects.requireNonNull(InitVari.class.getResource("/assets/textures/background/bg2.png").toExternalForm())));
 
     GameView LOGIN_BACKGROUND = new GameView(
             new ImageView( new Image(Objects.requireNonNull(InitVari.class.getResource("/assets/textures/background/bglogin.png")).toExternalForm())), // Đã xóa 1 dấu ')' thừa
@@ -41,15 +42,17 @@ public interface InitVari {
 
     Font TITLE_FONT =
             Font.loadFont(Objects.requireNonNull(InitVari.class
-                    .getResource("/assets/fonts/font.ttf")).toExternalForm(), 60);
+                    .getResource("/assets/fonts/title.ttf")).toExternalForm(), 100);
+    Font SMALL_TITLE =
+            Font.loadFont(Objects.requireNonNull(InitVari.class
+                    .getResource("/assets/fonts/title.ttf")).toExternalForm(), 40);
     Font TEXT_FONT =
             Font.loadFont(Objects.requireNonNull(InitVari.class
                     .getResource("/assets/fonts/font.ttf")).toExternalForm(), 20);
+    Font SMALL_TEXT_FONT =
+            Font.loadFont(Objects.requireNonNull(InitVari.class
+                    .getResource("/assets/fonts/font.ttf")).toExternalForm(), 13);
     Font SCORE_TEXT_FONT =
             Font.loadFont(Objects.requireNonNull(InitVari.class
                     .getResource("/assets/fonts/score_text_font.ttf")).toExternalForm(), 40);
-    AudioClip one_score_up_sound = new AudioClip(
-            Objects.requireNonNull(InitVari.class.getResource("/assets/sounds/one_score_up.wav"))
-                    .toExternalForm()
-    );
 }

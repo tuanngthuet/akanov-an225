@@ -72,6 +72,10 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
         this.directionY = dirY / len;
     }
 
+    public double getSpeed() {
+        return speed;
+    }
+
     public Image getImageByType(BallType type) {
         return switch (type) {
             case SPEEDUPBALL -> SPEEDUP_BALL;
@@ -127,10 +131,11 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
                 toRemove.add(brick);
                 if(!isHardBall) {
                     adjustDirectionAfterBrickHit(brick);
-                    current_score.update_score(1);
                 }
-                else {
-                    current_score.update_score(5);
+                switch (brick.getBrickType()) {
+                    case POWERUP -> current_score.update_score(10);
+                    case NORMAL -> current_score.update_score(5);
+                    case HARD -> current_score.update_score(1);
                 }
             }
         }
@@ -140,7 +145,7 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
         }
 
         if (getY() > SCREEN_HEIGHT) {
-            setPosition(paddle.getX() + BASIC_PAD_WIDTH / 2, paddle.getY() - BALL_RADIUS * 2);
+            setPosition(paddle.getX() + (float) BASIC_PAD_WIDTH / 2, paddle.getY() - BALL_RADIUS * 2);
             if(lifeManager != null) {
                 lifeManager.loseHeart();
             }

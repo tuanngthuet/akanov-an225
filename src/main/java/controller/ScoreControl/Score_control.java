@@ -4,6 +4,8 @@ import com.almasb.fxgl.animation.Interpolators;
 import com.almasb.fxgl.audio.Audio;
 import com.almasb.fxgl.audio.Sound;
 import com.almasb.fxgl.dsl.FXGL;
+import controller.sound_control.AudioManager;
+import controller.sound_control.SoundVari;
 import javafx.geometry.Point2D;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
@@ -96,10 +98,13 @@ public class Score_control implements ScoreVari {
         current_score_int += amount;
         current_score_string = Integer.toString(current_score_int);
 
-        one_score_up_sound.setVolume(0.4);
-        one_score_up_sound.play();
+        AudioManager.SFX.playSound(SoundVari.SOUND_LEVEL_UP);
 
         score_number.setText(current_score_string);
         showFloatingText("+ " + amount, SCORE_NUMBER_POS_X, SCORE_TEXT_POS_Y);
+    }
+
+    public int getCurrent_score_int() {
+        return current_score_int;
     }
 }
