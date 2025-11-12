@@ -12,6 +12,10 @@ public abstract class User {
     public static ArrayList<Integer> user_level_by_sessions = new ArrayList<>();
     public static ArrayList<String> user_lives_left_by_sessions = new ArrayList<>();
     public static int user_update_score;
+    public static String user_new_start;
+    public static String user_new_end;
+    public static int user_init_score = 0;
+    public static int user_update_lives = 3;
 
     public static void printOutUserInfo() {
         if (!user_session.isEmpty()) {

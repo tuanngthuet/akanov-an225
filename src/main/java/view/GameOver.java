@@ -4,6 +4,7 @@ import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
 import com.almasb.fxgl.dsl.FXGL;
 import controller.InitVari;
+import controller.user.User;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -19,8 +20,13 @@ import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
+import java.sql.SQLException;
+import java.sql.Timestamp;
+
 import static com.almasb.fxgl.dsl.FXGL.getGameScene;
 import static javafx.beans.binding.Bindings.when;
+import static view.MainMenu.connector;
+import static view.MainMenu.login_status;
 
 public class GameOver extends FXGLMenu implements InitVari {
     public GameOver() {
@@ -116,7 +122,26 @@ public class GameOver extends FXGLMenu implements InitVari {
             text.setFill(Color.WHITE);
         });
 
-        btn.setOnMouseClicked(e -> action.run());
+        btn.setOnMouseClicked(e -> {
+            if (name.equals("NEW GAME") && login_status) {
+                Timestamp now = new Timestamp(System.currentTimeMillis());
+                System.out.println(now + "Time create a new game session on PauseMenu!");
+                User.user_new_end = now.toString();
+
+                try {
+                    connector.createNewSession(User.user_new_start, User.user_new_end, User.user_update_score, User.user_update_lives);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+                User.user_new_start = now.toString();
+                User.user_new_end = null;
+
+                User.user_init_score = 0;
+            }
+            action.run();
+        });
+
 
         return btn;
     }

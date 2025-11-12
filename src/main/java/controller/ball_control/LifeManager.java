@@ -20,6 +20,9 @@ public class LifeManager implements BallVari{
 
     private int life = DEFAULT_LIFE;
 
+    public int getHeart() {
+        return life;
+    }
     public void init() {
         heartsBox.setAlignment(Pos.BOTTOM_LEFT);
         heartsBox.setTranslateX(FIRST_HEART_X);

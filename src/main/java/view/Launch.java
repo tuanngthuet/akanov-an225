@@ -48,7 +48,7 @@ public class Launch extends GameApplication implements InitVari {
         lifeManager = new LifeManager();
         lifeManager.init();
 
-        scoreControl = new Score_control(0);
+        scoreControl = new Score_control(User.user_init_score);
         scoreControl.initScore();
 
         ballManager = new BallManager();
@@ -63,6 +63,8 @@ public class Launch extends GameApplication implements InitVari {
 
         BrickManager.getInstance().getBrickList().clear();
         BrickManager.getInstance().spawnBrick(scoreControl);
+
+
     }
 
     @Override
@@ -70,6 +72,11 @@ public class Launch extends GameApplication implements InitVari {
         for (Ball b : ballManager.getBalls()) {
             b.update(tpf, paddle, BrickManager.getInstance(), lifeManager, scoreControl);
             b.IncreaseBallSpeed();
+
+            User.user_update_score = scoreControl.getCurrent_score_int();
+            User.user_update_lives = lifeManager.getHeart();
+
+//            System.out.println(User.user_update_score + "   " + User.user_update_lives);
         }
         paddle.update();
     }

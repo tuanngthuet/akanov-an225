@@ -10,7 +10,7 @@ module view {
     requires javafx.base;
     requires javafx.media;
     requires java.desktop;
-//    requires view;
+
 
     opens view to javafx.fxml;
     opens controller to javafx.fxml;
