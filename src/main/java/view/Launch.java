@@ -78,5 +78,10 @@ public class Launch extends GameApplication implements InitVari {
     protected void initInput() {
         onKey(KeyCode.RIGHT, () -> paddle.moveRight());
         onKey(KeyCode.LEFT, () -> paddle.moveLeft());
+        onKey(KeyCode.SPACE, () -> {
+            if(ballManager != null) {
+                ballManager.flyStickyBall();
+            }
+        });
     }
 }

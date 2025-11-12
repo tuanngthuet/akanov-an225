@@ -80,10 +80,18 @@ public class BallManager implements InitVari, PaddleVari, BallVari {
         manager.getBalls().remove(ball);
         if(manager.getBalls().isEmpty()) {
             lifeManager.loseHeart();
-
             Ball newBall = manager.spawn_InitBall();
+            newBall.setSticky(true);
             newBall.setPosition(paddle.getX() + BASIC_PAD_WIDTH / 2, paddle.getY() - BALL_RADIUS * 2);
 
+        }
+    }
+    public void flyStickyBall() {
+        for(Ball ball : balls) {
+            if(ball.isSticky()) {
+                ball.fly();
+                break;
+            }
         }
     }
 }

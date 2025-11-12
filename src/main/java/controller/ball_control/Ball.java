@@ -1,5 +1,6 @@
 package controller.ball_control;
 
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.physics.BoundingShape;
 import com.almasb.fxgl.physics.HitBox;
@@ -30,6 +31,7 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
     private BallType type;
     private int Clock;
     private ImageView imageView;
+    private boolean isSticky = false;
 
     public Ball(double dirX, double dirY, BallType type) {
         this.type = type;
@@ -54,6 +56,16 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
             imageView.setImage(getImageByType(type));
         }
     }
+
+    public boolean isSticky() {
+        return isSticky;
+    }
+
+    public void setSticky(boolean sticky) {
+        isSticky = sticky;
+        if(isSticky) this.setSpeed(0);
+    }
+
     public void setHardBall(boolean hardBall) {
         isHardBall = hardBall;
     }
@@ -96,7 +108,7 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
 
     public void adjustDirectionAfterPaddleHit(Entity paddle) {
         double ballCenterX = getX() + BALL_RADIUS;
-        double paddleCenterX = paddle.getX() + (double) BASIC_PAD_WIDTH / 2;
+        double paddleCenterX = paddle.getX() + (double) paddle.getWidth() / 2;
 
         double gap = (ballCenterX - paddleCenterX) / (paddle.getWidth() / 2);
 
@@ -109,6 +121,13 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
     public void update(double tpf, Entity paddle, BrickManager bricks, LifeManager lifeManager, Score_control current_score) {
         double dx = directionX * speed * tpf * ADJUST_BALL_SPEED;
         double dy = directionY * speed * tpf * ADJUST_BALL_SPEED;
+        if(isSticky) {
+            double newX = paddle.getX() + paddle.getWidth() / 2 - BALL_RADIUS;
+            double newY = paddle.getY() - BALL_RADIUS;
+
+            this.setPosition(newX, newY);
+            return;
+        }
         this.translate(dx, dy);
         if (getX() <= 0) {
             setX(0);
@@ -160,20 +179,24 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
     }
     // tham khảo - axis aligned bounding box
     public void adjustDirectionAfterBrickHit(Entity brick) {
-        double overlapLeft   = getRightX() - brick.getX(); // va chạm phần gạch bên trái
-        double overlapRight  = brick.getRightX() - getX(); // va chạm phần gạch bên phải
-        double overlapTop    = getBottomY() - brick.getY(); // va chạm phần gạch bên trên
-        double overlapBottom = brick.getBottomY() - getY(); // va chạm phần gạch bên dưới
+        double center_ballX = getX() + BALL_RADIUS;
+        // nearestX - the closest coordinates of BrickX to BallCenterX
+        double nearestX = Math.max(brick.getX(), Math.min(center_ballX, brick.getX() + BRICK_WIDTH));
+        double center_ballY = getY() + BALL_RADIUS;
+        // nearestY - the closest coordinates of BrickY to BallCenterY
+        double nearestY = Math.max(brick.getY(), Math.min(center_ballY, brick.getY() + BRICK_HEIGHT));
 
-        // xem là phần va chạm nào là nhỏ nhất để đổi chiều đi của quá bóng
-        double minOverlap = Math.min(Math.min(overlapLeft, overlapRight),
-                Math.min(overlapTop, overlapBottom));
+        // caculate the distance between two points
+        double deltaX = nearestX - center_ballX;
+        double deltaY = nearestY - center_ballY;
 
-        if (minOverlap == overlapLeft || minOverlap == overlapRight) {
+        if(Math.abs(deltaX) > Math.abs(deltaY)) {
             directionX *= -1;
+            this.setX(this.getX() + (deltaX > 0 ? -1 : 1));
         }
         else {
             directionY *= -1;
+            this.setY(this.getY() + (deltaY > 0 ? -1 : 1 ));
         }
     }
     public boolean Check_PaddleHit(Entity paddle) {
@@ -197,5 +220,15 @@ public class Ball extends Entity implements InitVari, BrickVari, BallVari, Paddl
 
         double distance = (deltaX * deltaX) + (deltaY * deltaY);
         return distance <= Math.pow(BALL_RADIUS, 2);
+    }
+
+    public void fly() {
+        if(isSticky) {
+            isSticky = false;
+            this.setSpeed(DEFAULT_SPEED);
+
+            double angle = Math.toRadians(-90 + FXGL.random(-15,15));
+            this.setDirection(Math.cos(angle), Math.sin(angle));
+        }
     }
 }
