@@ -115,12 +115,16 @@ public class MainMenu extends FXGLMenu implements InitVari {
             String lives = User.user_lives_left_by_sessions.get(index);
 
 
-            String text = String.format("Session %s \n Score: %d | Level: %d | Lives: %s",
+            String text = String.format("Session %s \n Lives: %d | Level: %d | Score: %s",
                     sessionId, score, level, lives);
 
             Node btn = createActionButton(text, () -> {
                 if (User.canContinueSession(lives)) {
                     User.selectSession(index);
+
+                    User.user_init_score = Integer.parseInt(User.user_lives_left_by_sessions.get(index));
+                    User.user_init_lives = User.user_init_score_by_session.get(index);
+
                     FXGL.getDialogService().showMessageBox("Loading session: " + sessionId, this::fireNewGame);
                 } else {
                     FXGL.getDialogService().showMessageBox("This session has no lives left!");
@@ -141,6 +145,8 @@ public class MainMenu extends FXGLMenu implements InitVari {
         User.selectLatestSession();
         int lastIndex = User.user_session.size() - 1;
         String livesLeft = User.user_lives_left_by_sessions.get(lastIndex);
+
+
 
         if (!User.canContinueSession(livesLeft)) {
             FXGL.getDialogService().showMessageBox("The latest session has no remaining lives!");

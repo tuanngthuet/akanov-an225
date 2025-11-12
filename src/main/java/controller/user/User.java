@@ -17,6 +17,9 @@ public abstract class User {
     public static int user_init_score = 0;
     public static int user_update_lives = 3;
 
+    public static int user_init_lives = 3;
+
+
     public static void printOutUserInfo() {
         if (!user_session.isEmpty()) {
             int sessionCount = user_session.size();
