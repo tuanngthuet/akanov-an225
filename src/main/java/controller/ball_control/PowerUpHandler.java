@@ -23,7 +23,10 @@ public class PowerUpHandler implements BallVari {
     public void Pick_Up(PowerUp.PowerType type) {
         switch (type) {
             case MULTIBALL -> {
-                ballManager.spawnExtraBall();
+                List<Ball> balls = new ArrayList<>(ballManager.getBalls());
+                for(Ball ball : balls) {
+                    ballManager.spawnExtraBall(ball);
+                }
             }
             case SPEEDUPBALL -> {
                 for (Ball ball : ballManager.getBalls()) {

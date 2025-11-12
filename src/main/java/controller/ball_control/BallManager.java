@@ -34,11 +34,11 @@ public class BallManager implements InitVari, PaddleVari, BallVari {
         return instance;
     }
 
-    public void spawnExtraBall() {
-        Ball ball1 = new Ball(-Launch.ball.getDirectionX(), Launch.ball.getDirectionY(), Ball.BallType.MULTIBALL);
-        Ball ball2 = new Ball(Launch.ball.getDirectionX(), -Launch.ball.getDirectionY(), Ball.BallType.MULTIBALL);
-        ball1.setPosition(Launch.ball.getX() - SPAWN_BALL_GAP, Launch.ball.getY());
-        ball2.setPosition(Launch.ball.getX() + SPAWN_BALL_GAP, Launch.ball.getY());
+    public void spawnExtraBall(Ball ball) {
+        Ball ball1 = new Ball(-ball.getDirectionX(), ball.getDirectionY(), Ball.BallType.MULTIBALL);
+        Ball ball2 = new Ball(ball.getDirectionX(), -ball.getDirectionY(), Ball.BallType.MULTIBALL);
+        ball1.setPosition(ball.getX() - SPAWN_BALL_GAP, ball.getY());
+        ball2.setPosition(ball.getX() + SPAWN_BALL_GAP, ball.getY());
 
         ball1.setSpeed(DEFAULT_SPEED);
         ball2.setSpeed(DEFAULT_SPEED);

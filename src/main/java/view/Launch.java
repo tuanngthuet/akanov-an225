@@ -17,6 +17,9 @@ import controller.sound_control.SoundVari;
 import controller.user.User;
 import javafx.scene.input.KeyCode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class Launch extends GameApplication implements InitVari {
@@ -88,7 +91,8 @@ public class Launch extends GameApplication implements InitVari {
 
     @Override
     protected void onUpdate(double tpf) {
-        for (Ball b : ballManager.getBalls()) {
+        List<Ball> balls = new ArrayList<>(ballManager.getBalls());
+        for (Ball b : balls) {
             b.update(tpf, paddle, BrickManager.getInstance(), lifeManager, scoreControl);
             b.IncreaseBallSpeed();
         }
