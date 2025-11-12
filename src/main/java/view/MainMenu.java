@@ -11,6 +11,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.BoxBlur;
@@ -133,7 +134,14 @@ public class MainMenu extends FXGLMenu implements InitVari {
 
             sessionBox.getChildren().add(btn);
         }
-        FXGL.getDialogService().showBox("Select Session", sessionBox);
+
+        ScrollPane scrollPane = new ScrollPane(sessionBox);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setPrefViewportHeight(600);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+
+        FXGL.getDialogService().showBox("Select Session", scrollPane);
     }
 
     private void loadLatestSession() {
