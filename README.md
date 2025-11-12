@@ -16,17 +16,14 @@ Group 8 - Class INT2204 5
 This is a classic Arkanoid game developed in Java as a final project for Object-Oriented Programming course. The project demonstrates the implementation of OOP principles and design patterns.
 
 **Key features:**
-1. The game is developed using Java 17+ with JavaFX/Swing for GUI.
-2. Implements core OOP principles: Encapsulation, Inheritance, Polymorphism, and Abstraction.
-3. Applies multiple design patterns: Singleton, Factory Method, Strategy, Observer, and State.
-4. Features multithreading for smooth gameplay and responsive UI.
-5. Includes sound effects, animations, and power-up systems.
-6. Supports save/load game functionality and leaderboard system.
+1. User Account Management: Implement login/logout functionality and enable saving and loading game progress through user sessions.
+2. User-Friendly UX/UI: Improve overall interface design to provide a smoother and more intuitive user experience.
+3. Diverse Item Graphics: Create a wider variety of item designs with distinctive visual styles.
+4. High-Quality Assets: Use high-resolution images, clear audio, and well-chosen fonts to enhance visual and auditory quality.
 
 **Game mechanics:**
 - Control a paddle to bounce a ball and destroy bricks
 - Collect power-ups for special abilities
-- Progress through multiple levels with increasing difficulty
 - Score points and compete on the leaderboard
 
 ---
@@ -35,11 +32,6 @@ This is a classic Arkanoid game developed in Java as a final project for Object-
 
 ### Class Diagram
 ![Class Diagram](docs/uml/class-diagram.png)
-
-_Có thể sử dụng IntelliJ để generate ra Class Diagrams: https://www.youtube.com/watch?v=yCkTqNxZkbY_
-
-*Complete UML diagrams are available in the `docs/uml/` folder*
-
 ---
 
 ## Design Patterns Implementation
@@ -178,3 +170,4 @@ This project is developed for educational purposes only.
 ---
 
 *Last updated: [12/11/2025]*
+
