@@ -95,32 +95,6 @@ public class PowerUp extends Entity implements PowerUpVari, BallVari {
 }
 
 class PhysicComponent extends Component implements PowerUpVari {
-    private static PhysicsWorld lastWorld = null;
-
-    @Override
-    public void onAdded() {
-        PhysicsWorld currentWorld = FXGL.getPhysicsWorld();
-
-        if (currentWorld != lastWorld) {
-            currentWorld.addCollisionHandler(new CollisionHandler(
-                    Launch.EntityType.POWERUP, Launch.EntityType.PADDLE) {
-                @Override
-                protected void onCollisionBegin(Entity pow, Entity paddle) {
-                    PowerUp power = (PowerUp) pow;
-                    if (!power.isActive())
-                        return;
-
-                    PowerUp.textAnimation(power);
-                    power.activated();
-                    AudioManager.SFX.playSound(SoundVari.SOUND_POWER_UP);
-                    power.removeFromWorld();
-                }
-            });
-
-            lastWorld = currentWorld;
-        }
-    }
-
     @Override
     public void onUpdate(double tpf) {
         PowerUp power = (PowerUp) entity;
